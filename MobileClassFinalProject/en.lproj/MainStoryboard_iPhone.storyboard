@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="MgX-ZZ-zCa">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+    </dependencies>
+    <scenes>
+        <!--Food Categories View Controller - Categories-->
+        <scene sceneID="1rO-qQ-09f">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Fib-x3-S2i" customClass="VARFoodCategoriesViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="GHL-iA-HF5">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rqu-JE-U66">
+                            <size key="itemSize" width="66" height="66"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="M2c-SQ-Axj" customClass="VARFoodCategoriesCell">
+                                <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sf-ID-CeY">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="8iI-FD-3Xf"/>
+                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="centerX" secondItem="M2c-SQ-Axj" secondAttribute="centerX" type="default" id="CtA-D9-Io1"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="foodCategoryName" destination="7Sf-ID-CeY" id="3e9-eD-otS"/>
+                                    <segue destination="oR7-U7-L60" kind="push" identifier="showFoodsListTableView" id="SPv-XP-3ef"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Fib-x3-S2i" id="bKm-Nt-ixL"/>
+                            <outlet property="delegate" destination="Fib-x3-S2i" id="xiT-ke-FSq"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Categories" id="mmu-A8-APX"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fa-vb-dhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="63"/>
+        </scene>
+        <!--Food List View Controller - Food Menu-->
+        <scene sceneID="uQb-wC-pkg">
+            <objects>
+                <tableViewController id="oR7-U7-L60" customClass="VARFoodListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZzT-pn-UdS">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="jsq-al-RAL" customClass="VARFoodListCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chinese Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knU-uG-NIZ">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="a3F-Uh-rUV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Saz-ou-3rN">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="leading" secondItem="knU-uG-NIZ" secondAttribute="leading" type="default" id="AAY-L6-cXn"/>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="2" id="IYO-eM-UoO"/>
+                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="20" type="default" id="OEy-nq-B9y"/>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="trailing" secondItem="knU-uG-NIZ" secondAttribute="trailing" type="default" id="SFN-JQ-QeY"/>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="10" id="xgm-GG-eD3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="foodChineseName" destination="knU-uG-NIZ" id="sOh-aB-qtQ"/>
+                                    <outlet property="foodEnglishName" destination="Saz-ou-3rN" id="mHa-iD-hnn"/>
+                                    <segue destination="HDU-WU-YY2" kind="push" identifier="showFoodDetailView" id="oSW-Jw-QwP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oR7-U7-L60" id="MXC-BE-p9z"/>
+                            <outlet property="delegate" destination="oR7-U7-L60" id="ybt-2O-Rnu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Food Menu" id="CTl-io-InK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7G-uY-6Qs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844" y="63"/>
+        </scene>
+        <!--Food Detail View Controller - Food-->
+        <scene sceneID="XyD-Hd-P7y">
+            <objects>
+                <viewController id="HDU-WU-YY2" customClass="VARFoodDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RdM-qx-WUP">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food English Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-X3-lKp">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food Chinese Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-M8-UPm">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="hTO-oK-epe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZm-oP-0Xt">
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="5GQ-4Y-VgK"/>
+                                    <constraint firstAttribute="height" constant="197" id="Odv-3z-534"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Introduction : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPL-G6-utg">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-Ul-SGs">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ingredient : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBa-uU-JU5">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.80000001190000003" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwo-qB-Ono">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="OEw-Pc-4C2">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Bbb-4a-7aS"/>
+                                    <constraint firstAttribute="height" constant="36" id="x8o-N7-gOF"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="imagePageChange:" destination="HDU-WU-YY2" eventType="valueChanged" id="BfJ-wU-Rha"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iwo-qB-Ono" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0ob-83-Yed"/>
+                            <constraint firstItem="Hze-M8-UPm" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="27" id="46t-Cn-Khm"/>
+                            <constraint firstItem="CZm-oP-0Xt" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="50" id="6GE-0h-jLj"/>
+                            <constraint firstItem="JPL-G6-utg" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="A9T-iV-mnE"/>
+                            <constraint firstItem="Of9-Ul-SGs" firstAttribute="top" secondItem="JPL-G6-utg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="HdK-xq-OGK"/>
+                            <constraint firstItem="OEw-Pc-4C2" firstAttribute="centerX" secondItem="RdM-qx-WUP" secondAttribute="centerX" type="default" id="IRk-Xq-CW6"/>
+                            <constraint firstItem="OEw-Pc-4C2" firstAttribute="centerX" secondItem="CZm-oP-0Xt" secondAttribute="centerX" type="default" id="O9X-wn-DLE"/>
+                            <constraint firstItem="Of9-Ul-SGs" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="W7x-Sv-MtR"/>
+                            <constraint firstItem="Iwo-qB-Ono" firstAttribute="top" secondItem="eBa-uU-JU5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YFz-I8-5OO"/>
+                            <constraint firstItem="Hze-M8-UPm" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Z6V-xu-cBS"/>
+                            <constraint firstItem="JPL-G6-utg" firstAttribute="top" secondItem="CZm-oP-0Xt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="evs-AH-8n0"/>
+                            <constraint firstItem="4JH-X3-lKp" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hLL-g9-F92"/>
+                            <constraint firstItem="eBa-uU-JU5" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hwR-Sd-Bk9"/>
+                            <constraint firstAttribute="bottom" secondItem="Iwo-qB-Ono" secondAttribute="bottom" constant="39" id="mZr-nd-u9W"/>
+                            <constraint firstItem="4JH-X3-lKp" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="7" id="nWb-yZ-ChW"/>
+                            <constraint firstAttribute="bottom" secondItem="OEw-Pc-4C2" secondAttribute="bottom" constant="163" id="uf7-4X-hrQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Food" id="InI-TG-Bjr"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="foodChineseName" destination="Hze-M8-UPm" id="xEh-ux-haM"/>
+                        <outlet property="foodEnglishName" destination="4JH-X3-lKp" id="lM8-S8-o0X"/>
+                        <outlet property="foodImage" destination="CZm-oP-0Xt" id="i1a-FR-YGd"/>
+                        <outlet property="foodIngredient" destination="Iwo-qB-Ono" id="qco-gE-7ZD"/>
+                        <outlet property="foodIntroduction" destination="Of9-Ul-SGs" id="fam-95-HzJ"/>
+                        <outlet property="imagePageControler" destination="OEw-Pc-4C2" id="Hlr-jS-6nB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6l-9s-YJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="63"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h6h-FJ-Oza">
+            <objects>
+                <navigationController id="MgX-ZZ-zCa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wnm-pX-WZh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fib-x3-S2i" kind="relationship" relationship="rootViewController" id="OHZ-Q9-DGF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVy-j7-BkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="63"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+        <class className="VARFoodCategoriesCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="foodCategoryName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VARFoodCategoriesViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesViewController.h"/>
+        </class>
+        <class className="VARFoodDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="imagePageChange:"/>
+                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="foodIngredient" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodIntroduction" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="imagePageControler" candidateClass="UIPageControl"/>
+            </relationships>
+        </class>
+        <class className="VARFoodListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VARFoodListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListViewController.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

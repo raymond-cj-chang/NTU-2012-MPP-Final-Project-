@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>FID</key>
+		<integer>1</integer>
+		<key>EnglishName</key>
+		<string>Minced Pork Rice</string>
+		<key>ChineseName</key>
+		<string>滷肉飯</string>
+		<key>Category</key>
+		<string>rice</string>
+		<key>Introduction</key>
+		<string>It&apos;s good!!!</string>
+		<key>Ingredient</key>
+		<string>rice,pork</string>
+		<key>Image</key>
+		<array>
+			<string>image1_1.jpg</string>
+			<string>image1_2.jpg</string>
+		</array>
+	</dict>
+	<dict>
+		<key>FID</key>
+		<integer>2</integer>
+		<key>EnglishName</key>
+		<string>Fried Noodles</string>
+		<key>ChineseName</key>
+		<string>炒麵</string>
+		<key>Category</key>
+		<string>noodles</string>
+		<key>Introduction</key>
+		<string>It&apos;s good noodles!!!</string>
+		<key>Ingredient</key>
+		<string>Wheat</string>
+		<key>Image</key>
+		<array>
+			<string>image2_1.jpg</string>
+		</array>
+	</dict>
+</array>
+</plist>
