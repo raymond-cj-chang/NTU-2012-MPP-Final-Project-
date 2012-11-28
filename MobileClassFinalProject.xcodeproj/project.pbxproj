@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186366EE1665A9AC00ECB930 /* VARMenuFoodList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186366ED1665A9AC00ECB930 /* VARMenuFoodList.plist */; };
 		8407F4231645616D007B61FE /* VARFoodCategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */; };
 		8407F42716456566007B61FE /* VARFoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F42616456566007B61FE /* VARFoodListViewController.m */; };
 		8407F42A164565D0007B61FE /* VARFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F429164565D0007B61FE /* VARFoodListCell.m */; };
@@ -29,11 +30,11 @@
 		84EB5680163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB567E163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard */; };
 		84EB5683163A9DFF00F5080E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB5681163A9DFF00F5080E /* MainStoryboard_iPad.storyboard */; };
 		84EB5692163A9EA500F5080E /* VARMenuDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB5691163A9EA500F5080E /* VARMenuDataSource.m */; };
-		84EB5695163A9F5900F5080E /* VARMenuFoodList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84EB5694163A9F5900F5080E /* VARMenuFoodList.plist */; };
 		84FF4B771649086B007A4EEE /* VARFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF4B761649086B007A4EEE /* VARFoodDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		186366ED1665A9AC00ECB930 /* VARMenuFoodList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VARMenuFoodList.plist; sourceTree = "<group>"; };
 		8407F4211645616D007B61FE /* VARFoodCategoriesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodCategoriesCell.h; sourceTree = "<group>"; };
 		8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodCategoriesCell.m; sourceTree = "<group>"; };
 		8407F42516456565007B61FE /* VARFoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodListViewController.h; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		84EB5682163A9DFF00F5080E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		84EB5690163A9EA500F5080E /* VARMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARMenuDataSource.h; sourceTree = "<group>"; };
 		84EB5691163A9EA500F5080E /* VARMenuDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARMenuDataSource.m; sourceTree = "<group>"; };
-		84EB5694163A9F5900F5080E /* VARMenuFoodList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VARMenuFoodList.plist; sourceTree = "<group>"; };
 		84FF4B751649086B007A4EEE /* VARFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VARFoodDetailViewController.h; path = ../VARFoodDetailViewController.h; sourceTree = "<group>"; };
 		84FF4B761649086B007A4EEE /* VARFoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VARFoodDetailViewController.m; path = ../VARFoodDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,9 +221,9 @@
 		84EB5693163A9F2800F5080E /* Data Source */ = {
 			isa = PBXGroup;
 			children = (
+				186366ED1665A9AC00ECB930 /* VARMenuFoodList.plist */,
 				84EB5690163A9EA500F5080E /* VARMenuDataSource.h */,
 				84EB5691163A9EA500F5080E /* VARMenuDataSource.m */,
-				84EB5694163A9F5900F5080E /* VARMenuFoodList.plist */,
 			);
 			name = "Data Source";
 			sourceTree = "<group>";
@@ -286,11 +286,14 @@
 				84EB567D163A9DFF00F5080E /* Default-568h@2x.png in Resources */,
 				84EB5680163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard in Resources */,
 				84EB5683163A9DFF00F5080E /* MainStoryboard_iPad.storyboard in Resources */,
-				84EB5695163A9F5900F5080E /* VARMenuFoodList.plist in Resources */,
 				84E9C154165A17D900F828E1 /* image1_1.jpg in Resources */,
 				84E9C155165A17D900F828E1 /* image1_2.jpg in Resources */,
 				84E9C156165A17D900F828E1 /* image2_1.jpg in Resources */,
+<<<<<<< HEAD
 				8480C4CA165F4B3F006E7288 /* image_noodles.png in Resources */,
+=======
+				186366EE1665A9AC00ECB930 /* VARMenuFoodList.plist in Resources */,
+>>>>>>> 79da241de1eed361258ee1aff17979f9ff1a29cb
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
