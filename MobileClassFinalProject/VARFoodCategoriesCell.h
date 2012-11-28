@@ -10,5 +10,6 @@
 
 @interface VARFoodCategoriesCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *foodCategoryName;
+@property (strong, nonatomic) IBOutlet UIImageView *foodCategoryImage;
 
 @end

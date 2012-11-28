@@ -31,14 +31,23 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-H7-juO">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="2Vy-4l-hfN"/>
+                                                <constraint firstAttribute="height" constant="44" id="jj9-oX-Aqd"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="8iI-FD-3Xf"/>
-                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="centerX" secondItem="M2c-SQ-Axj" secondAttribute="centerX" type="default" id="CtA-D9-Io1"/>
+                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="centerX" secondItem="7bK-H7-juO" secondAttribute="centerX" type="default" id="0X7-xf-T2v"/>
+                                    <constraint firstItem="7bK-H7-juO" firstAttribute="top" secondItem="M2c-SQ-Axj" secondAttribute="top" constant="5" id="KCc-17-UzV"/>
+                                    <constraint firstItem="7bK-H7-juO" firstAttribute="centerX" secondItem="M2c-SQ-Axj" secondAttribute="centerX" type="default" id="get-Oq-HiI"/>
+                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="vNt-HB-MEA"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="foodCategoryImage" destination="7bK-H7-juO" id="8Yz-Us-RMw"/>
                                     <outlet property="foodCategoryName" destination="7Sf-ID-CeY" id="3e9-eD-otS"/>
                                     <segue destination="oR7-U7-L60" kind="push" identifier="showFoodsListTableView" id="SPv-XP-3ef"/>
                                 </connections>
@@ -241,12 +250,10 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="VARFoodCategoriesCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="foodCategoryImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="foodCategoryName" candidateClass="UILabel"/>
             </relationships>
         </class>

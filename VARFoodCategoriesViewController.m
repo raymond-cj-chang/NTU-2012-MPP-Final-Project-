@@ -59,6 +59,10 @@
     //set cell data
     cell.foodCategoryName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfCategories][row];
     
+    //set category image
+    NSString* categoryImageName = [[NSString alloc] initWithFormat:@"image_%@",cell.foodCategoryName.text];
+    cell.foodCategoryImage.image = [UIImage imageNamed:categoryImageName];
+    
     return cell;
 }
 
