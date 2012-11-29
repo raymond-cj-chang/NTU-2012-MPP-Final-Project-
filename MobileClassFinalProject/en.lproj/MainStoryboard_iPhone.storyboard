@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="MgX-ZZ-zCa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="MgX-ZZ-zCa">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Food Categories View Controller - Categories-->
@@ -26,29 +26,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" text="Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sf-ID-CeY">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-H7-juO">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="2Vy-4l-hfN"/>
                                                 <constraint firstAttribute="height" constant="44" id="jj9-oX-Aqd"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSS-Ra-dmd">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="centerX" secondItem="7bK-H7-juO" secondAttribute="centerX" type="default" id="0X7-xf-T2v"/>
-                                    <constraint firstItem="7bK-H7-juO" firstAttribute="top" secondItem="M2c-SQ-Axj" secondAttribute="top" constant="5" id="KCc-17-UzV"/>
-                                    <constraint firstItem="7bK-H7-juO" firstAttribute="centerX" secondItem="M2c-SQ-Axj" secondAttribute="centerX" type="default" id="get-Oq-HiI"/>
-                                    <constraint firstItem="7Sf-ID-CeY" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="vNt-HB-MEA"/>
+                                    <constraint firstItem="lSS-Ra-dmd" firstAttribute="trailing" secondItem="7bK-H7-juO" secondAttribute="trailing" type="default" id="2iT-rZ-Mky"/>
+                                    <constraint firstItem="7bK-H7-juO" firstAttribute="centerX" secondItem="M2c-SQ-Axj" secondAttribute="centerX" type="default" id="Fao-BY-z0F"/>
+                                    <constraint firstItem="lSS-Ra-dmd" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="o8d-ha-mAN"/>
+                                    <constraint firstAttribute="bottom" secondItem="7bK-H7-juO" secondAttribute="bottom" constant="20" type="default" id="sIc-Eg-3Dx"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="foodCategoryImage" destination="7bK-H7-juO" id="8Yz-Us-RMw"/>
-                                    <outlet property="foodCategoryName" destination="7Sf-ID-CeY" id="3e9-eD-otS"/>
+                                    <outlet property="foodCategoryName" destination="lSS-Ra-dmd" id="VH4-mK-mDd"/>
                                     <segue destination="oR7-U7-L60" kind="push" identifier="showFoodsListTableView" id="SPv-XP-3ef"/>
                                 </connections>
                             </collectionViewCell>

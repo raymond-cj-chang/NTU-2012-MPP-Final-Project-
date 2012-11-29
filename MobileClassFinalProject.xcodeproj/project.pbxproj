@@ -10,8 +10,8 @@
 		8407F4231645616D007B61FE /* VARFoodCategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */; };
 		8407F42716456566007B61FE /* VARFoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F42616456566007B61FE /* VARFoodListViewController.m */; };
 		8407F42A164565D0007B61FE /* VARFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F429164565D0007B61FE /* VARFoodListCell.m */; };
+		84780B20166725D70006B554 /* image_noodle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84780B1F166725D70006B554 /* image_noodle.png */; };
 		8478425916427080001C7EE5 /* VARFoodCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478425816427080001C7EE5 /* VARFoodCategoriesViewController.m */; };
-		847C0AF01665CDE5003C0693 /* image_noodles.png in Resources */ = {isa = PBXBuildFile; fileRef = 847C0AEF1665CDE5003C0693 /* image_noodles.png */; };
 		847C0AF81665CE8B003C0693 /* image2_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847C0AF61665CE8B003C0693 /* image2_1.jpg */; };
 		847C0AF91665CE8B003C0693 /* image2_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847C0AF71665CE8B003C0693 /* image2_2.jpg */; };
 		84EB5667163A9DFE00F5080E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB5666163A9DFE00F5080E /* UIKit.framework */; };
@@ -37,9 +37,9 @@
 		8407F42616456566007B61FE /* VARFoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodListViewController.m; sourceTree = "<group>"; };
 		8407F428164565D0007B61FE /* VARFoodListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodListCell.h; sourceTree = "<group>"; };
 		8407F429164565D0007B61FE /* VARFoodListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodListCell.m; sourceTree = "<group>"; };
+		84780B1F166725D70006B554 /* image_noodle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_noodle.png; path = resource/image/image_noodle.png; sourceTree = "<group>"; };
 		8478425716427080001C7EE5 /* VARFoodCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VARFoodCategoriesViewController.h; path = ../VARFoodCategoriesViewController.h; sourceTree = "<group>"; };
 		8478425816427080001C7EE5 /* VARFoodCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VARFoodCategoriesViewController.m; path = ../VARFoodCategoriesViewController.m; sourceTree = "<group>"; };
-		847C0AEF1665CDE5003C0693 /* image_noodles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_noodles.png; path = resource/image/image_noodles.png; sourceTree = "<group>"; };
 		847C0AF61665CE8B003C0693 /* image2_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image2_1.jpg; path = resource/image/image2_1.jpg; sourceTree = "<group>"; };
 		847C0AF71665CE8B003C0693 /* image2_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image2_2.jpg; path = resource/image/image2_2.jpg; sourceTree = "<group>"; };
 		84EB5662163A9DFE00F5080E /* MobileClassFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileClassFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +89,7 @@
 		84814D0B16593DFD0043D601 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				847C0AEF1665CDE5003C0693 /* image_noodles.png */,
+				84780B1F166725D70006B554 /* image_noodle.png */,
 				847C0AF61665CE8B003C0693 /* image2_1.jpg */,
 				847C0AF71665CE8B003C0693 /* image2_2.jpg */,
 			);
@@ -230,9 +230,9 @@
 				84EB5680163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard in Resources */,
 				84EB5683163A9DFF00F5080E /* MainStoryboard_iPad.storyboard in Resources */,
 				84EB5695163A9F5900F5080E /* VARMenuFoodList.plist in Resources */,
-				847C0AF01665CDE5003C0693 /* image_noodles.png in Resources */,
 				847C0AF81665CE8B003C0693 /* image2_1.jpg in Resources */,
 				847C0AF91665CE8B003C0693 /* image2_2.jpg in Resources */,
+				84780B20166725D70006B554 /* image_noodle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

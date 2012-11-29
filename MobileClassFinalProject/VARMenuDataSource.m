@@ -20,6 +20,7 @@ NSString * const VARsDataSourceDictKeyChineseName = @"ChineseName";
 NSString * const VARsDataSourceDictKeyFoodIntroduction = @"Introduction";
 NSString * const VARsDataSourceDictKeyFoodIngredient = @"Ingredient";
 NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
+
 #pragma mark -
 #pragma mark Object Lifecycle
 
