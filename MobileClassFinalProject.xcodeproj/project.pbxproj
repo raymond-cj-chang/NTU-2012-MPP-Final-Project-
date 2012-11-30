@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0263161668990200E3A9E2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02630D1668990200E3A9E2 /* FMDatabase.m */; };
+		4D0263171668990200E3A9E2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02630F1668990200E3A9E2 /* FMDatabaseAdditions.m */; };
+		4D0263181668990200E3A9E2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0263111668990200E3A9E2 /* FMDatabasePool.m */; };
+		4D0263191668990200E3A9E2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0263131668990200E3A9E2 /* FMDatabaseQueue.m */; };
+		4D02631A1668990200E3A9E2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0263151668990200E3A9E2 /* FMResultSet.m */; };
 		8407F4231645616D007B61FE /* VARFoodCategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */; };
 		8407F42716456566007B61FE /* VARFoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F42616456566007B61FE /* VARFoodListViewController.m */; };
 		8407F42A164565D0007B61FE /* VARFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F429164565D0007B61FE /* VARFoodListCell.m */; };
@@ -31,6 +36,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D02630C1668990200E3A9E2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		4D02630D1668990200E3A9E2 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		4D02630E1668990200E3A9E2 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		4D02630F1668990200E3A9E2 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		4D0263101668990200E3A9E2 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		4D0263111668990200E3A9E2 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		4D0263121668990200E3A9E2 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		4D0263131668990200E3A9E2 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		4D0263141668990200E3A9E2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		4D0263151668990200E3A9E2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		8407F4211645616D007B61FE /* VARFoodCategoriesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodCategoriesCell.h; sourceTree = "<group>"; };
 		8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodCategoriesCell.m; sourceTree = "<group>"; };
 		8407F42516456565007B61FE /* VARFoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodListViewController.h; sourceTree = "<group>"; };
@@ -78,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D02631C1668990F00E3A9E2 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				4D02630C1668990200E3A9E2 /* FMDatabase.h */,
+				4D02630D1668990200E3A9E2 /* FMDatabase.m */,
+				4D02630E1668990200E3A9E2 /* FMDatabaseAdditions.h */,
+				4D02630F1668990200E3A9E2 /* FMDatabaseAdditions.m */,
+				4D0263101668990200E3A9E2 /* FMDatabasePool.h */,
+				4D0263111668990200E3A9E2 /* FMDatabasePool.m */,
+				4D0263121668990200E3A9E2 /* FMDatabaseQueue.h */,
+				4D0263131668990200E3A9E2 /* FMDatabaseQueue.m */,
+				4D0263141668990200E3A9E2 /* FMResultSet.h */,
+				4D0263151668990200E3A9E2 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
 		84814D0916593DF00043D601 /* resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +158,7 @@
 		84EB566C163A9DFF00F5080E /* MobileClassFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				4D02631C1668990F00E3A9E2 /* FMDB */,
 				84814D0916593DF00043D601 /* resource */,
 				84EB5693163A9F2800F5080E /* Data Source */,
 				84EB5675163A9DFF00F5080E /* VARAppDelegate.h */,
@@ -251,6 +284,11 @@
 				8407F42716456566007B61FE /* VARFoodListViewController.m in Sources */,
 				8407F42A164565D0007B61FE /* VARFoodListCell.m in Sources */,
 				84FF4B771649086B007A4EEE /* VARFoodDetailViewController.m in Sources */,
+				4D0263161668990200E3A9E2 /* FMDatabase.m in Sources */,
+				4D0263171668990200E3A9E2 /* FMDatabaseAdditions.m in Sources */,
+				4D0263181668990200E3A9E2 /* FMDatabasePool.m in Sources */,
+				4D0263191668990200E3A9E2 /* FMDatabaseQueue.m in Sources */,
+				4D02631A1668990200E3A9E2 /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "VARMenuDataSource.h"
+#import "FMDatabase.h"
 
 @implementation VARMenuDataSource
 
