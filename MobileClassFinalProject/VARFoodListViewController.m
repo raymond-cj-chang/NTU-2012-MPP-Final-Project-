@@ -34,25 +34,25 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //add search bar
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(120, 0.0, 100, 44.0)];
-    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0.0, 220, 44.0)];
-    searchBar.delegate = self;
-    //title
-    CGRect subtitleFrame = CGRectMake(10, 0, 100, 44);
-    UILabel* titleLabel = [[UILabel alloc] initWithFrame:subtitleFrame];
-    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont boldSystemFontOfSize:20];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.textAlignment = UITextAlignmentCenter;
-    titleLabel.text = @"Food Menu";
-    titleLabel.adjustsFontSizeToFitWidth = YES;
-    //add search bar in navigation Item
-    [searchBarView addSubview:searchBar];
-    [searchBarView addSubview:titleLabel];
-    self.navigationItem.titleView = searchBarView;
-    [self.navigationItem.titleView sizeToFit];
+//    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(120, 0.0, 100, 44.0)];
+//    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0.0, 220, 44.0)];
+//    searchBar.delegate = self;
+//    //title
+//    CGRect subtitleFrame = CGRectMake(10, 0, 100, 44);
+//    UILabel* titleLabel = [[UILabel alloc] initWithFrame:subtitleFrame];
+//    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    titleLabel.backgroundColor = [UIColor clearColor];
+//    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+//    titleLabel.textColor = [UIColor whiteColor];
+//    titleLabel.textAlignment = UITextAlignmentCenter;
+//    titleLabel.text = @"Food Menu";
+//    titleLabel.adjustsFontSizeToFitWidth = YES;
+//    //add search bar in navigation Item
+//    [searchBarView addSubview:searchBar];
+//    [searchBarView addSubview:titleLabel];
+//    self.navigationItem.titleView = searchBarView;
+//    [self.navigationItem.titleView sizeToFit];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,13 +65,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [[[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsInCategories:_currentCategory] count];
 }
 
@@ -88,6 +86,21 @@
     //set cell data
     cell.foodEnglishName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsInCategories:_currentCategory][row][VARsDataSourceDictKeyEnglishName];
     cell.foodChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsInCategories:_currentCategory][row][VARsDataSourceDictKeyChineseName];
+    //cell.foodImage = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsInCategories:_currentCategory][row][VARsDataSourceDictKeyFoodImage];
+    NSArray *imageList = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsInCategories:_currentCategory][row][VARsDataSourceDictKeyFoodImage];
+    //NSLog(@"foodList:%@",imageList);
+    //NSLog(@"arrayNum:%u",[imageList count]);
+    if ([imageList count] > 0) {
+        
+       //NSLog(@"file%@",imageList[0]);
+       NSString* filename = imageList[0];
+       [cell.foodImage setImage:[UIImage imageNamed:filename]];
+       //cell.foodImage.image = [UIImage imageWithContentsOfFile:filename];
+        //NSLog(@"image:%@",cell.foodImage.image);
+    }
+    //NSLog(@"file%d",imageList[0]);
+    //cell.foodImage.image = [UIImage imageWithContentsOfFile:imageList[0]];
+   
     
     //return
     return cell;
@@ -111,7 +124,15 @@
         foodListController.food = food;
         
     }
-    
+  
+    if( [segue.identifier isEqualToString:@"addingFood"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        VARAddFoodViewController *addFoodViewController = [[navigationController viewControllers] lastObject];
+        //NSLog(@"dest:%@",addFoodViewController.currentCategory);
+        addFoodViewController.currentCategory = self.currentCategory;
+        //NSLog(@"prepare:%@",self.currentCategory);
+    }
 }
 
 /*
@@ -166,4 +187,7 @@
      */
 }
 
+- (IBAction)addingFood:(id)sender {
+    [self performSegueWithIdentifier:@"addingFood" sender:sender];
+}
 @end

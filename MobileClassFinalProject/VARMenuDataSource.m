@@ -53,54 +53,31 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
     if(self = [super init])
     {
         // Create database
-        NSString *documentDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        NSString *path = [documentDir stringByAppendingPathComponent:@"foodMenu.sqlite"];
-        _database = [FMDatabase databaseWithPath:path];
+        NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *targetPath = [libraryPath stringByAppendingPathComponent:@"foodMenu.sqlite"];
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:targetPath]) {
+            // database doesn't exist in your library path... copy it from the bundle
+            NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"foodMenu" ofType:@"sqlite"];
+            NSLog(@"sourcePath = %@", sourcePath);
+            NSError *error = nil;
+            
+            if (![[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:targetPath error:&error]) {
+                NSLog(@"Error: %@", error);
+            }
+        }
+        
+        _database = [FMDatabase databaseWithPath:targetPath];
         if (![_database open])
         {
             self = nil;
             return self;
         }
         databaseOpened = YES;
-        
-//        [_database executeUpdate: @"DROP TABLE comments"];
-//        [_database executeUpdate: @"DROP TABLE ratings"];
-//        [_database executeUpdate: @"DROP TABLE images"];
-//        [_database executeUpdate: @"DROP TABLE food_items"];
-//        
-//        //create table to store food information (name, introduction, ingredients)
-//        [_database executeUpdate:
-//         @"CREATE TABLE IF NOT EXISTS food_items (id integer NOT NULL PRIMARY KEY AUTOINCREMENT, name text NOT NULL UNIQUE, chinese_name text NOT NULL, english_category text NOT NULL, chinese_category text NOT NULL, introduction text NOT NULL, ingredients text NOT NULL)"];
-//        
-//        //create table to store images (image name, and id of the food it refers to)
-//        [_database executeUpdate:
-//         @"CREATE TABLE IF NOT EXISTS images (image_name text NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id))"];
-//        
-//        //create table to store comments (comment text and id of food)
-//        [_database executeUpdate:
-//         @"CREATE TABLE IF NOT EXISTS comments (comment text NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id))"];
-//        
-//        //create table to store ratings (rating score (1-5?) and id of food)
-//        [_database executeUpdate:
-//         @"CREATE TABLE IF NOT EXISTS ratings (rating integer NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id))"];
-//        
-//        [self.database executeUpdate:
-//         @"INSERT INTO food_items (name, chinese_name, english_category, chinese_category, introduction, ingredients) VALUES (?,?,?,?,?,?)", @"Minced pork rice", @"滷肉飯", @"rice", @"飯", @"This is a famous Taiwanese dish of minced pork (typically pork belly) stewed in a sweet soy sauce mixture for hours, served on a bowl of steamed rice.", @"Rice, pork, soy sauce, sugar, (garlic, shallots)"];
-//        
-//        [self.database executeUpdate:
-//         @"INSERT INTO food_items (name, chinese_name, english_category, chinese_category, introduction, ingredients) VALUES (?,?,?,?,?,?)", @"Oyster vermecilli", @"蚵仔麵線", @"noodles", @"麵", @"This is a famous Taiwanese dish of thin noodles (mian xian/mi sua) in a thick soup, topped with oysters. Cilantro is typically added as a garnish.", @"Thin noodles, oysters, (cilantro)"];
-//        
-//        [self.database executeUpdate:
-//         @"INSERT INTO images (image_name, food_id) VALUES(?, ?)", @"image2_1.jpg", @1];
-//        
-//        [self.database executeUpdate:
-//         @"INSERT INTO images (image_name, food_id) VALUES(?, ?)", @"image2_2.jpg", @1];
-        
         // Create cache
         cache = [[NSCache alloc] init];
     }
     return self;
-
 }
 
 - (void)dealloc
@@ -228,12 +205,15 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
             [tempDict setObject:[queryResults stringForColumn:@"introduction"] forKey:VARsDataSourceDictKeyFoodIntroduction];
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
             
+            NSLog(@"%@", [queryResults stringForColumn:@"name"]);
+            
             //add array of images
             NSInteger food_id = [queryResults intForColumn:@"id"];
             FMResultSet * imageResults = [self.database executeQuery:@"SELECT * FROM images WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
             NSMutableArray * tempArray = [[NSMutableArray alloc] init];
             while([imageResults next])
             {
+                NSLog(@"%@", [imageResults stringForColumn:@"image_name"]);
                 [tempArray addObject:[imageResults stringForColumn:@"image_name"]];
             }
             

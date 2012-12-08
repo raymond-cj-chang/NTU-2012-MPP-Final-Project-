@@ -5,8 +5,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>1</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Fried Rice</string>
 		<key>Introduction</key>
@@ -21,26 +23,31 @@
 	<dict>
 		<key>FID</key>
 		<integer>2</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Minced pork rice</string>
 		<key>Introduction</key>
-		<string></string>
+		<string>aaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbbaaaaabbbbbb</string>
 		<key>Ingredient</key>
 		<string></string>
 		<key>ChineseName</key>
 		<string>滷肉飯/魯肉飯</string>
 		<key>Image</key>
 		<array>
+			<string>image2_1.jpg</string>
 			<string>image2_2.jpg</string>
 		</array>
 	</dict>
 	<dict>
 		<key>FID</key>
 		<integer>3</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Rice porridge</string>
 		<key>Introduction</key>
@@ -50,13 +57,15 @@
 		<key>ChineseName</key>
 		<string>稀飯</string>
 		<key>Image</key>
-		<string></string>
+		<array/>
 	</dict>
 	<dict>
 		<key>FID</key>
 		<integer>4</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Glutinous rice</string>
 		<key>Introduction</key>
@@ -66,13 +75,15 @@
 		<key>ChineseName</key>
 		<string>油飯　　　　　</string>
 		<key>Image</key>
-		<string></string>
+		<array/>
 	</dict>
 	<dict>
 		<key>FID</key>
 		<integer>5</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Fried rice with egg</string>
 		<key>Introduction</key>
@@ -82,13 +93,15 @@
 		<key>ChineseName</key>
 		<string>蛋炒飯　　　</string>
 		<key>Image</key>
-		<string></string>
+		<array/>
 	</dict>
 	<dict>
 		<key>FID</key>
 		<integer>6</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Sweet potato congee</string>
 		<key>Introduction</key>
@@ -98,13 +111,15 @@
 		<key>ChineseName</key>
 		<string>地瓜粥　　　　</string>
 		<key>Image</key>
-		<string></string>
+		<array/>
 	</dict>
 	<dict>
 		<key>FID</key>
 		<integer>7</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>rice</string>
+		<key>Category_CHN</key>
+		<string>飯</string>
 		<key>EnglishName</key>
 		<string>Rice ball with vegetable</string>
 		<key>Introduction</key>
@@ -114,13 +129,15 @@
 		<key>ChineseName</key>
 		<string>飯糰</string>
 		<key>Image</key>
-		<string></string>
+		<array/>
 	</dict>
 	<dict>
 		<key>FID</key>
 		<integer>8</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Fried noodles / chow mein</string>
 		<key>Introduction</key>
@@ -135,8 +152,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>9</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Wonton noodle soup</string>
 		<key>Introduction</key>
@@ -151,8 +170,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>10</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Sliced noodles</string>
 		<key>Introduction</key>
@@ -167,8 +188,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>11</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Spicy hot noodles</string>
 		<key>Introduction</key>
@@ -183,8 +206,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>12</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Noodles with sesame sauce</string>
 		<key>Introduction</key>
@@ -199,8 +224,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>13</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Noodles with duck meat</string>
 		<key>Introduction</key>
@@ -215,8 +242,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>14</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Noodles with goose meat</string>
 		<key>Introduction</key>
@@ -231,8 +260,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>15</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Noodles with eel</string>
 		<key>Introduction</key>
@@ -247,8 +278,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>16</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Udon noodles</string>
 		<key>Introduction</key>
@@ -263,8 +296,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>17</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Noodles with pork and pickled mustard greens</string>
 		<key>Introduction</key>
@@ -279,8 +314,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>18</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Oyster vermecilli</string>
 		<key>Introduction</key>
@@ -295,8 +332,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>19</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Flat noodles</string>
 		<key>Introduction</key>
@@ -311,8 +350,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>20</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Rice noodles</string>
 		<key>Introduction</key>
@@ -327,8 +368,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>21</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Stir-fried rice noodles</string>
 		<key>Introduction</key>
@@ -343,8 +386,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>22</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>noodle</string>
+		<key>Category_CHN</key>
+		<string>麵</string>
 		<key>EnglishName</key>
 		<string>Chinese vermecilli</string>
 		<key>Introduction</key>
@@ -359,8 +404,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>23</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Fish ball soup</string>
 		<key>Introduction</key>
@@ -375,8 +422,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>24</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Chinese meat ball soup</string>
 		<key>Introduction</key>
@@ -391,8 +440,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>25</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Egg &amp; vegetable soup</string>
 		<key>Introduction</key>
@@ -407,8 +458,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>26</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Clam soup</string>
 		<key>Introduction</key>
@@ -423,8 +476,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>27</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Oyster soup</string>
 		<key>Introduction</key>
@@ -439,8 +494,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>28</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Seaweed soup</string>
 		<key>Introduction</key>
@@ -455,8 +512,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>29</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Sweet &amp; sour soup</string>
 		<key>Introduction</key>
@@ -471,8 +530,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>30</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Wonton soup</string>
 		<key>Introduction</key>
@@ -487,8 +548,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>31</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Pork intestine soup</string>
 		<key>Introduction</key>
@@ -503,8 +566,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>32</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Pork thick soup</string>
 		<key>Introduction</key>
@@ -519,8 +584,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>33</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Squid soup</string>
 		<key>Introduction</key>
@@ -535,8 +602,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>34</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>soup</string>
+		<key>Category_CHN</key>
+		<string>湯</string>
 		<key>EnglishName</key>
 		<string>Squid thick soup</string>
 		<key>Introduction</key>
@@ -551,8 +620,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>35</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>dessert</string>
+		<key>Category_CHN</key>
+		<string>甜點</string>
 		<key>EnglishName</key>
 		<string>Aiyu jelly</string>
 		<key>Introduction</key>
@@ -567,8 +638,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>36</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>dessert</string>
+		<key>Category_CHN</key>
+		<string>甜點</string>
 		<key>EnglishName</key>
 		<string>Tomatoes on a stick</string>
 		<key>Introduction</key>
@@ -584,8 +657,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>37</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>dessert</string>
+		<key>Category_CHN</key>
+		<string>甜點</string>
 		<key>EnglishName</key>
 		<string>Glutinous rice sesame balls</string>
 		<key>Introduction</key>
@@ -600,8 +675,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>38</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>dessert</string>
+		<key>Category_CHN</key>
+		<string>甜點</string>
 		<key>EnglishName</key>
 		<string>Fried dough twists</string>
 		<key>Introduction</key>
@@ -616,8 +693,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>39</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>dessert</string>
+		<key>Category_CHN</key>
+		<string>甜點</string>
 		<key>EnglishName</key>
 		<string>Taiwanese fried doughnut</string>
 		<key>Introduction</key>
@@ -631,9 +710,29 @@
 	</dict>
 	<dict>
 		<key>FID</key>
-		<integer>40</integer>
-		<key>Category</key>
+		<integer>45</integer>
+		<key>Category_ENG</key>
 		<string>dessert</string>
+		<key>Category_CHN</key>
+		<string>甜點</string>
+		<key>EnglishName</key>
+		<string>Tofu pudding</string>
+		<key>Introduction</key>
+		<string></string>
+		<key>Ingredient</key>
+		<string></string>
+		<key>ChineseName</key>
+		<string>豆花</string>
+		<key>Image</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>FID</key>
+		<integer>40</integer>
+		<key>Category_ENG</key>
+		<string>shaved ice</string>
+		<key>Category_CHN</key>
+		<string>冰</string>
 		<key>EnglishName</key>
 		<string>Shaved snow ice</string>
 		<key>Introduction</key>
@@ -648,8 +747,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>41</integer>
-		<key>Category</key>
-		<string>dessert</string>
+		<key>Category_ENG</key>
+		<string>shaved ice</string>
+		<key>Category_CHN</key>
+		<string>冰</string>
 		<key>EnglishName</key>
 		<string>Oatmeal ice</string>
 		<key>Introduction</key>
@@ -664,8 +765,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>42</integer>
-		<key>Category</key>
-		<string>dessert</string>
+		<key>Category_ENG</key>
+		<string>shaved ice</string>
+		<key>Category_CHN</key>
+		<string>冰</string>
 		<key>EnglishName</key>
 		<string>Sweet potato shaved ice</string>
 		<key>Introduction</key>
@@ -680,8 +783,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>43</integer>
-		<key>Category</key>
-		<string>dessert</string>
+		<key>Category_ENG</key>
+		<string>shaved ice</string>
+		<key>Category_CHN</key>
+		<string>冰</string>
 		<key>EnglishName</key>
 		<string>Shaved ice with red bean and milk</string>
 		<key>Introduction</key>
@@ -696,8 +801,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>44</integer>
-		<key>Category</key>
-		<string>dessert</string>
+		<key>Category_ENG</key>
+		<string>shaved ice</string>
+		<key>Category_CHN</key>
+		<string>冰</string>
 		<key>EnglishName</key>
 		<string>Shaved ice with multiple toppings</string>
 		<key>Introduction</key>
@@ -711,25 +818,11 @@
 	</dict>
 	<dict>
 		<key>FID</key>
-		<integer>45</integer>
-		<key>Category</key>
-		<string>dessert</string>
-		<key>EnglishName</key>
-		<string>Tofu pudding</string>
-		<key>Introduction</key>
-		<string></string>
-		<key>Ingredient</key>
-		<string></string>
-		<key>ChineseName</key>
-		<string>豆花</string>
-		<key>Image</key>
-		<string></string>
-	</dict>
-	<dict>
-		<key>FID</key>
 		<integer>46</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Green tea</string>
 		<key>Introduction</key>
@@ -744,8 +837,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>47</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Milk tea</string>
 		<key>Introduction</key>
@@ -760,8 +855,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>48</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Sugar cane juice</string>
 		<key>Introduction</key>
@@ -776,8 +873,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>49</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Plum juice</string>
 		<key>Introduction</key>
@@ -792,8 +891,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>50</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Soy milk</string>
 		<key>Introduction</key>
@@ -808,8 +909,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>51</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Rice milk (with peanuts)</string>
 		<key>Introduction</key>
@@ -824,8 +927,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>52</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Starfruit juice</string>
 		<key>Introduction</key>
@@ -840,8 +945,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>53</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>drinks</string>
+		<key>Category_CHN</key>
+		<string>飲料</string>
 		<key>EnglishName</key>
 		<string>Herbal tea</string>
 		<key>Introduction</key>
@@ -856,8 +963,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>54</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Oyster omelet</string>
 		<key>Introduction</key>
@@ -872,8 +981,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>55</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Coffin-shaped bread</string>
 		<key>Introduction</key>
@@ -888,8 +999,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>56</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Stinky tofu</string>
 		<key>Introduction</key>
@@ -904,8 +1017,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>57</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Oily bean curd</string>
 		<key>Introduction</key>
@@ -920,8 +1035,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>58</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Spicy tofu</string>
 		<key>Introduction</key>
@@ -936,8 +1053,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>59</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Tempura</string>
 		<key>Introduction</key>
@@ -952,8 +1071,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>60</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Prawn cracker</string>
 		<key>Introduction</key>
@@ -968,8 +1089,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>61</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Shrimp balls</string>
 		<key>Introduction</key>
@@ -984,8 +1107,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>62</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Spring rolls</string>
 		<key>Introduction</key>
@@ -1000,8 +1125,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>63</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Chicken rolls</string>
 		<key>Introduction</key>
@@ -1016,8 +1143,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>64</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Rice cake???</string>
 		<key>Introduction</key>
@@ -1032,8 +1161,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>65</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Sticky rice steamed in bamboo</string>
 		<key>Introduction</key>
@@ -1048,8 +1179,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>66</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Red bean cake</string>
 		<key>Introduction</key>
@@ -1064,8 +1197,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>67</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Green bean cake</string>
 		<key>Introduction</key>
@@ -1080,8 +1215,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>68</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Pigs blood cake</string>
 		<key>Introduction</key>
@@ -1096,8 +1233,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>69</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Glutinous rice cakes</string>
 		<key>Introduction</key>
@@ -1112,8 +1251,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>70</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Fried radish cake</string>
 		<key>Introduction</key>
@@ -1128,8 +1269,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>71</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Taro cake</string>
 		<key>Introduction</key>
@@ -1144,8 +1287,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>72</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Taiwanese meatballs</string>
 		<key>Introduction</key>
@@ -1160,8 +1305,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>73</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>snack</string>
+		<key>Category_CHN</key>
+		<string>點心</string>
 		<key>EnglishName</key>
 		<string>Dried bean curd</string>
 		<key>Introduction</key>
@@ -1176,8 +1323,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>74</integer>
-		<key>Category</key>
-		<string>snack</string>
+		<key>Category_ENG</key>
+		<string>dumpling</string>
+		<key>Category_CHN</key>
+		<string>餃</string>
 		<key>EnglishName</key>
 		<string>Potstickers / pan-fried dumplings</string>
 		<key>Introduction</key>
@@ -1192,8 +1341,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>75</integer>
-		<key>Category</key>
-		<string>snack</string>
+		<key>Category_ENG</key>
+		<string>dumpling</string>
+		<key>Category_CHN</key>
+		<string>餃</string>
 		<key>EnglishName</key>
 		<string>Boiled dumplings</string>
 		<key>Introduction</key>
@@ -1208,8 +1359,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>76</integer>
-		<key>Category</key>
-		<string>snack</string>
+		<key>Category_ENG</key>
+		<string>dumpling</string>
+		<key>Category_CHN</key>
+		<string>餃</string>
 		<key>EnglishName</key>
 		<string>Steamed dumplings</string>
 		<key>Introduction</key>
@@ -1224,8 +1377,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>77</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Chinese flatbread</string>
 		<key>Introduction</key>
@@ -1240,8 +1395,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>78</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Fried dough stick</string>
 		<key>Introduction</key>
@@ -1256,10 +1413,12 @@
 	<dict>
 		<key>FID</key>
 		<integer>79</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>餃</string>
 		<key>EnglishName</key>
-		<string>Fried chive dumplings</string>
+		<string>dumpling</string>
 		<key>Introduction</key>
 		<string></string>
 		<key>Ingredient</key>
@@ -1272,8 +1431,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>80</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Steamed buns</string>
 		<key>Introduction</key>
@@ -1288,8 +1449,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>81</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Steamed bun with stewed pork / Taiwanese hamburger</string>
 		<key>Introduction</key>
@@ -1304,8 +1467,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>82</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Egg and green onion pancakes</string>
 		<key>Introduction</key>
@@ -1320,8 +1485,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>83</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Century egg</string>
 		<key>Introduction</key>
@@ -1336,8 +1503,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>84</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Salted duck egg</string>
 		<key>Introduction</key>
@@ -1352,8 +1521,10 @@
 	<dict>
 		<key>FID</key>
 		<integer>85</integer>
-		<key>Category</key>
+		<key>Category_ENG</key>
 		<string>other</string>
+		<key>Category_CHN</key>
+		<string>其他</string>
 		<key>EnglishName</key>
 		<string>Duck stewed in Chinese herbs</string>
 		<key>Introduction</key>

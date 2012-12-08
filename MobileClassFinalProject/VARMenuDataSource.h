@@ -10,8 +10,8 @@
 
 extern NSString * const VARsDataSourceDictKeyChineseName;
 extern NSString * const VARsDataSourceDictKeyEnglishName;
-extern NSString * const VARsDataSourceDictKeyEnglishCategories;
 extern NSString * const VARsDataSourceDictKeyChineseCategories;
+extern NSString * const VARsDataSourceDictKeyEnglishCategories;
 extern NSString * const VARsDataSourceDictKeyFoodIngredient;
 extern NSString * const VARsDataSourceDictKeyFoodIntroduction;
 extern NSString * const VARsDataSourceDictKeyFoodImage;
@@ -33,8 +33,8 @@ extern NSString * const VARsDataSourceDictKeyFoodImage;
 - (void) cleanCache;
 - (void) refresh;
 - (id) init;
-- (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfChineseCategories;
+- (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
 
 @end

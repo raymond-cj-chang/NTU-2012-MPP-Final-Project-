@@ -10,10 +10,10 @@
 #import "VARMenuDataSource.h"
 #import "VARFoodCategoriesCell.h"
 #import "VARFoodListViewController.h"
+#import "VARAddFoodViewController.h"
+#import "VARSearchBarView.h"
 
-@interface VARFoodCategoriesViewController : UICollectionViewController
-{
-    //NSInteger categoryLevel;
-}
+@interface VARFoodCategoriesViewController : UICollectionViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+- (IBAction)addingFood:(id)sender;
 
 @end

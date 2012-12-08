@@ -10,6 +10,7 @@
 #import "VARMenuDataSource.h"
 #import "VARFoodListCell.h"
 #import "VARFoodDetailViewController.h"
+#import "VARAddFoodViewController.h"
 
 @interface VARFoodListViewController : UITableViewController
 
