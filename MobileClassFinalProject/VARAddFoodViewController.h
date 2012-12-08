@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VARMenuDataSource.h"
+#import "AFNetworking.h"
 
 @interface VARAddFoodViewController : UITableViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
@@ -28,4 +29,5 @@
 - (IBAction)takePhotoButton:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
+- (void) uploadFoodItemOnGAEDB;
 @end

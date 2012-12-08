@@ -141,6 +141,55 @@
     self.imageView.image = info[UIImagePickerControllerOriginalImage];
 }
 
+//add food item on GAE DB
+- (void) uploadFoodItemOnGAEDB
+{
+    //upload food item on server
+    
+    //server path
+    NSString* uploadServerPath = @"http://varfinalprojectserver.appspot.com/addFoodInDB";
+    
+    //server url
+    NSURL *url = [NSURL URLWithString:@"http://localhost"];
+    
+    //client
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    //upload data
+    NSString *foodFid = @"101";
+    NSString *foodEnglishName = self.foodName.text;
+    NSString *foodChineseName = @"測試";
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            foodFid, @"fid",
+                            foodEnglishName, @"EnglishName",
+                            foodChineseName,@"ChineseName",
+                            nil];
+    
+    //request to server
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:uploadServerPath parameters:params];
+    
+      
+    //Add your request object to an AFHTTPRequestOperation
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    //set class
+    [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+    
+    //operation
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *response = [operation responseString];
+        NSLog(@"response for POST: [%@]",response);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"error: %@", [operation error]);
+    }];
+    
+    //call start on your request operation
+    [operation start];
+
+}
 
 @end
 

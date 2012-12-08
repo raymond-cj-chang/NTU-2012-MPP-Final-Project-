@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //dowload new food data
+    self.downloadFoodDataFromGAEServer;
+    
     return YES;
 }
 							
@@ -43,4 +47,59 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)downloadFoodDataFromGAEServer
+{
+    //download new food item from server 
+    //server path
+    NSURL* serverURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com"];
+    
+    //Request
+    [[AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverURL]
+            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            //convert to NSDictionary
+            NSDictionary *downloadFoodDictionary = (NSDictionary*)JSON;
+                                                         
+            //JSON decoder
+            JSONDecoder* JSONDecoderForFoodDictionary = (JSONDecoder*)JSON;
+            JSONDecoder* foodItemDecoder;
+            //loop for all food item
+            for (NSString *foodItemName in downloadFoodDictionary)
+            {
+                  //JSON food item
+                  foodItemDecoder = [JSONDecoderForFoodDictionary valueForKey:foodItemName];
+                  //print
+                  NSLog(@"fid = %@",[foodItemDecoder valueForKey:@"Fid"]);
+                  NSLog(@"English name = %@",[foodItemDecoder valueForKey:@"EnglishName"]);
+                  NSLog(@"Chinese name = %@",[foodItemDecoder valueForKey:@"ChineseName"]);
+            }
+        //[self.activityIndicator stopAnimating];
+        } failure:nil] start];
+    
+    
+    //download food image from server
+    // Get an image from the URL below
+	UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8081/images/image1_1.jpg"]]];
+  
+    //doc path
+	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+	// If you go to the folder below, you will find those pictures
+	NSLog(@"Doc Path = %@",docDir);
+    
+    //save to png
+	//NSLog(@"saving png");
+	//NSString *pngFilePath = [NSString stringWithFormat:@"%@/test.png",docDir];
+	//NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(image)];
+	//[data1 writeToFile:pngFilePath atomically:YES];
+    
+    //save to jepg
+	NSLog(@"saving jpeg");
+	NSString *jpegFilePath = [NSString stringWithFormat:@"%@/test.jpeg",docDir];
+	NSData *imageJPEGData = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
+	[imageJPEGData writeToFile:jpegFilePath atomically:YES];
+    
+    //done
+	NSLog(@"saving image done");
+
+}
 @end
