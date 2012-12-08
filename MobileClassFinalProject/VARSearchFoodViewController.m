@@ -92,5 +92,15 @@
     return YES;
 }
 
+#pragma mark - Cancel Button Clicked
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    //NSLog(@"click cancel");
+    [self.searchDisplayController setActive:NO animated:NO];
+    self.searchResults = self.allFood;
+    //NSLog(@"result%@",self.searchResults);
+    //[self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end

@@ -149,9 +149,9 @@
 - (IBAction)sendButton:(id)sender {
     self.progressView.hidden = NO;
     [self uploadFoodItemOnGAEDB];
-    //sleep(3);
-    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
+# pragma - Server Connection
 
 - (void) uploadFoodItemOnGAEDB
 {
