@@ -21,7 +21,9 @@
 {
     [super viewDidLoad];
 
-    self.foodName.delegate = self;
+    self.EnglishName.delegate = self;
+    self.ChineseName.delegate = self;
+    self.introduction.delegate = self;
     self.ingredientInput.delegate = self;
     self.comment.delegate = self;
     
@@ -161,7 +163,7 @@
     
     //upload data
     NSString *foodFid = @"101";
-    NSString *foodEnglishName = self.foodName.text;
+    NSString *foodEnglishName = self.EnglishName.text;
     NSString *foodChineseName = @"測試";
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             foodFid, @"fid",

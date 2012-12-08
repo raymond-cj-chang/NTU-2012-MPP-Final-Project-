@@ -12,10 +12,9 @@
 
 @interface VARAddFoodViewController : UITableViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UITextField *foodName;
-//@property (strong, nonatomic) IBOutlet UITextField *ingredient;
-//@property (strong, nonatomic) IBOutlet UITextField *comment;
-//@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UITextField *introduction;
+@property (strong, nonatomic) IBOutlet UITextField *ChineseName;
+@property (strong, nonatomic) IBOutlet UITextField *EnglishName;
 
 - (IBAction)cancelButton:(id)sender;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
