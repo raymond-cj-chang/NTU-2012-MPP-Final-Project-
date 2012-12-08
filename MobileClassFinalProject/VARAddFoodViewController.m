@@ -30,7 +30,9 @@
     //Initialize
     self.ingredientLabel.text = @"";
     self.ingredient = [[NSMutableString alloc] init];
-
+    self.progressView.progress = 0;
+    self.progressView.hidden = YES;
+    
     self.pickerView.showsSelectionIndicator = TRUE;
     NSArray *tempArr = [[NSArray alloc] initWithArray:[[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories]];
 
@@ -145,7 +147,10 @@
 
 //add food item on GAE DB
 - (IBAction)sendButton:(id)sender {
+    self.progressView.hidden = NO;
     [self uploadFoodItemOnGAEDB];
+    //sleep(3);
+    //[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) uploadFoodItemOnGAEDB
@@ -194,7 +199,23 @@
     
     //call start on your request operation
     [operation start];
+    
+    //progress view setting
+    self.progressView.hidden = NO;
+    float theInterval = 1.0/5.0;
+    [NSTimer scheduledTimerWithTimeInterval:theInterval target:self selector:@selector(running) userInfo:nil repeats:YES];
 
+}
+
+- (void)running{
+    if(self.progressView.progress != 1.0){
+        float tempProgress = self.progressView.progress + 0.1;
+        self.progressView.progress = tempProgress;
+    }
+    else{
+        self.progressView.progress = 1.0;
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end

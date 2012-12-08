@@ -28,6 +28,7 @@
 - (IBAction)takePhotoButton:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 - (IBAction)sendButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 
 - (void) uploadFoodItemOnGAEDB;
 @end
