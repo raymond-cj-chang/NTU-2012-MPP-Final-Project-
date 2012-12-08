@@ -205,7 +205,7 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
             [tempDict setObject:[queryResults stringForColumn:@"introduction"] forKey:VARsDataSourceDictKeyFoodIntroduction];
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
             
-            NSLog(@"%@", [queryResults stringForColumn:@"name"]);
+            //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
             
             //add array of images
             NSInteger food_id = [queryResults intForColumn:@"id"];
@@ -213,7 +213,7 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
             NSMutableArray * tempArray = [[NSMutableArray alloc] init];
             while([imageResults next])
             {
-                NSLog(@"%@", [imageResults stringForColumn:@"image_name"]);
+                //NSLog(@"%@", [imageResults stringForColumn:@"image_name"]);
                 [tempArray addObject:[imageResults stringForColumn:@"image_name"]];
             }
             
