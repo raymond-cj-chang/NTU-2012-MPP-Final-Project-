@@ -142,6 +142,10 @@
 }
 
 //add food item on GAE DB
+- (IBAction)sendButton:(id)sender {
+    [self uploadFoodItemOnGAEDB];
+}
+
 - (void) uploadFoodItemOnGAEDB
 {
     //upload food item on server

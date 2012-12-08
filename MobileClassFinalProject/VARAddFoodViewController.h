@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSMutableString *ingredient;
 - (IBAction)takePhotoButton:(id)sender;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)sendButton:(id)sender;
 
 - (void) uploadFoodItemOnGAEDB;
 @end

@@ -249,6 +249,7 @@
 				1855367F1673484200E7C6DE /* JSONKit.m */,
 			);
 			name = JSONKit;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		187B821F166C2A1000BCE6B2 /* Food Category */ = {
@@ -359,9 +360,6 @@
 		84EB5657163A9DFE00F5080E = {
 			isa = PBXGroup;
 			children = (
-				1855367D1673483500E7C6DE /* JSONKit */,
-				185536641673447400E7C6DE /* SystemConfiguration.framework */,
-				185536621673446D00E7C6DE /* MobileCoreServices.framework */,
 				84EB566C163A9DFF00F5080E /* MobileClassFinalProject */,
 				84EB5665163A9DFE00F5080E /* Frameworks */,
 				84EB5663163A9DFE00F5080E /* Products */,
@@ -379,6 +377,8 @@
 		84EB5665163A9DFE00F5080E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				185536641673447400E7C6DE /* SystemConfiguration.framework */,
+				185536621673446D00E7C6DE /* MobileCoreServices.framework */,
 				1855363C1673353E00E7C6DE /* libsqlite3.dylib */,
 				84EB5666163A9DFE00F5080E /* UIKit.framework */,
 				84EB5668163A9DFE00F5080E /* Foundation.framework */,
@@ -390,6 +390,7 @@
 		84EB566C163A9DFF00F5080E /* MobileClassFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				1855367D1673483500E7C6DE /* JSONKit */,
 				1855364D167343EC00E7C6DE /* AFNetworking */,
 				1855362D1673342800E7C6DE /* Database */,
 				185535FA1670636800E7C6DE /* Search Food */,

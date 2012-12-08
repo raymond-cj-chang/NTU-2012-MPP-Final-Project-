@@ -867,7 +867,11 @@
                                 <action selector="cancelButton:" destination="lkN-cP-0em" id="eGi-kh-CBE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="prx-dg-zhj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="prx-dg-zhj">
+                            <connections>
+                                <action selector="sendButton:" destination="lkN-cP-0em" id="jRO-FD-Z8C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
