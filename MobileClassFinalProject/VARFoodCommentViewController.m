@@ -33,12 +33,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    //download food comments from Server
-    NSString* fidStr = @"2";
-    //comment Array
-    commentArray = [VARMenuDataSource downloadCommentFromGAEServer:fidStr];
-    
-    NSLog(@"Array : %@",commentArray);
 }
 
 - (void)didReceiveMemoryWarning

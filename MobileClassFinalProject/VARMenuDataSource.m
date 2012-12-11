@@ -264,9 +264,17 @@ NSString * const VARsDataSourceDictKeyFoodID = @"FID";
                                                              NSLog(@"fid = %@",[foodItemDecoder valueForKey:@"Fid"]);
                                                              NSLog(@"English name = %@",[foodItemDecoder valueForKey:@"EnglishName"]);
                                                              NSLog(@"Chinese name = %@",[foodItemDecoder valueForKey:@"ChineseName"]);
+                                                             
                                                          }
                                                          //[self.activityIndicator stopAnimating];
                                                      } failure:nil] start];
+    
+    
+    //**** download image and comment for every food item
+    //download food comments from Server
+    //NSString* fidStr = @"2";
+    //comment Array
+    //commentArray = [VARMenuDataSource downloadCommentFromGAEServer:fidStr];
     
     
     //download food image from server
