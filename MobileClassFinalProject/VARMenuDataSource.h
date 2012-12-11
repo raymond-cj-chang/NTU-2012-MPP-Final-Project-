@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+#import "JSONKit.h"
 
 extern NSString * const VARsDataSourceDictKeyChineseName;
 extern NSString * const VARsDataSourceDictKeyEnglishName;
@@ -36,5 +38,10 @@ extern NSString * const VARsDataSourceDictKeyFoodImage;
 - (NSArray *) arrayOfChineseCategories;
 - (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
+
+//server
++ (void)downloadFoodDataFromGAEServer;
+- (void)uploadCommentToGAEServer;
+- (void)uploadFoodImageToGAEServer;
 
 @end

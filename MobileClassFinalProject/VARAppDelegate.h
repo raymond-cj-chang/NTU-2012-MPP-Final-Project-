@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFNetworking.h"
-#import "JSONKit.h"
+#import "VARMenuDataSource.h"
 
 @interface VARAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-- (void)downloadFoodDataFromGAEServer;
 
 @end

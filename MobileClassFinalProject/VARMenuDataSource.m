@@ -41,10 +41,14 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
 + (VARMenuDataSource *) sharedMenuDataSource{
     //once flag
     static dispatch_once_t onceFlag;
+    
     //share data
     static VARMenuDataSource *sharedMenuDataSource;
+    
     //only alloc once
-    dispatch_once(&onceFlag,^{sharedMenuDataSource = [[self alloc] init];});
+    dispatch_once(&onceFlag,^{
+        sharedMenuDataSource = [[self alloc] init];
+    });
     
     return sharedMenuDataSource;
 }
@@ -226,6 +230,176 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
     }
     //return
     return [[NSArray alloc] initWithArray:foods];
+}
+
+
+#pragma mark -
+#pragma mark Connect Server Interface
+//Connect to Server
+
+//download new food data
++ (void)downloadFoodDataFromGAEServer
+{
+    //download new food item from server
+    //server path
+    NSURL* serverURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com"];
+    
+    //Request
+    [[AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverURL]
+                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                         //convert to NSDictionary
+                                                         NSDictionary *downloadFoodDictionary = (NSDictionary*)JSON;
+                                                         
+                                                         //JSON decoder
+                                                         JSONDecoder* JSONDecoderForFoodDictionary = (JSONDecoder*)JSON;
+                                                         JSONDecoder* foodItemDecoder;
+                                                         //loop for all food item
+                                                         for (NSString *foodItemName in downloadFoodDictionary)
+                                                         {
+                                                             //JSON food item
+                                                             foodItemDecoder = [JSONDecoderForFoodDictionary valueForKey:foodItemName];
+                                                             //print
+                                                             NSLog(@"fid = %@",[foodItemDecoder valueForKey:@"Fid"]);
+                                                             NSLog(@"English name = %@",[foodItemDecoder valueForKey:@"EnglishName"]);
+                                                             NSLog(@"Chinese name = %@",[foodItemDecoder valueForKey:@"ChineseName"]);
+                                                         }
+                                                         //[self.activityIndicator stopAnimating];
+                                                     } failure:nil] start];
+    
+    
+    //download food image from server
+    // Get an image from the URL below
+	UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8081/images/image1_1.jpg"]]];
+    
+    //doc path
+	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+	// If you go to the folder below, you will find those pictures
+	NSLog(@"Doc Path = %@",docDir);
+    
+    //save to png
+	//NSLog(@"saving png");
+	//NSString *pngFilePath = [NSString stringWithFormat:@"%@/test.png",docDir];
+	//NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(image)];
+	//[data1 writeToFile:pngFilePath atomically:YES];
+    
+    //save to jepg
+	NSLog(@"saving jpeg");
+	NSString *jpegFilePath = [NSString stringWithFormat:@"%@/test.jpeg",docDir];
+	NSData *imageJPEGData = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
+	[imageJPEGData writeToFile:jpegFilePath atomically:YES];
+    
+    //done
+	NSLog(@"saving image done");
+    
+}
+
+
+
+//add comment to server
+- (void)uploadFoodImageToGAEServer
+{
+    //upload image
+    //doc path
+	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSInteger uploadImageFid = 101;
+    NSString *imageName = @"uploadTest.jpeg";
+    NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://localhost:8081/uploadImage"];
+    NSString *uploadJPEGFilePath = [NSString stringWithFormat:@"%@/%@",docDir,imageName];
+    //NSURL *uploadImageURL = [NSURL URLWithString:uploadJPEGFilePath];
+    UIImage *uploadImage = [UIImage imageWithContentsOfFile:uploadJPEGFilePath];
+    
+    // create request
+    NSMutableURLRequest *uploadImageRequest = [[NSMutableURLRequest alloc] init];
+    [uploadImageRequest setURL:serverUploadImageURL];
+    [uploadImageRequest setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [uploadImageRequest setHTTPShouldHandleCookies:NO];
+    [uploadImageRequest setTimeoutInterval:60];
+    [uploadImageRequest setHTTPMethod:@"POST"];
+    
+    // set Content-Type in HTTP header
+    NSString *boundary = @"----BoundaryForFileField";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [uploadImageRequest setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    NSData *imageData = UIImageJPEGRepresentation(uploadImage, 1.0);
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+    //add image content into body
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%@\"\r\n",imageName] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n"]dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //add fid into body
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"fid\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%d",uploadImageFid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n"]dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //add image name into body
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Disposition: form-data; name=\"imagename\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[imageName dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n"]dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    //end boundary
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    //set body
+    [uploadImageRequest setHTTPBody:body];
+    
+    //connect to server
+    //Add your request object to an AFHTTPRequestOperation
+    AFHTTPRequestOperation *uploadImageOperation = [[AFHTTPRequestOperation alloc] initWithRequest:uploadImageRequest];
+    
+    [uploadImageOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+        NSLog(@"response for upload image POST: [%@]",response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [operation error]);
+    }];
+    
+    //call start on your request operation
+    [uploadImageOperation start];
+    
+}
+
+//upload image
+- (void)uploadCommentToGAEServer
+{
+    //add comment
+    //clent url
+    NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
+    //NSURL *serverURL = [NSURL URLWithString:@"http://localhost:8081/"];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:clientURL];
+    
+    //comment parms
+    NSDictionary *commentParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   @"106", @"fid",
+                                   @"Comment,Nice food!3", @"comment",
+                                   nil];
+    //comment request
+    NSMutableURLRequest *commentRequest = [httpClient requestWithMethod:@"POST" path:@"http://localhost:8081/addComment" parameters:commentParams];
+    
+    //connect to server
+    //Add your request object to an AFHTTPRequestOperation
+    AFHTTPRequestOperation *addCommentOperation = [[AFHTTPRequestOperation alloc] initWithRequest:commentRequest];
+    
+    //success and failure
+    [addCommentOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+        NSLog(@"response for add comment POST: [%@]",response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [operation error]);
+    }];
+    
+    //call start on your request operation
+    [addCommentOperation start];
+    
 }
 
 @end

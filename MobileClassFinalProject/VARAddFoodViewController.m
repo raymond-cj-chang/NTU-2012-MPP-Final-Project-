@@ -161,10 +161,10 @@
     NSString* uploadServerPath = @"http://varfinalprojectserver.appspot.com/addFoodInDB";
     
     //server url
-    NSURL *url = [NSURL URLWithString:@"http://localhost"];
+    NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
     
     //client
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:clientURL];
     
     //upload data
     NSString *foodFid = @"101";
