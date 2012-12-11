@@ -17,6 +17,8 @@ extern NSString * const VARsDataSourceDictKeyEnglishCategories;
 extern NSString * const VARsDataSourceDictKeyFoodIngredient;
 extern NSString * const VARsDataSourceDictKeyFoodIntroduction;
 extern NSString * const VARsDataSourceDictKeyFoodImage;
+extern NSString * const VARsDataSourceDictKeyFoodID;
+
 @interface VARMenuDataSource : NSObject
 {
     // Cache data pool
@@ -39,9 +41,10 @@ extern NSString * const VARsDataSourceDictKeyFoodImage;
 - (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
 
-//server
+//for server
 + (void)downloadFoodDataFromGAEServer;
-- (void)uploadCommentToGAEServer;
-- (void)uploadFoodImageToGAEServer;
++ (void)uploadFoodImageToGAEServer;
++ (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment;
++ (NSMutableArray*)downloadCommentFromGAEServer:(NSString*)foodID;
 
 @end

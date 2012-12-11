@@ -259,6 +259,12 @@
                 self.comment = textField.text;
                 //NSLog(@"comment:%@",self.comment);
                 //NSLog(@"text:[%@]", textField.text);
+                
+                //add comment to server
+                NSString* fid = _food[VARsDataSourceDictKeyFoodID];
+                [VARMenuDataSource uploadCommentToGAEServer:fid withComment:self.comment ];
+
+                
                 break;
             }
         }    }

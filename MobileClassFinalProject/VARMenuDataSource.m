@@ -33,6 +33,7 @@ NSString * const VARsDataSourceDictKeyChineseName = @"ChineseName";
 NSString * const VARsDataSourceDictKeyFoodIntroduction = @"Introduction";
 NSString * const VARsDataSourceDictKeyFoodIngredient = @"Ingredient";
 NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
+NSString * const VARsDataSourceDictKeyFoodID = @"FID";
 
 #pragma mark -
 #pragma mark Object Lifecycle
@@ -208,6 +209,7 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
             [tempDict setObject:[queryResults stringForColumn:@"chinese_category"] forKey:VARsDataSourceDictKeyChineseCategories];
             [tempDict setObject:[queryResults stringForColumn:@"introduction"] forKey:VARsDataSourceDictKeyFoodIntroduction];
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
+            [tempDict setObject:[queryResults stringForColumn:@"id"] forKey:VARsDataSourceDictKeyFoodID];
             
             //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
             
@@ -296,18 +298,19 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
 
 
 
-//add comment to server
-- (void)uploadFoodImageToGAEServer
+//upload image to server
++ (void)uploadFoodImageToGAEServer
 {
     //upload image
     //doc path
 	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    //server URL
+    NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com/uploadImage"];
     
+    //prepare data
     NSInteger uploadImageFid = 101;
     NSString *imageName = @"uploadTest.jpeg";
-    NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://localhost:8081/uploadImage"];
     NSString *uploadJPEGFilePath = [NSString stringWithFormat:@"%@/%@",docDir,imageName];
-    //NSURL *uploadImageURL = [NSURL URLWithString:uploadJPEGFilePath];
     UIImage *uploadImage = [UIImage imageWithContentsOfFile:uploadJPEGFilePath];
     
     // create request
@@ -368,22 +371,31 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
     
 }
 
-//upload image
-- (void)uploadCommentToGAEServer
+//add comment to server
++ (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment
 {
     //add comment
+    
+    //check
+    if(foodComment==nil) foodComment = @"comment.";
+    
+    //food id str
+    NSString* foodIDStr = foodID;
+    
     //clent url
     NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
-    //NSURL *serverURL = [NSURL URLWithString:@"http://localhost:8081/"];
+    NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
+    
+    //client
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:clientURL];
     
     //comment parms
     NSDictionary *commentParams = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   @"106", @"fid",
-                                   @"Comment,Nice food!3", @"comment",
+                                   foodIDStr, @"fid",
+                                   foodComment, @"comment",
                                    nil];
     //comment request
-    NSMutableURLRequest *commentRequest = [httpClient requestWithMethod:@"POST" path:@"http://localhost:8081/addComment" parameters:commentParams];
+    NSMutableURLRequest *commentRequest = [httpClient requestWithMethod:@"POST" path:serverAddCommentPath parameters:commentParams];
     
     //connect to server
     //Add your request object to an AFHTTPRequestOperation
@@ -401,5 +413,65 @@ NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
     [addCommentOperation start];
     
 }
+
+//download comment
++ (NSMutableArray*)downloadCommentFromGAEServer:(NSString*)foodID
+{
+    //save comments
+    NSMutableArray* commentsArray = [[NSMutableArray alloc] init];
+    
+    //see comments
+    NSLog(@"Download Comment....");
+    
+    //server path
+    NSString *serverDownloadCommentPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeComment?fid=%@",foodID];
+    
+    NSURL* serverDownloadCommentURL = [NSURL URLWithString:serverDownloadCommentPath];
+    //[serverDownloadCommentURL URLByAppendingPathComponent:@"?fid=2"]
+    //[serverDownloadCommentURL parameterString:[NSString stringWithFormat:@"fid=2"]];
+    //NSLog(@"test : %@",serverDownloadCommentURL);
+    
+    //************** Need Syn ,wait success then return
+    
+    
+    //Request for food comment
+    AFJSONRequestOperation *operations = [AFJSONRequestOperation
+                JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverDownloadCommentURL]
+                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                    
+                                //convert to NSDictionary
+                                NSDictionary *downloadFoodCommentDictionary = (NSDictionary*)JSON;
+                                //JSON decoder
+                                JSONDecoder* JSONDecoderForFoodCommentDictionary = (JSONDecoder*)JSON;
+                                JSONDecoder* foodCommentDecoder;
+                    
+                                //loop for all food item
+                                for (NSString *foodCommentName in downloadFoodCommentDictionary)
+                                {
+                                    //JSON food item
+                                    foodCommentDecoder = [JSONDecoderForFoodCommentDictionary valueForKey:foodCommentName];
+                                    
+                                    //print
+                                    NSLog(@"Comment = %@",[foodCommentDecoder valueForKey:@"Comment"]);
+                                    
+                                    //add comment in array
+                                    [commentsArray addObject:[foodCommentDecoder valueForKey:@"Comment"]];
+                                }
+                            
+                                //[self.activityIndicator stopAnimating];
+                }
+                failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError* error, id JSON) {
+                    NSLog(@"Error : %@",error);
+                }];
+    
+    //start and wait
+    [operations start];
+    [operations waitUntilFinished];
+    
+    //return
+    return commentsArray;
+    
+}
+
 
 @end
