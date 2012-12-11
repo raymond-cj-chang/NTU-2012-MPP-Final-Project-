@@ -267,8 +267,21 @@
                 
                 break;
             }
-        }    }
-    //NSLog(@"title%@",buttonTitle);
+        }
+    }
+    
+    if ([buttonTitle isEqualToString:@"OK"])
+        [self updateNewVote];
 }
+
+
+#pragma - new Vote
+
+- (void) updateNewVote{
+
+    //TODO
+    NSLog(@"updated successfully");
+}
+
 
 @end

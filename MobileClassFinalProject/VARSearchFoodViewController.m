@@ -93,6 +93,7 @@
 }
 
 #pragma mark - Cancel Button Clicked
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     //NSLog(@"click cancel");
