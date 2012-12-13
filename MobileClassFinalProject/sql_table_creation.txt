@@ -1,4 +1,3 @@
-CREATE TABLE food_items (id integer NOT NULL PRIMARY KEY AUTOINCREMENT, name text NOT NULL UNIQUE, chinese_name text NOT NULL, english_category text NOT NULL, chinese_category text NOT NULL, introduction text NOT NULL, ingredients text NOT NULL);
+CREATE TABLE food_items (id integer NOT NULL PRIMARY KEY AUTOINCREMENT, name text NOT NULL UNIQUE, chinese_name text NOT NULL, english_category text NOT NULL, chinese_category text NOT NULL, introduction text NOT NULL, ingredients text NOT NULL, rating integer NOT NULL DEFAULT 0);
 CREATE TABLE images (image_name text NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id));
-CREATE TABLE comments (comment text NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id));
-CREATE TABLE ratings (rating integer NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id));
+CREATE TABLE comments (comment text NOT NULL, timestamp text NOT NULL, food_id integer NOT NULL, FOREIGN KEY(food_id) REFERENCES food_items(id));
