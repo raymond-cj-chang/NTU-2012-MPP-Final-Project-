@@ -40,6 +40,9 @@ extern NSString * const VARsDataSourceDictKeyFoodID;
 - (NSArray *) arrayOfChineseCategories;
 - (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
+- (NSArray *) arrayOfFoodsByRating;
+- (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents;
+- (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName;
 
 //for server
 + (void)downloadFoodDataFromGAEServer;

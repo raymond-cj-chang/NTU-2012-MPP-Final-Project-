@@ -22,9 +22,10 @@
 @implementation VARMenuDataSource
 
 //Cache Key
-static NSString *VARDataSourceCacheKeyChineseCategories = @"VARDataSourceCacheKey.Cache.Categories.Chinese";
-static NSString *VARDataSourceCacheKeyEnglishCategories = @"VARDataSourceCacheKey.Cache.Categories.English";
-static NSString *VARDataSourceCacheKeyFoodInCategory = @"VARDataSourceCacheKey.%@.Categories.Food";
+static NSString * VARDataSourceCacheKeyChineseCategories = @"VARDataSourceCacheKey.Cache.Categories.Chinese";
+static NSString * VARDataSourceCacheKeyEnglishCategories = @"VARDataSourceCacheKey.Cache.Categories.English";
+static NSString * VARDataSourceCacheKeyFoodInCategory = @"VARDataSourceCacheKey.%@.Categories.Food";
+static NSString * VARDataSourceCacheKeyFoodByRating = @"VARDataSrouceCacheKey.%@.Food.Rating";
 
 NSString * const VARsDataSourceDictKeyChineseCategories = @"Category_CHN";
 NSString * const VARsDataSourceDictKeyEnglishCategories = @"Category_ENG";
@@ -32,8 +33,12 @@ NSString * const VARsDataSourceDictKeyEnglishName = @"EnglishName";
 NSString * const VARsDataSourceDictKeyChineseName = @"ChineseName";
 NSString * const VARsDataSourceDictKeyFoodIntroduction = @"Introduction";
 NSString * const VARsDataSourceDictKeyFoodIngredient = @"Ingredient";
+NSString * const VARsDataSourceDictKeyRating = @"Rating";
 NSString * const VARsDataSourceDictKeyFoodImage = @"Image";
 NSString * const VARsDataSourceDictKeyFoodID = @"FID";
+NSString * const VARsDataSourceDictKeyComment = @"Comment";
+NSString * const VARsDataSourceDictKeyCommentContent = @"Comment_content";
+NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 
 #pragma mark -
 #pragma mark Object Lifecycle
@@ -189,17 +194,16 @@ NSString * const VARsDataSourceDictKeyFoodID = @"FID";
 }
 
 //get food from category
-- (NSArray *) arrayOfFoodsInCategories:(NSString*) category{
-//TODO: Finish!!!
+- (NSArray *) arrayOfFoodsByRating
+{
     //get from cache
-    NSString *cacheKey = [NSString stringWithFormat:VARDataSourceCacheKeyFoodInCategory, category];
-    NSMutableArray* foods = [cache objectForKey:cacheKey];
-
+    NSMutableArray* foods = [cache objectForKey:VARDataSourceCacheKeyFoodByRating];
+    
     if(!foods)
     {
-        //init
+        //initalize
         foods =  [[NSMutableArray alloc] init];
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients FROM food_items WHERE english_category = ?", category];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients , rating FROM food_items ORDER BY rating"];
         while([queryResults next])
         {
             NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
@@ -210,21 +214,90 @@ NSString * const VARsDataSourceDictKeyFoodID = @"FID";
             [tempDict setObject:[queryResults stringForColumn:@"introduction"] forKey:VARsDataSourceDictKeyFoodIntroduction];
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
             [tempDict setObject:[queryResults stringForColumn:@"id"] forKey:VARsDataSourceDictKeyFoodID];
+            [tempDict setObject:[queryResults stringForColumn:@"rating"] forKey:VARsDataSourceDictKeyRating];
             
             //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
             
             //add array of images
             NSInteger food_id = [queryResults intForColumn:@"id"];
             FMResultSet * imageResults = [self.database executeQuery:@"SELECT * FROM images WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
-            NSMutableArray * tempArray = [[NSMutableArray alloc] init];
+            NSMutableArray * tempImageArray = [[NSMutableArray alloc] init];
             while([imageResults next])
             {
-                //NSLog(@"%@", [imageResults stringForColumn:@"image_name"]);
-                [tempArray addObject:[imageResults stringForColumn:@"image_name"]];
+                [tempImageArray addObject:[imageResults stringForColumn:@"image_name"]];
             }
             
             //add the image array to the temp dict
-            [tempDict setObject:tempArray forKey:VARsDataSourceDictKeyFoodImage];
+            [tempDict setObject:tempImageArray forKey:VARsDataSourceDictKeyFoodImage];
+            
+            //add dictionary of comments
+            FMResultSet * commentResults = [self.database executeQuery:@"SELECT * FROM comments WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
+            NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
+            while([commentResults next])
+            {
+                [tempCommentDict setObject:[imageResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
+                [tempCommentDict setObject:[imageResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+            }
+            
+            //add the comment dictionary to the temp dict
+            [tempDict setObject:tempCommentDict forKey:VARsDataSourceDictKeyComment];
+            [foods addObject:tempDict];
+        }
+        //add in cache
+        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByRating];
+    }
+    //return
+    return [[NSArray alloc] initWithArray:foods];
+}
+
+//get food from category
+- (NSArray *) arrayOfFoodsInCategories:(NSString*) category{
+    //get from cache
+    NSString *cacheKey = [NSString stringWithFormat:VARDataSourceCacheKeyFoodInCategory, category];
+    NSMutableArray* foods = [cache objectForKey:cacheKey];
+
+    if(!foods)
+    {
+        //init
+        foods =  [[NSMutableArray alloc] init];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients, rating FROM food_items WHERE english_category = ?", category];
+        while([queryResults next])
+        {
+            NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
+            [tempDict setObject:[queryResults stringForColumn:@"name"] forKey:VARsDataSourceDictKeyEnglishName];
+            [tempDict setObject:[queryResults stringForColumn:@"chinese_name"] forKey:VARsDataSourceDictKeyChineseName];
+            [tempDict setObject:[queryResults stringForColumn:@"english_category"] forKey:VARsDataSourceDictKeyEnglishCategories];
+            [tempDict setObject:[queryResults stringForColumn:@"chinese_category"] forKey:VARsDataSourceDictKeyChineseCategories];
+            [tempDict setObject:[queryResults stringForColumn:@"introduction"] forKey:VARsDataSourceDictKeyFoodIntroduction];
+            [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
+            [tempDict setObject:[queryResults stringForColumn:@"id"] forKey:VARsDataSourceDictKeyFoodID];
+            [tempDict setObject:[queryResults stringForColumn:@"rating"] forKey:VARsDataSourceDictKeyRating];
+            
+            //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
+            
+            //add array of images
+            NSInteger food_id = [queryResults intForColumn:@"id"];
+            FMResultSet * imageResults = [self.database executeQuery:@"SELECT * FROM images WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
+            NSMutableArray * tempImageArray = [[NSMutableArray alloc] init];
+            while([imageResults next])
+            {
+                [tempImageArray addObject:[imageResults stringForColumn:@"image_name"]];
+            }
+            
+            //add the image array to the temp dict
+            [tempDict setObject:tempImageArray forKey:VARsDataSourceDictKeyFoodImage];
+            
+            //add dictionary of comments
+            FMResultSet * commentResults = [self.database executeQuery:@"SELECT * FROM comments WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
+            NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
+            while([commentResults next])
+            {
+                [tempCommentDict setObject:[imageResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
+                [tempCommentDict setObject:[imageResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+            }
+            
+            //add the comment dictionary to the temp dict
+            [tempDict setObject:tempCommentDict forKey:VARsDataSourceDictKeyComment];
             [foods addObject:tempDict];
         }
         //add in cache
@@ -232,6 +305,54 @@ NSString * const VARsDataSourceDictKeyFoodID = @"FID";
     }
     //return
     return [[NSArray alloc] initWithArray:foods];
+}
+
+/**
+ Adds a comment to the specified food item.
+ */
+
+- (void) addCommentToFoodItem:(NSInteger)foodID withContents:(NSString *)contents
+{
+    NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+    [DateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString * currentDate = [DateFormatter stringFromDate:[NSDate date]];
+    [self.database executeUpdate:@"INSERT INTO comments (comment, timestamp, food_id) values (?,?,?)",
+     contents, currentDate, [NSString stringWithFormat:@"%i", foodID]];
+}
+
+/**
+ Adds an image to the specified food item.
+ */
+
+- (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName
+{
+    [self.database executeUpdate:@"INSERT INTO images (image_name, food_id) values (?,?)",
+     imageName,[NSString stringWithFormat:@"%i", foodID]];
+}
+
+//Adds a food item to the database table. The item must be added in dictionary form.
+//(ask Raymond if need further explanation)
+//This dictionary should only contain the basic information and images; nothing else will be added.
+- (void) addFoodItemToDB:(NSDictionary *) foodItem
+{
+    //grab attributes from NSDictionary
+    NSString * name = foodItem[VARsDataSourceDictKeyEnglishName];
+    NSString * chineseName = foodItem[VARsDataSourceDictKeyChineseName];
+    NSString * englishCategory = foodItem[VARsDataSourceDictKeyEnglishCategories];
+    NSString * chineseCategory = foodItem[VARsDataSourceDictKeyChineseCategories];
+    NSString * introduction = foodItem[VARsDataSourceDictKeyFoodIntroduction];
+    NSString * ingredients = foodItem[VARsDataSourceDictKeyFoodIngredient];
+    NSString * food_id = foodItem[VARsDataSourceDictKeyFoodID];
+    
+    [self.database executeUpdate:@"INSERT INTO food_items (id, name, chineseName, english_category, chinese_category, introduction, ingredients VALUES (?,?,?,?,?,?,?)", food_id, name, chineseName, englishCategory, chineseCategory, introduction, ingredients];
+    NSArray * images = foodItem[VARsDataSourceDictKeyFoodImage];
+    
+    for(NSString * imageName in images)
+    {
+        [self.database executeUpdate:@"INSERT INTO images (image_name, food_id) values (?,?)",
+         imageName, food_id];
+    }
+    
 }
 
 
