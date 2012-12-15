@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "VARRankingCell.h"
+#import "VARMenuDataSource.h"
+#import "VARFoodDetailViewController.h"
 
 @interface VARRankingViewController : UITableViewController
-@property (strong, nonatomic) NSArray *foodArray;
+@property (strong, nonatomic) NSArray *arrayOfFoodDictionary;
 
 @end

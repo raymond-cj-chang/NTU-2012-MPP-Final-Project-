@@ -50,19 +50,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"arrNum:%u",[self.commentArray count]);
-    return [self.commentArray count];
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     VARCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
     // Configure the cell...
     //cell.textLabel = [commentArray ];
-    //cell.comment = [self.commentArray objectAtIndex:indexPath.row];
-    cell.comment.text = @"comment";
     return cell;
 }
 

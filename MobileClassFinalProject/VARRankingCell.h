@@ -11,8 +11,8 @@
 @interface VARRankingCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *EnglishName;
 @property (strong, nonatomic) IBOutlet UILabel *ChineseName;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIImageView *crownImage;
 @property (strong, nonatomic) IBOutlet UILabel *rankingNumber;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
