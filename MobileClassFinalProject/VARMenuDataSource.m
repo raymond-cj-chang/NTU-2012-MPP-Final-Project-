@@ -193,7 +193,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     return categories;
 }
 
-//get food from category
+//gets all foods sorted by rating.
 - (NSArray *) arrayOfFoodsByRating
 {
     //get from cache
@@ -230,17 +230,19 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
             //add the image array to the temp dict
             [tempDict setObject:tempImageArray forKey:VARsDataSourceDictKeyFoodImage];
             
-            //add dictionary of comments
+			//add dictionary of comments
             FMResultSet * commentResults = [self.database executeQuery:@"SELECT * FROM comments WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
-            NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
+            NSMutableArray * tempCommentArray = [[NSMutableArray alloc]init];
             while([commentResults next])
             {
+				NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
                 [tempCommentDict setObject:[imageResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
                 [tempCommentDict setObject:[imageResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+				[tempCommentArray addObject: tempCommentDict];
             }
             
             //add the comment dictionary to the temp dict
-            [tempDict setObject:tempCommentDict forKey:VARsDataSourceDictKeyComment];
+            [tempDict setObject:tempCommentArray forKey:VARsDataSourceDictKeyComment];
             [foods addObject:tempDict];
         }
         //add in cache
@@ -287,21 +289,23 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
             //add the image array to the temp dict
             [tempDict setObject:tempImageArray forKey:VARsDataSourceDictKeyFoodImage];
             
-            //add dictionary of comments
+			//add dictionary of comments
             FMResultSet * commentResults = [self.database executeQuery:@"SELECT * FROM comments WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
-            NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
+            NSMutableArray * tempCommentArray = [[NSMutableArray alloc]init];
             while([commentResults next])
             {
+				NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
                 [tempCommentDict setObject:[imageResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
                 [tempCommentDict setObject:[imageResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+				[tempCommentArray addObject: tempCommentDict];
             }
             
             //add the comment dictionary to the temp dict
-            [tempDict setObject:tempCommentDict forKey:VARsDataSourceDictKeyComment];
+            [tempDict setObject:tempCommentArray forKey:VARsDataSourceDictKeyComment];
             [foods addObject:tempDict];
         }
         //add in cache
-        [cache setObject:foods forKey:cacheKey];
+        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByRating];
     }
     //return
     return [[NSArray alloc] initWithArray:foods];
