@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *content;
 - (IBAction)showActionSheet:(id)sender;
 @property (strong, nonatomic) NSString *comment;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 
 
 

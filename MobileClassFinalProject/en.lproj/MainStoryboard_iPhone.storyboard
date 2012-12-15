@@ -9,10 +9,10 @@
             <objects>
                 <tableViewController id="JkP-YJ-LV2" customClass="VARSearchFoodViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VIx-hL-HrR">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Food's English/Chinese Name" id="DtZ-kG-ZHa">
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" placeholder="Food's English/Chinese Name" id="DtZ-kG-ZHa">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -73,7 +73,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="clS-Zl-Mjd" id="K6m-ec-rwl"/>
                     </connections>
@@ -381,7 +382,7 @@
             <objects>
                 <viewController id="HDU-WU-YY2" customClass="VARFoodDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RdM-qx-WUP">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food English Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-X3-lKp">
@@ -398,7 +399,7 @@
                                 <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHr-ve-X9e">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="dHr-ve-X9e">
                                 <items>
                                     <barButtonItem style="plain" id="F3D-Y4-ILw">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dYg-kT-ijT">
@@ -416,27 +417,28 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="content......................................." lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="245" translatesAutoresizingMaskIntoConstraints="NO" id="WsQ-OG-VSj">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-84-LhW">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="98" id="B4P-In-dse"/>
-                                    <constraint firstAttribute="width" constant="245" id="hWT-wQ-0z6"/>
+                                    <constraint firstAttribute="height" constant="99" id="RXb-Tf-iXc"/>
+                                    <constraint firstAttribute="width" constant="315" id="xcY-Fl-jFf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="Trebuchet-BoldItalic" family="Trebuchet MS" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WsQ-OG-VSj" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="15" id="6Lu-7P-Pvg"/>
-                            <constraint firstItem="dHr-ve-X9e" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="328" id="SZQ-X9-n1Z"/>
+                            <constraint firstItem="dHr-ve-X9e" firstAttribute="bottom" secondItem="RdM-qx-WUP" secondAttribute="bottom" type="default" id="9u8-I4-VSN"/>
+                            <constraint firstAttribute="bottom" secondItem="bbY-84-LhW" secondAttribute="bottom" constant="59" id="NlI-Jy-Yj5"/>
                             <constraint firstItem="Hze-M8-UPm" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Z6V-xu-cBS"/>
                             <constraint firstItem="Hze-M8-UPm" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="26" id="gUM-KG-rvP"/>
                             <constraint firstItem="4JH-X3-lKp" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hLL-g9-F92"/>
                             <constraint firstItem="dHr-ve-X9e" firstAttribute="trailing" secondItem="RdM-qx-WUP" secondAttribute="trailing" type="default" id="hhC-S3-0Ju"/>
                             <constraint firstItem="dHr-ve-X9e" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" type="default" id="n2P-3d-Jt9"/>
-                            <constraint firstItem="WsQ-OG-VSj" firstAttribute="bottom" secondItem="dHr-ve-X9e" secondAttribute="top" type="default" id="nCv-Ur-uC2"/>
                             <constraint firstItem="4JH-X3-lKp" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="7" id="nWb-yZ-ChW"/>
+                            <constraint firstItem="bbY-84-LhW" firstAttribute="trailing" secondItem="RdM-qx-WUP" secondAttribute="trailing" type="default" id="ptY-Q2-7aw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Food Profile" id="InI-TG-Bjr">
@@ -446,12 +448,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="content" destination="WsQ-OG-VSj" id="SBb-x7-nM5"/>
                         <outlet property="foodChineseName" destination="Hze-M8-UPm" id="xEh-ux-haM"/>
                         <outlet property="foodEnglishName" destination="4JH-X3-lKp" id="lM8-S8-o0X"/>
                         <outlet property="segmentedControl" destination="dYg-kT-ijT" id="awX-i1-bXL"/>
+                        <outlet property="textView" destination="bbY-84-LhW" id="IC3-ax-ctb"/>
                         <segue destination="082-oz-ZvQ" kind="modal" identifier="ShowDetail" id="Jxo-Wx-uU1"/>
                         <segue destination="Zcx-6y-tQy" kind="modal" identifier="showComment" id="qgK-Tn-Ph7"/>
                         <segue destination="xJg-6p-MQx" kind="modal" identifier="addPhoto" id="ega-rV-k2q"/>
@@ -459,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6l-9s-YJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1424" y="163"/>
+            <point key="canvasLocation" x="1428" y="185"/>
         </scene>
         <!--Food Comment View Controller - Comment-->
         <scene sceneID="3xN-R6-B2n">
@@ -470,7 +473,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" textLabel="1iK-fT-YPo" detailTextLabel="cr7-Mq-J0Y" style="IBUITableViewCellStyleValue1" id="3fy-yh-0TY">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" indentationWidth="10" textLabel="1iK-fT-YPo" detailTextLabel="cr7-Mq-J0Y" style="IBUITableViewCellStyleValue1" id="3fy-yh-0TY" customClass="VARCommentCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -490,6 +493,10 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="comment" destination="1iK-fT-YPo" id="fB4-He-sAb"/>
+                                    <outlet property="time" destination="cr7-Mq-J0Y" id="YVK-kI-CgI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -550,7 +557,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <connections>
                         <outlet property="imageView" destination="yux-qo-lL4" id="3ac-9k-HPZ"/>
                     </connections>
@@ -587,7 +595,8 @@
                     <tabBarItem key="tabBarItem" title="Category" id="WHj-W5-0km"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="2If-9l-fUS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wnm-pX-WZh">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="wnm-pX-WZh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -624,7 +633,8 @@
             <objects>
                 <navigationController id="082-oz-ZvQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WdD-X6-QWj">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="WdD-X6-QWj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -642,7 +652,8 @@
             <objects>
                 <navigationController id="Zcx-6y-tQy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ccD-LS-N7a">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="ccD-LS-N7a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -662,7 +673,8 @@
                     <tabBarItem key="tabBarItem" title="Ranking" id="BY9-zf-S3z"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="uZu-IM-1O9"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bsH-rQ-2sk">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="bsH-rQ-2sk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -930,7 +942,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
                     <connections>
                         <outlet property="ChineseName" destination="Hgl-8c-ZAJ" id="jWJ-D6-Z72"/>
                         <outlet property="EnglishName" destination="6aX-0u-ase" id="1vL-00-psf"/>
@@ -952,13 +964,14 @@
             <objects>
                 <navigationController toolbarHidden="NO" id="xJg-6p-MQx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qc9-0Y-aIM">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="Qc9-0Y-aIM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="eZW-vL-crJ">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="eZW-vL-crJ">
                         <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
@@ -975,13 +988,14 @@
             <objects>
                 <navigationController toolbarHidden="NO" id="cUl-HE-7gf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NTA-mw-c6p">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" barStyle="blackOpaque"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="NTA-mw-c6p">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0U6-yQ-ugP">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" id="0U6-yQ-ugP">
                         <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
@@ -1003,7 +1017,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="o8t-vR-Y2V"/>
+        <segue reference="31F-M1-wCI"/>
         <segue reference="4a9-sC-whV"/>
     </inferredMetricsTieBreakers>
 </document>

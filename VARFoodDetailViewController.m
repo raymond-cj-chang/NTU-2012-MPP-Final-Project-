@@ -94,7 +94,7 @@
         }
         
     }
-    
+    self.textView.text = self.food[VARsDataSourceDictKeyFoodIntroduction];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender{
@@ -173,12 +173,13 @@
         dest.imageName = self.currentImage;
         //dest.ChineseName = self.foodChineseName.text;
     }
+    
 //    if ([segue.identifier isEqualToString:@"addPhoto"]){
 //        VARAddPhotoViewController *dest = (VARAddCommentViewController *)[[segue destinationViewController] topViewController];
 //    }
-//    if ([segue.identifier isEqualToString:@"showComment"]){
-//        VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
-//    }
+    if ([segue.identifier isEqualToString:@"showComment"]){
+        VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
+    }
 }
 
 
@@ -187,10 +188,12 @@
     NSInteger index = [segmentedControl selectedSegmentIndex];
     switch (index) {
         case 0:
-            self.content.text = @"This is introduction for food";
+            //self.content.text = @"This is introduction for food";
+            self.textView.text = self.food[VARsDataSourceDictKeyFoodIntroduction];
             break;
         case 1:
-            self.content.text = @"This is ingredient for food";
+            //self.content.text = @"This is ingredient for food";
+            self.textView.text = self.food[VARsDataSourceDictKeyFoodIngredient];
             break;
         case 2:
             [self performSegueWithIdentifier:@"showComment" sender:self.segmentedControl];
@@ -275,6 +278,7 @@
     if ([buttonTitle isEqualToString:@"OK"])
         [self updateNewVote];
 }
+
 
 
 #pragma - new Vote

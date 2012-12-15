@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "VARMenuDataSource.h"
+#import "VARCommentCell.h"
 
 @interface VARFoodCommentViewController : UITableViewController
-{
-    NSMutableArray* commentArray;
-}
-- (IBAction)done:(id)sender;
 
+- (IBAction)done:(id)sender;
+@property(strong, nonatomic) NSArray *commentArray;
 @end
