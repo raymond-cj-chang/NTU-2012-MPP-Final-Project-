@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UINavigationController * navController = [UINavigationController alloc];
+    navController.navigationBar.tintColor = [UIColor colorWithRed:117/255.0f green:4/255.0f blue:32/255.0f alpha:1];
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(30,60,260,175)];
     [self.scrollView setBackgroundColor:[UIColor blackColor]];
     [self.scrollView setCanCancelContentTouches:NO];
@@ -48,8 +50,8 @@
         //set food data
         _foodEnglishName.text = _food[VARsDataSourceDictKeyEnglishName];
         _foodChineseName.text = _food[VARsDataSourceDictKeyChineseName];
-//        _foodIntroduction.text = _food[VARsDataSourceDictKeyFoodIntroduction];
-//        _foodIngredient.text = _food[VARsDataSourceDictKeyFoodIngredient];
+        //_foodIntroduction.text = _food[VARsDataSourceDictKeyFoodIntroduction];
+        //_foodIngredient.text = _food[VARsDataSourceDictKeyFoodIngredient];
 //        
         //image array
         NSArray* imageArray = _food[VARsDataSourceDictKeyFoodImage];
