@@ -179,7 +179,7 @@
 //    }
     if ([segue.identifier isEqualToString:@"showComment"]){
         VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
-        //dest.dictionaryWithCommentAndTimestamp = self.food[VARsDataSourceDictKeyComment];
+        dest.dictionaryWithCommentAndTimestamp = self.food[VARsDataSourceDictKeyComment];
     }
 }
 
