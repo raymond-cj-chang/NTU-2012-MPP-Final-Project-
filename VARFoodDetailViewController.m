@@ -94,7 +94,7 @@
         }
         
     }
-    
+    self.textView.text = self.food[VARsDataSourceDictKeyFoodIntroduction];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender{
@@ -187,10 +187,12 @@
     NSInteger index = [segmentedControl selectedSegmentIndex];
     switch (index) {
         case 0:
-            self.content.text = @"This is introduction for food";
+            //self.content.text = @"This is introduction for food";
+            self.textView.text = self.food[VARsDataSourceDictKeyFoodIntroduction];
             break;
         case 1:
-            self.content.text = @"This is ingredient for food";
+            //self.content.text = @"This is ingredient for food";
+            self.textView.text = self.food[VARsDataSourceDictKeyFoodIngredient];
             break;
         case 2:
             [self performSegueWithIdentifier:@"showComment" sender:self.segmentedControl];

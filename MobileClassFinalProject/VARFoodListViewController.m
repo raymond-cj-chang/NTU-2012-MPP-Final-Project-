@@ -123,6 +123,9 @@
         //set data
         foodListController.food = food;
         
+        //hide tab bar
+        foodListController.hidesBottomBarWhenPushed = YES;
+        
     }
   
     if( [segue.identifier isEqualToString:@"addingFood"])
