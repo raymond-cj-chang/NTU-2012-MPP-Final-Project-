@@ -49,6 +49,7 @@
 		187B81F716690B2F00BCE6B2 /* image_shaved ice.png in Resources */ = {isa = PBXBuildFile; fileRef = 187B81F616690B2F00BCE6B2 /* image_shaved ice.png */; };
 		187B8202166AD68400BCE6B2 /* VARFoodPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B8201166AD68400BCE6B2 /* VARFoodPhotoViewController.m */; };
 		187B8218166B9E3700BCE6B2 /* VARFoodCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B8217166B9E3700BCE6B2 /* VARFoodCommentViewController.m */; };
+		189798FD167C901E002B20E9 /* VARCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 189798FC167C901E002B20E9 /* VARCommentCell.m */; };
 		18A04DB9166C8BD400E89B24 /* VARRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A04DB8166C8BD400E89B24 /* VARRankingViewController.m */; };
 		18A04DBC166C8C0900E89B24 /* VARRankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A04DBB166C8C0900E89B24 /* VARRankingCell.m */; };
 		18A22B4A166CBBD200361532 /* VARAddPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A22B49166CBBD200361532 /* VARAddPhotoViewController.m */; };
@@ -297,6 +298,8 @@
 		187B8201166AD68400BCE6B2 /* VARFoodPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodPhotoViewController.m; sourceTree = "<group>"; };
 		187B8216166B9E3700BCE6B2 /* VARFoodCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodCommentViewController.h; sourceTree = "<group>"; };
 		187B8217166B9E3700BCE6B2 /* VARFoodCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodCommentViewController.m; sourceTree = "<group>"; };
+		189798FB167C901E002B20E9 /* VARCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARCommentCell.h; sourceTree = "<group>"; };
+		189798FC167C901E002B20E9 /* VARCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARCommentCell.m; sourceTree = "<group>"; };
 		18A04DB7166C8BD400E89B24 /* VARRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARRankingViewController.h; sourceTree = "<group>"; };
 		18A04DB8166C8BD400E89B24 /* VARRankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARRankingViewController.m; sourceTree = "<group>"; };
 		18A04DBA166C8C0900E89B24 /* VARRankingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARRankingCell.h; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 			children = (
 				187B8217166B9E3700BCE6B2 /* VARFoodCommentViewController.m */,
 				187B8216166B9E3700BCE6B2 /* VARFoodCommentViewController.h */,
+				189798FB167C901E002B20E9 /* VARCommentCell.h */,
+				189798FC167C901E002B20E9 /* VARCommentCell.m */,
 			);
 			name = "Food Comment";
 			sourceTree = "<group>";
@@ -1232,6 +1237,7 @@
 				185535FD1670689C00E7C6DE /* VARSearchFoodViewController.m in Sources */,
 				185536061670E02E00E7C6DE /* VARSearchCell.m in Sources */,
 				1855363B1673347700E7C6DE /* VARMenuDataSource.m in Sources */,
+				189798FD167C901E002B20E9 /* VARCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -173,12 +173,13 @@
         dest.imageName = self.currentImage;
         //dest.ChineseName = self.foodChineseName.text;
     }
+    
 //    if ([segue.identifier isEqualToString:@"addPhoto"]){
 //        VARAddPhotoViewController *dest = (VARAddCommentViewController *)[[segue destinationViewController] topViewController];
 //    }
-//    if ([segue.identifier isEqualToString:@"showComment"]){
-//        VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
-//    }
+    if ([segue.identifier isEqualToString:@"showComment"]){
+        VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
+    }
 }
 
 
@@ -277,6 +278,7 @@
     if ([buttonTitle isEqualToString:@"OK"])
         [self updateNewVote];
 }
+
 
 
 #pragma - new Vote
