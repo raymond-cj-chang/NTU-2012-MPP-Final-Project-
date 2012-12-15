@@ -60,14 +60,11 @@
     cell.EnglishName.text = dictionary[VARsDataSourceDictKeyEnglishName];
     cell.ChineseName.text = dictionary[VARsDataSourceDictKeyChineseName];
     NSString* imageName = [[NSString alloc] initWithFormat:@"image%@_1.jpg",dictionary[VARsDataSourceDictKeyFoodID]];
-    NSLog(@"imageName:%@",imageName);
-    //[cell.imageView setImage:[UIImage imageNamed:imageName]];
-    //cell.imageView.image = [UIImage imageNamed:imageName];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
     imageView.frame = CGRectMake(70, 10, 76, 57);
     [cell addSubview:imageView];
-    cell.rankingNumber.text = @"1";
-    
+    cell.rankingNumber.text = dictionary[VARsDataSourceDictKeyRating];
+    //cell.rankingNumber.text = [NSString stringWithFormat:@"%u",indexPath.row];
     return cell;
 
 }

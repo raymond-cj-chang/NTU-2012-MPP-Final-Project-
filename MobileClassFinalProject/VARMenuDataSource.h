@@ -18,6 +18,10 @@ extern NSString * const VARsDataSourceDictKeyFoodIngredient;
 extern NSString * const VARsDataSourceDictKeyFoodIntroduction;
 extern NSString * const VARsDataSourceDictKeyFoodImage;
 extern NSString * const VARsDataSourceDictKeyFoodID;
+extern NSString * const VARsDataSourceDictKeyRating;
+extern NSString * const VARsDataSourceDictKeyComment;
+extern NSString * const VARsDataSourceDictKeyCommentContent;
+extern NSString * const VARsDataSourceDictKeyCommentTimestamp;
 
 @interface VARMenuDataSource : NSObject
 {
