@@ -26,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-background.jpg"]];
+//    [tempImageView setFrame:self.collectionView.frame];
+//    self.collectionView.backgroundView = tempImageView;
 	// Do any additional setup after loading the view.
 }
 
@@ -46,21 +49,26 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[[VARMenuDataSource sharedMenuDataSource] arrayOfCategories] count];
+
+    return [[[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+
     //cell object
     VARFoodCategoriesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    
     //cell row
+
     NSInteger row = indexPath.row;
     //set cell data
-    cell.foodCategoryName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfCategories][row];
+    //cell.foodCategoryChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row];
+    cell.foodCategoryEnglishName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories][row];
+
     
     //set category image
-    NSString* categoryImageName = [[NSString alloc] initWithFormat:@"image_%@",cell.foodCategoryName.text];
+    NSString* categoryImageName = [[NSString alloc] initWithFormat:@"image_%@",cell.foodCategoryEnglishName.text];
     cell.foodCategoryImage.image = [UIImage imageNamed:categoryImageName];
     
     return cell;
@@ -76,7 +84,7 @@
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
         //get index path
         NSUInteger row = indexPath.row;
-        NSString *category = [[VARMenuDataSource sharedMenuDataSource] arrayOfCategories][row];
+        NSString *category = [[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories][row];
         
         //set next level category
         VARFoodListViewController *foodListController = segue.destinationViewController;
@@ -85,6 +93,26 @@
         
     }
 
+}
+
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{   
+    VARSearchBarView *header = nil;
+    
+    if ([kind isEqual:UICollectionElementKindSectionHeader])
+    {
+        header = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                    withReuseIdentifier:@"searchBar"
+                                                           forIndexPath:indexPath];
+        
+        header.label.text = @"Car Image Gallery";
+    }
+    return header;
+}
+
+- (IBAction)addingFood:(id)sender {
+    [self performSegueWithIdentifier:@"addingFood" sender:sender];
 }
 
 @end

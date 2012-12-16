@@ -7,13 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+#import "JSONKit.h"
 
 extern NSString * const VARsDataSourceDictKeyChineseName;
 extern NSString * const VARsDataSourceDictKeyEnglishName;
-extern NSString * const VARsDataSourceDictKeyCategories;
+extern NSString * const VARsDataSourceDictKeyChineseCategories;
+extern NSString * const VARsDataSourceDictKeyEnglishCategories;
 extern NSString * const VARsDataSourceDictKeyFoodIngredient;
 extern NSString * const VARsDataSourceDictKeyFoodIntroduction;
 extern NSString * const VARsDataSourceDictKeyFoodImage;
+extern NSString * const VARsDataSourceDictKeyFoodID;
+extern NSString * const VARsDataSourceDictKeyRating;
+extern NSString * const VARsDataSourceDictKeyComment;
+extern NSString * const VARsDataSourceDictKeyCommentContent;
+extern NSString * const VARsDataSourceDictKeyCommentTimestamp;
+
 @interface VARMenuDataSource : NSObject
 {
     // Cache data pool
@@ -32,7 +41,18 @@ extern NSString * const VARsDataSourceDictKeyFoodImage;
 - (void) cleanCache;
 - (void) refresh;
 - (id) init;
-- (NSArray *) arrayOfCategories;
+- (NSArray *) arrayOfChineseCategories;
+- (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
+- (NSArray *) arrayOfFoodsByRating;
+- (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents;
+- (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName;
+- (void) addFoodItemToDB:(NSDictionary *) foodItem;
+
+//for server
++ (void)downloadFoodDataFromGAEServer;
++ (void)uploadFoodImageToGAEServer;
++ (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment;
++ (NSMutableArray*)downloadCommentFromGAEServer:(NSString*)foodID;
 
 @end

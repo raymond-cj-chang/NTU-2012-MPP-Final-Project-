@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VARMenuDataSource.h"
 
 @interface VARAppDelegate : UIResponder <UIApplicationDelegate>
 

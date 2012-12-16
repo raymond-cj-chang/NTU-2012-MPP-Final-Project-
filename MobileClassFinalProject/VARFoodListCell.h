@@ -11,5 +11,6 @@
 @interface VARFoodListCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *foodEnglishName;
 @property (strong, nonatomic) IBOutlet UILabel *foodChineseName;
+@property (strong, nonatomic) IBOutlet UIImageView *foodImage;
 
 @end

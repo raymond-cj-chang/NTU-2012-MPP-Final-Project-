@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface VARFoodCategoriesCell : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UILabel *foodCategoryName;
+
+@property (strong, nonatomic) IBOutlet UILabel *foodCategoryChineseName;
+@property (strong, nonatomic) IBOutlet UILabel *foodCategoryEnglishName;
 @property (strong, nonatomic) IBOutlet UIImageView *foodCategoryImage;
 
 @end
