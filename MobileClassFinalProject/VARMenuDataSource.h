@@ -22,6 +22,7 @@ extern NSString * const VARsDataSourceDictKeyRating;
 extern NSString * const VARsDataSourceDictKeyComment;
 extern NSString * const VARsDataSourceDictKeyCommentContent;
 extern NSString * const VARsDataSourceDictKeyCommentTimestamp;
+extern NSOperationQueue* globalOperationQueue;
 
 @interface VARMenuDataSource : NSObject
 {
@@ -35,7 +36,7 @@ extern NSString * const VARsDataSourceDictKeyCommentTimestamp;
     NSArray *foodList;
 }
 
-
+//shared data source
 + (VARMenuDataSource *) sharedMenuDataSource;
 
 - (void) cleanCache;
@@ -45,14 +46,20 @@ extern NSString * const VARsDataSourceDictKeyCommentTimestamp;
 - (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
 - (NSArray *) arrayOfFoodsByRating;
-- (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents;
+- (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents withDate:(NSString*)DateTimeStr;
 - (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName;
 - (void) addFoodItemToDB:(NSDictionary *) foodItem;
+- (void) updateRatingToFoodItem:(NSString*)fidStr withRating:(NSString*)rating;
 
 //for server
-+ (void)downloadFoodDataFromGAEServer;
-+ (void)uploadFoodImageToGAEServer;
-+ (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment;
-+ (NSMutableArray*)downloadCommentFromGAEServer:(NSString*)foodID;
++ (void) downloadFoodDataFromGAEServer;
++ (void) uploadFoodImageToGAEServer:(NSString*)serverName withImageName:(NSString*)uploadImageName withImage:(UIImage*)image;
++ (void) uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment;
++ (void) downloadCommentFromGAEServer:(NSString*)foodID;
++ (void) downloadImageFromGAEServer:(NSString*)fidStr;
++ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr;
++ (void) downloadFoodRatingFromGAEServer:(NSString*)fidStr;
++ (void) getCurrentTimeFromGAEServer;
++ (NSDictionary*) getLastTimeUpdateTimeDateFromFile;
 
 @end

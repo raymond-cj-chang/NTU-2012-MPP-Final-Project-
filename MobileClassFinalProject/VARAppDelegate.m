@@ -14,6 +14,9 @@
 {
     // Override point for customization after application launch.
     
+    //init global operation queue
+    globalOperationQueue = [[NSOperationQueue alloc] init];
+    
     //dowload new food data
     [VARMenuDataSource downloadFoodDataFromGAEServer];
     
