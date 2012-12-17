@@ -68,7 +68,20 @@
         
        //NSLog(@"file%@",imageList[0]);
        NSString* filename = imageList[0];
-       [cell.foodImage setImage:[UIImage imageNamed:filename]];
+        UIImage* addedImage = [UIImage imageNamed:filename];
+        
+        //check image in docs or not
+        if(addedImage==nil)
+        {
+            //doc path
+            NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+            NSString *imagePath = [NSString stringWithFormat:@"%@/%@",docDir,filename];
+            //image
+            addedImage = [UIImage imageWithContentsOfFile:imagePath];
+            
+        }
+        
+        [cell.foodImage setImage:addedImage];
        //cell.foodImage.image = [UIImage imageWithContentsOfFile:filename];
         //NSLog(@"image:%@",cell.foodImage.image);
     }

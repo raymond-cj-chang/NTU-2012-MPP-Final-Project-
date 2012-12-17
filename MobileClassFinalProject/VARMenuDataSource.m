@@ -628,21 +628,22 @@ NSOperationQueue* globalOperationQueue;
                                                   
                                                   //server URL
                                                   //NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/images";
-                                                  NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/images";
+                                                  NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/downloadImage";
                                                   
                                                   //download image from server
                                                   if(imageName!=nil)
                                                   {
                                                       //server url
-                                                      NSString *imageURL = [NSString stringWithFormat:@"%@/%@",serverImageURL,imageName];
+                                                      NSString *imageURL = [NSString stringWithFormat:@"%@?imageName=%@",serverImageURL,imageName];
                                                       // Get an image from the URL below
                                                       UIImage* image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
                                                       
                                                       //save to jepg
-                                                      NSLog(@"[Client] saving image %@ From %@",imageName,imageURL);
                                                       NSString *jpegFilePath = [NSString stringWithFormat:@"%@/%@",docDir,imageName];
                                                       NSData *imageJPEGData = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
                                                       [imageJPEGData writeToFile:jpegFilePath atomically:YES];
+                                                      
+                                                      NSLog(@"[Client] saving image %@ From %@ ,to %@",imageName,imageURL,docDir);
                                                       
                                                       //add image in SQLite DB
                                                       NSInteger fid = [fidStr intValue];

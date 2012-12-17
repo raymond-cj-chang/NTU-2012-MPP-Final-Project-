@@ -70,7 +70,17 @@
                 NSString* filename = [imageArray objectAtIndex:i];
                 UIImage* addedImage = [UIImage imageNamed:filename];
                 //self.foodImage.image = addedImage;
-
+                
+                //check image in docs or not
+                if(addedImage==nil)
+                {
+                    //doc path
+                    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+                    NSString *imagePath = [NSString stringWithFormat:@"%@/%@",docDir,filename];
+                    //image
+                    addedImage = [UIImage imageWithContentsOfFile:imagePath];
+                    
+                }
                 //CGRect imageViewFrame = self.foodImage.frame;
                 CGFloat imageWidth = self.scrollView.frame.size.width;
                 CGFloat imageHeight = self.scrollView.frame.size.height;

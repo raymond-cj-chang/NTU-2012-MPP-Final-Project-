@@ -75,7 +75,21 @@
     cell.EnglishName.text = dictionary[VARsDataSourceDictKeyEnglishName];
     cell.ChineseName.text = dictionary[VARsDataSourceDictKeyChineseName];
     NSString* imageName = [[NSString alloc] initWithFormat:@"image%@_1.jpg",dictionary[VARsDataSourceDictKeyFoodID]];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    UIImage* addedImage = [UIImage imageNamed:imageName];
+    
+    //check image in docs or not
+    if(addedImage==nil)
+    {
+        //doc path
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",docDir,imageName];
+        //image
+        addedImage = [UIImage imageWithContentsOfFile:imagePath];
+        
+    }
+    //set image
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:addedImage];
+    
     imageView.frame = CGRectMake(70, 10, 76, 57);
     [cell addSubview:imageView];
     cell.rankingNumber.text = dictionary[VARsDataSourceDictKeyRating];
