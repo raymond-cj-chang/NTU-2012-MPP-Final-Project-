@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Search Food View Controller - Search Food-->
@@ -596,18 +596,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" highlightedImage="Crown-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Av8-hD-0sW"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-3T-koR">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="108" id="Fwf-ak-ELk"/>
+                                                <constraint firstAttribute="width" constant="146" id="RIv-tH-SIZ"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="bottom" secondItem="MkO-dn-O1d" secondAttribute="bottom" type="default" id="6Bf-dM-d8p"/>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="leading" secondItem="MkO-dn-O1d" secondAttribute="leading" type="default" id="O5W-29-AAm"/>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="trailing" secondItem="MkO-dn-O1d" secondAttribute="trailing" type="default" id="Rqu-Cx-5wX"/>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="top" secondItem="MkO-dn-O1d" secondAttribute="top" type="default" id="h8Z-Ru-d75"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="centerX" secondItem="MkO-dn-O1d" secondAttribute="centerX" type="default" id="J82-nr-ire"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="centerY" secondItem="MkO-dn-O1d" secondAttribute="centerY" type="default" id="g7V-uc-8WZ"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="Av8-hD-0sW" id="9Zb-pi-ZFz"/>
+                                    <outlet property="imageView" destination="xyG-3T-koR" id="qIW-7a-cqZ"/>
+                                    <segue destination="HDU-WU-YY2" kind="push" identifier="showFoodDetailView" id="yLU-Mg-f62"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -964,7 +969,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Crown-icon.png" width="128" height="128"/>
         <image name="addIcon.png" width="128" height="128"/>
         <image name="your_image_here.jpg" width="400" height="400"/>
     </resources>
@@ -975,6 +979,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UOt-yE-DOB"/>
-        <segue reference="31F-M1-wCI"/>
+        <segue reference="yLU-Mg-f62"/>
     </inferredMetricsTieBreakers>
 </document>
