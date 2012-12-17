@@ -210,7 +210,7 @@
         [VARMenuDataSource uploadCommentToGAEServer:fidStr withComment:foodComment];
         
         //*****add image
-        [VARMenuDataSource uploadFoodImageToGAEServer:fidStr withImageName:@"test.jpg" withImage:foodImage];
+        [VARMenuDataSource uploadFoodImageToGAEServer:fidStr withImageName:nil withImage:foodImage];
         
         //download from server
         [VARMenuDataSource downloadFoodDataFromGAEServer];

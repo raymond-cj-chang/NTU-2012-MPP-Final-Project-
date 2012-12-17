@@ -45,6 +45,7 @@ extern NSOperationQueue* globalOperationQueue;
 - (NSArray *) arrayOfChineseCategories;
 - (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
+- (NSArray *) arrayOfFoodsInAlphabeticalOrder;
 - (NSArray *) arrayOfFoodsByRating;
 - (NSArray *) arrayOfFoodsByAlphabeticalOrder;
 - (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents withDate:(NSString*)DateTimeStr;
