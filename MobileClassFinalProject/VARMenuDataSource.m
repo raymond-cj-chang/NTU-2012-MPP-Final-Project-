@@ -721,11 +721,12 @@ NSOperationQueue* globalOperationQueue;
     [body appendData:[[NSString stringWithFormat:@"\r\n"]dataUsingEncoding:NSUTF8StringEncoding]];
     
     //add image name into body
+    /*
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"imagename\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[imageName dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"\r\n"]dataUsingEncoding:NSUTF8StringEncoding]];
-    
+    */
     
     //end boundary
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
