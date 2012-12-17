@@ -174,6 +174,7 @@
     NSString *foodIntroduction = self.introduction.text;
     NSString *foodIngredient = self.ingredientLabel.text;
     NSString *foodEnglishCategory = self.currentCategory;
+#warning fix Chinese Category
     NSString *foodChineseCategory = @"中文種類名";
     NSString *foodComment = self.comment.text;
     UIImage *foodImage = self.imageView.image;

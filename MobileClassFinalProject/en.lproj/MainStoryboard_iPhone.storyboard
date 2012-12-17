@@ -221,87 +221,6 @@
             </objects>
             <point key="canvasLocation" x="343" y="-49"/>
         </scene>
-        <!--Ranking View Controller - Ranking-->
-        <scene sceneID="mzQ-1r-DjA">
-            <objects>
-                <tableViewController title="Ranking" id="082-Iz-UeF" customClass="VARRankingViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="kKM-nY-YdQ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.97647064920000004" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="N4t-v6-OIe" customClass="VARRankingCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="80"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="79"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="128" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-Gf-PMX">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="128" id="N9L-zN-tfO"/>
-                                                <constraint firstAttribute="height" constant="59" id="w8B-HO-vB3"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chinese Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkV-UM-j3H">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="26" id="iA0-PH-WC2"/>
-                                                <constraint firstAttribute="width" constant="116" id="sdm-JX-RYx"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.0" green="0.76470595600000002" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoB-OT-Nb8">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="mfD-JP-mhE"/>
-                                                <constraint firstAttribute="width" constant="29" id="zKt-e9-dFL"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Marion-Regular" family="Marion" pointSize="17"/>
-                                            <color key="textColor" red="1" green="0.26057734160000001" blue="0.29314330599999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Crown-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Epb-8r-5Ob">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="Adl-Ck-4ao"/>
-                                                <constraint firstAttribute="height" constant="30" id="SWH-eJ-q4K"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" red="0.93181818181818188" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="Epb-8r-5Ob" firstAttribute="leading" secondItem="N4t-v6-OIe" secondAttribute="leading" constant="4" id="5UF-XN-lza"/>
-                                    <constraint firstAttribute="bottom" secondItem="nkV-UM-j3H" secondAttribute="bottom" constant="10" id="8NT-eV-5vm"/>
-                                    <constraint firstAttribute="trailing" secondItem="iMm-Gf-PMX" secondAttribute="trailing" constant="31" id="Chn-ok-9XZ"/>
-                                    <constraint firstItem="iMm-Gf-PMX" firstAttribute="top" secondItem="N4t-v6-OIe" secondAttribute="top" type="default" id="JGV-sh-XWW"/>
-                                    <constraint firstItem="iMm-Gf-PMX" firstAttribute="leading" secondItem="nkV-UM-j3H" secondAttribute="leading" type="default" id="mVw-17-RRz"/>
-                                    <constraint firstItem="XoB-OT-Nb8" firstAttribute="centerX" secondItem="Epb-8r-5Ob" secondAttribute="centerX" type="default" id="uEz-9h-KVP"/>
-                                    <constraint firstItem="Epb-8r-5Ob" firstAttribute="top" secondItem="N4t-v6-OIe" secondAttribute="top" constant="15" id="yvg-Z1-1Mg"/>
-                                    <constraint firstItem="XoB-OT-Nb8" firstAttribute="top" secondItem="nkV-UM-j3H" secondAttribute="top" type="default" id="zGb-KY-qV4"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="ChineseName" destination="nkV-UM-j3H" id="0qw-wh-9vN"/>
-                                    <outlet property="EnglishName" destination="iMm-Gf-PMX" id="kBy-mc-igf"/>
-                                    <outlet property="rankingNumber" destination="XoB-OT-Nb8" id="MZ5-vM-hEA"/>
-                                    <segue destination="HDU-WU-YY2" kind="push" identifier="showFoodDetailView" id="o8t-vR-Y2V"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="082-Iz-UeF" id="HQX-wu-6dL"/>
-                            <outlet property="delegate" destination="082-Iz-UeF" id="2Vg-bK-QL9"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Ranking" id="8bw-kd-ZCf"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6fW-Wy-XZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1236" y="520"/>
-        </scene>
         <!--Food List View Controller - Food Menu-->
         <scene sceneID="uQb-wC-pkg">
             <objects>
@@ -667,28 +586,40 @@
             </objects>
             <point key="canvasLocation" x="2518" y="403"/>
         </scene>
-        <!--Collection View Controller - Most Popular-->
+        <!--Popular Food View Controller - Most Popular-->
         <scene sceneID="jhN-NT-HVB">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="NVF-uQ-95C" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="NVF-uQ-95C" customClass="VARPopularFoodViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="k1n-UL-BVi">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1jX-WO-64B">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="150" height="112"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MkO-dn-O1d">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="MkO-dn-O1d" customClass="VARPopularFoodCell">
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="112"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" highlightedImage="Crown-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Av8-hD-0sW"/>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="bottom" secondItem="MkO-dn-O1d" secondAttribute="bottom" type="default" id="6Bf-dM-d8p"/>
+                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="leading" secondItem="MkO-dn-O1d" secondAttribute="leading" type="default" id="O5W-29-AAm"/>
+                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="trailing" secondItem="MkO-dn-O1d" secondAttribute="trailing" type="default" id="Rqu-Cx-5wX"/>
+                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="top" secondItem="MkO-dn-O1d" secondAttribute="top" type="default" id="h8Z-Ru-d75"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="Av8-hD-0sW" id="9Zb-pi-ZFz"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -700,28 +631,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQP-yB-SIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="596"/>
-        </scene>
-        <!--Navigation Controller - Ranking-->
-        <scene sceneID="uJv-Dz-guM">
-            <objects>
-                <navigationController id="Rcs-qQ-5kx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ranking" id="BY9-zf-S3z"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="uZu-IM-1O9"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="bsH-rQ-2sk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="082-Iz-UeF" kind="relationship" relationship="rootViewController" id="CSb-x4-CsU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aE6-JV-nkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="788" y="577"/>
+            <point key="canvasLocation" x="489" y="714"/>
         </scene>
         <!--Add Food View Controller-->
         <scene sceneID="hQk-g6-gU8">
@@ -1061,7 +971,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meO-wk-2g7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149" y="596"/>
+            <point key="canvasLocation" x="23" y="714"/>
         </scene>
     </scenes>
     <resources>
@@ -1180,18 +1090,14 @@
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
         </class>
-        <class className="VARRankingCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARRankingCell.h"/>
+        <class className="VARPopularFoodCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARPopularFoodCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="ChineseName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="EnglishName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="crownImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="rankingNumber" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="VARRankingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARRankingViewController.h"/>
+        <class className="VARPopularFoodViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARPopularFoodViewController.h"/>
         </class>
         <class className="VARSearchCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VARSearchCell.h"/>
@@ -1210,7 +1116,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="o8t-vR-Y2V"/>
         <segue reference="UOt-yE-DOB"/>
+        <segue reference="oSW-Jw-QwP"/>
     </inferredMetricsTieBreakers>
 </document>
