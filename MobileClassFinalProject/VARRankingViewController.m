@@ -108,9 +108,6 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         detailViewController.food = [self.arrayOfFoodDictionary objectAtIndex:indexPath.row];
         
-        //**test
-        //**
-        
         //hide tab bar
         detailViewController.hidesBottomBarWhenPushed = YES;
     }
