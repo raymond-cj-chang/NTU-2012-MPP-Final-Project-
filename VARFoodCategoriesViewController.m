@@ -26,10 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-background.jpg"]];
-//    [tempImageView setFrame:self.collectionView.frame];
-//    self.collectionView.backgroundView = tempImageView;
-	// Do any additional setup after loading the view.
+    //UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+    //[tempImageView setFrame:self.collectionView.frame];
+    //self.collectionView.backgroundView = tempImageView;
 }
 
 - (void)didReceiveMemoryWarning

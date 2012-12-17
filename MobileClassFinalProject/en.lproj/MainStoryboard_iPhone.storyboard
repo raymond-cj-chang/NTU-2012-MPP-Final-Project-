@@ -148,16 +148,21 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-H7-juO">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="66" id="BFm-Gh-UFH"/>
                                                 <constraint firstAttribute="height" constant="61" id="HTZ-3q-YuF"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSS-Ra-dmd">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="83" id="Mlw-Ir-2ZG"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chinese" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMZ-W4-DZg">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="84" id="tPb-v2-iJs"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -166,12 +171,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="lSS-Ra-dmd" firstAttribute="centerX" secondItem="7bK-H7-juO" secondAttribute="centerX" type="default" id="3Nj-vr-Gcz"/>
-                                    <constraint firstItem="lSS-Ra-dmd" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="OM8-nS-14L"/>
+                                    <constraint firstAttribute="bottom" secondItem="MMZ-W4-DZg" secondAttribute="bottom" constant="20" type="default" id="DFe-SP-EcS"/>
+                                    <constraint firstItem="lSS-Ra-dmd" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="LUO-Dt-2wn"/>
+                                    <constraint firstItem="MMZ-W4-DZg" firstAttribute="leading" secondItem="lSS-Ra-dmd" secondAttribute="leading" type="default" id="MBq-iQ-n6W"/>
+                                    <constraint firstItem="MMZ-W4-DZg" firstAttribute="leading" secondItem="M2c-SQ-Axj" secondAttribute="leading" constant="10" id="Peq-HV-PyE"/>
+                                    <constraint firstItem="lSS-Ra-dmd" firstAttribute="centerX" secondItem="7bK-H7-juO" secondAttribute="centerX" type="default" id="RR4-ri-T5L"/>
+                                    <constraint firstItem="7bK-H7-juO" firstAttribute="top" secondItem="M2c-SQ-Axj" secondAttribute="top" type="default" id="iZ9-DC-llN"/>
                                     <constraint firstItem="7bK-H7-juO" firstAttribute="leading" secondItem="M2c-SQ-Axj" secondAttribute="leading" constant="18" type="user" id="vBd-61-XaR"/>
-                                    <constraint firstItem="7bK-H7-juO" firstAttribute="leading" secondItem="MMZ-W4-DZg" secondAttribute="leading" type="default" id="ynl-7y-FZ9"/>
-                                    <constraint firstItem="7bK-H7-juO" firstAttribute="top" secondItem="M2c-SQ-Axj" secondAttribute="top" type="default" id="zZL-Ww-sA4"/>
-                                    <constraint firstAttribute="bottom" secondItem="MMZ-W4-DZg" secondAttribute="bottom" constant="20" type="default" id="zkS-P9-TCt"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="foodCategoryChineseName" destination="MMZ-W4-DZg" id="hrH-3j-jmb"/>
@@ -1014,7 +1020,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="UOt-yE-DOB"/>
         <segue reference="o8t-vR-Y2V"/>
-        <segue reference="4a9-sC-whV"/>
     </inferredMetricsTieBreakers>
 </document>

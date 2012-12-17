@@ -139,7 +139,7 @@ NSOperationQueue* globalOperationQueue;
 - (NSArray *) arrayOfChineseCategories
 {
     //get from cache
-    NSArray * chineseCategories = [cache objectForKey:VARDataSourceCacheKeyEnglishCategories];
+    NSArray * chineseCategories = [cache objectForKey:VARDataSourceCacheKeyChineseCategories];
     
     if(!chineseCategories)
     {
@@ -160,7 +160,7 @@ NSOperationQueue* globalOperationQueue;
                       }];
         
         //Add the resulting array to the cache
-        [cache setObject:chineseCategories forKey:VARDataSourceCacheKeyEnglishCategories];
+        [cache setObject:chineseCategories forKey:VARDataSourceCacheKeyChineseCategories];
     }
     
     return chineseCategories;
