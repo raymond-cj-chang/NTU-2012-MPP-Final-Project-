@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "VARMenuDataSource.h"
 #import "AFNetworking.h"
+#import "VARMenuDataSource.h"
+
 
 @interface VARAddFoodViewController : UITableViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 

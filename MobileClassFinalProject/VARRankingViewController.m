@@ -25,8 +25,23 @@
 
 - (void)viewDidLoad	
 {
+    //NSLog(@"View dis load");
     [super viewDidLoad];
     self.arrayOfFoodDictionary = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsByRating];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //refresh
+    [self refresh];
+}
+
+-(void) refresh
+{
+    self.arrayOfFoodDictionary = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsByRating];
+    //reload
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,6 +107,9 @@
         //set data
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         detailViewController.food = [self.arrayOfFoodDictionary objectAtIndex:indexPath.row];
+        
+        //**test
+        //**
         
         //hide tab bar
         detailViewController.hidesBottomBarWhenPushed = YES;

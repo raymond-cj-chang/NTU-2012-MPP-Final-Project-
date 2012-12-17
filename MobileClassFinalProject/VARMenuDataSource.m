@@ -117,6 +117,12 @@ NSOperationQueue* globalOperationQueue;
 
 //refresh food list
 - (void) refresh{
+    //clean cache
+    //[cache removeAllObjects];
+    
+    NSLog(@"Refresh!");
+    
+    //refresh
     NSMutableSet * foodSet = [NSMutableSet set];
     FMResultSet * queryResults = [self.database executeQuery:@"SELECT name FROM food_items"];
     
@@ -129,6 +135,7 @@ NSOperationQueue* globalOperationQueue;
                ^NSComparisonResult(id obj1, id obj2) {
                    return [obj1 compare:obj2];
                }];
+    
 }
 
 - (NSArray *) arrayOfEnglishCategories
@@ -443,7 +450,7 @@ NSOperationQueue* globalOperationQueue;
     AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverURL]
                                                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                    
-                                                        //test
+                                                        //print
                                                         NSLog(@"Response for add food:%@",JSON);
                                                    
                                                         //food dictionary
@@ -495,7 +502,11 @@ NSOperationQueue* globalOperationQueue;
                                                    
                                                             //get current date time
                                                             [self getCurrentTimeFromGAEServer];
-                                                                                                   
+                                                   
+                                                            //refresh
+                                                            [[VARMenuDataSource sharedMenuDataSource] cleanCache];
+                                                            [[VARMenuDataSource sharedMenuDataSource] refresh];
+                                                   
                                                             //[self.activityIndicator stopAnimating];
                                                     } failure:nil];
     
@@ -669,6 +680,10 @@ NSOperationQueue* globalOperationQueue;
     [uploadImageOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
         NSLog(@"response for upload image POST: [%@]",response);
+        
+        //download food item from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
     }];
@@ -712,6 +727,10 @@ NSOperationQueue* globalOperationQueue;
     [addCommentOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
         NSLog(@"response for add comment POST: [%@]",response);
+        
+        //download food item from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
     }];
@@ -762,7 +781,7 @@ NSOperationQueue* globalOperationQueue;
                                                   //print
                                                   NSLog(@"Comment = %@",[foodCommentDecoder valueForKey:@"Comment"]);
                                                   
-                                                //**add comments in SQLite
+                                                //add comments in SQLite
                                                 NSInteger fid = [foodID intValue];
                                                 [[VARMenuDataSource sharedMenuDataSource]addCommentToFoodItem:fid withContents:[foodCommentDecoder valueForKey:@"Comment"] withDate:[foodCommentDecoder valueForKey:@"UploadTime"]];
                                               }
@@ -812,6 +831,10 @@ NSOperationQueue* globalOperationQueue;
     [addRatingOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
         NSLog(@"[Client]response for add rating : [%@]",response);
+        
+        //download food item from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
     }];

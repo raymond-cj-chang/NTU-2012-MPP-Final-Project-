@@ -14,4 +14,6 @@
 @interface VARRankingViewController : UITableViewController
 @property (strong, nonatomic) NSArray *arrayOfFoodDictionary;
 
+-(void) refresh;
+
 @end
