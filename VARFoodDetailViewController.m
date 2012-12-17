@@ -173,12 +173,17 @@
         dest.imageName = self.currentImage;
         //dest.ChineseName = self.foodChineseName.text;
     }
-    
-//    if ([segue.identifier isEqualToString:@"addPhoto"]){
+    if ([segue.identifier isEqualToString:@"addPhoto"]){
+        VARAddPhotoViewController *dest = (VARAddPhotoViewController *)[[segue destinationViewController] topViewController];
+        //send food dict
+        dest.food = self.food;
+    }
+    //    if ([segue.identifier isEqualToString:@"addPhoto"]){
 //        VARAddPhotoViewController *dest = (VARAddCommentViewController *)[[segue destinationViewController] topViewController];
 //    }
     if ([segue.identifier isEqualToString:@"showComment"]){
         VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
+        dest.arrayWithCommentAndTimestamp = self.food[VARsDataSourceDictKeyComment];
     }
 }
 
@@ -280,12 +285,14 @@
 }
 
 
-
 #pragma - new Vote
 
 - (void) updateNewVote{
 
     //TODO
+    //add food rating to server
+    [VARMenuDataSource uploadFoodRatingToGAEServer:_food[VARsDataSourceDictKeyFoodID]];
+    
     NSLog(@"updated successfully");
 }
 

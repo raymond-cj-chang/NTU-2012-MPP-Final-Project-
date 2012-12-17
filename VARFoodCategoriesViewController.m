@@ -26,10 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-background.jpg"]];
-//    [tempImageView setFrame:self.collectionView.frame];
-//    self.collectionView.backgroundView = tempImageView;
-	// Do any additional setup after loading the view.
+    //UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+    //[tempImageView setFrame:self.collectionView.frame];
+    //self.collectionView.backgroundView = tempImageView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,7 +62,8 @@
 
     NSInteger row = indexPath.row;
     //set cell data
-    //cell.foodCategoryChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row];
+    cell.foodCategoryChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row];
+    NSLog(@"ChineseName:%@",[[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row]);
     cell.foodCategoryEnglishName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories][row];
 
     

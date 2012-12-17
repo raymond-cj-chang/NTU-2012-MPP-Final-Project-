@@ -27,32 +27,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //add search bar
-//    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(120, 0.0, 100, 44.0)];
-//    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//    UIView *searchBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0.0, 220, 44.0)];
-//    searchBar.delegate = self;
-//    //title
-//    CGRect subtitleFrame = CGRectMake(10, 0, 100, 44);
-//    UILabel* titleLabel = [[UILabel alloc] initWithFrame:subtitleFrame];
-//    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    titleLabel.backgroundColor = [UIColor clearColor];
-//    titleLabel.font = [UIFont boldSystemFontOfSize:20];
-//    titleLabel.textColor = [UIColor whiteColor];
-//    titleLabel.textAlignment = UITextAlignmentCenter;
-//    titleLabel.text = @"Food Menu";
-//    titleLabel.adjustsFontSizeToFitWidth = YES;
-//    //add search bar in navigation Item
-//    [searchBarView addSubview:searchBar];
-//    [searchBarView addSubview:titleLabel];
-//    self.navigationItem.titleView = searchBarView;
-//    [self.navigationItem.titleView sizeToFit];
 }
 
 - (void)didReceiveMemoryWarning

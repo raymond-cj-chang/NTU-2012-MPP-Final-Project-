@@ -26,12 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    NSLog(@"comment:%@",self.arrayWithCommentAndTimestamp);
     
 }
 
@@ -50,19 +46,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"arrNum:%u",[self.commentArray count]);
-    return [self.commentArray count];
+    return [_arrayWithCommentAndTimestamp count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"CommentCell";
     VARCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    //cell.textLabel = [commentArray ];
-    //cell.comment = [self.commentArray objectAtIndex:indexPath.row];
-    cell.comment.text = @"comment";
+    NSInteger commentIndex = indexPath.row;
+    NSDictionary* foodCommentDict = [self.arrayWithCommentAndTimestamp objectAtIndex:commentIndex];
+    cell.comment.text = foodCommentDict[@"Comment_content"];
+    cell.time.text = foodCommentDict[@"Comment_timestamp"];
+    
     return cell;
 }
 

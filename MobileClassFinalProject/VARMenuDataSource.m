@@ -40,6 +40,9 @@ NSString * const VARsDataSourceDictKeyComment = @"Comment";
 NSString * const VARsDataSourceDictKeyCommentContent = @"Comment_content";
 NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 
+//global operation queue
+NSOperationQueue* globalOperationQueue;
+
 #pragma mark -
 #pragma mark Object Lifecycle
 
@@ -77,6 +80,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
             }
         }
         
+        NSLog(@"DB path = %@",targetPath);
         _database = [FMDatabase databaseWithPath:targetPath];
         if (![_database open])
         {
@@ -113,6 +117,12 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 
 //refresh food list
 - (void) refresh{
+    //clean cache
+    //[cache removeAllObjects];
+    
+    NSLog(@"Refresh!");
+    
+    //refresh
     NSMutableSet * foodSet = [NSMutableSet set];
     FMResultSet * queryResults = [self.database executeQuery:@"SELECT name FROM food_items"];
     
@@ -125,6 +135,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
                ^NSComparisonResult(id obj1, id obj2) {
                    return [obj1 compare:obj2];
                }];
+    
 }
 
 - (NSArray *) arrayOfEnglishCategories
@@ -203,7 +214,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     {
         //initalize
         foods =  [[NSMutableArray alloc] init];
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients , rating FROM food_items ORDER BY rating"];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients , rating FROM food_items ORDER BY rating DESC"];
         while([queryResults next])
         {
             NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
@@ -236,8 +247,8 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
             while([commentResults next])
             {
 				NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
-                [tempCommentDict setObject:[imageResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
-                [tempCommentDict setObject:[imageResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+                [tempCommentDict setObject:[commentResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
+                [tempCommentDict setObject:[commentResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
 				[tempCommentArray addObject: tempCommentDict];
             }
             
@@ -292,11 +303,12 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 			//add dictionary of comments
             FMResultSet * commentResults = [self.database executeQuery:@"SELECT * FROM comments WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
             NSMutableArray * tempCommentArray = [[NSMutableArray alloc]init];
+            
             while([commentResults next])
             {
 				NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
-                [tempCommentDict setObject:[imageResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
-                [tempCommentDict setObject:[imageResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+                [tempCommentDict setObject:[commentResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
+                [tempCommentDict setObject:[commentResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
 				[tempCommentArray addObject: tempCommentDict];
             }
             
@@ -315,13 +327,20 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
  Adds a comment to the specified food item.
  */
 
-- (void) addCommentToFoodItem:(NSInteger)foodID withContents:(NSString *)contents
+- (void) addCommentToFoodItem:(NSInteger)foodID withContents:(NSString *)contents withDate:(NSString*)dateTimeStr
 {
+    /*
     NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
     [DateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSString * currentDate = [DateFormatter stringFromDate:[NSDate date]];
+     */
+    
+    //split string
+    NSString* splitDateTimeStr = [[dateTimeStr componentsSeparatedByString:@"."] objectAtIndex:0];
+    
+    
     [self.database executeUpdate:@"INSERT INTO comments (comment, timestamp, food_id) values (?,?,?)",
-     contents, currentDate, [NSString stringWithFormat:@"%i", foodID]];
+     contents, splitDateTimeStr, [NSString stringWithFormat:@"%i", foodID]];
 }
 
 /**
@@ -334,11 +353,22 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
      imageName,[NSString stringWithFormat:@"%i", foodID]];
 }
 
+//update rating
+-(void) updateRatingToFoodItem:(NSString*)fidStr withRating:(NSString*)rating
+{
+    //update rating
+    NSString* sql =[NSString stringWithFormat: @"UPDATE food_items SET rating='%@' WHERE id = '%@'",rating,fidStr];
+    [self.database executeUpdate:sql];
+}
+
+
 //Adds a food item to the database table. The item must be added in dictionary form.
 //(ask Raymond if need further explanation)
 //This dictionary should only contain the basic information and images; nothing else will be added.
 - (void) addFoodItemToDB:(NSDictionary *) foodItem
 {
+    //NSLog(@"Add Food item in DB :%@",foodItem[VARsDataSourceDictKeyEnglishName]);
+    
     //grab attributes from NSDictionary
     NSString * name = foodItem[VARsDataSourceDictKeyEnglishName];
     NSString * chineseName = foodItem[VARsDataSourceDictKeyChineseName];
@@ -348,7 +378,23 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     NSString * ingredients = foodItem[VARsDataSourceDictKeyFoodIngredient];
     NSString * food_id = foodItem[VARsDataSourceDictKeyFoodID];
     
-    [self.database executeUpdate:@"INSERT INTO food_items (id, name, chineseName, english_category, chinese_category, introduction, ingredients VALUES (?,?,?,?,?,?,?)", food_id, name, chineseName, englishCategory, chineseCategory, introduction, ingredients];
+    //check
+    if(food_id == nil)
+    {
+        return;
+    }
+    if(name == nil) name = @"";
+    if(chineseName == nil) chineseName = @"";
+    if(englishCategory == nil) englishCategory = @"";
+    if(chineseCategory == nil) chineseCategory = @"";
+    if(introduction == nil) introduction = @"";
+    if(ingredients == nil) ingredients = @"";
+    
+    //query for insert food item
+    [self.database executeUpdate:@"INSERT INTO food_items (id, name, chinese_name, english_category, chinese_category, introduction, ingredients,rating) VALUES (?,?,?,?,?,?,?,?)", food_id, name, chineseName, englishCategory, chineseCategory, introduction, ingredients,@"0"];
+    
+    //add image
+    /*
     NSArray * images = foodItem[VARsDataSourceDictKeyFoodImage];
     
     for(NSString * imageName in images)
@@ -356,7 +402,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
         [self.database executeUpdate:@"INSERT INTO images (image_name, food_id) values (?,?)",
          imageName, food_id];
     }
-    
+    */
 }
 
 
@@ -368,83 +414,222 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 + (void)downloadFoodDataFromGAEServer
 {
     //download new food item from server
-    //server path
-    NSURL* serverURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com"];
     
-    //Request
-    [[AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverURL]
-                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                         //convert to NSDictionary
-                                                         NSDictionary *downloadFoodDictionary = (NSDictionary*)JSON;
-                                                         
-                                                         //JSON decoder
-                                                         JSONDecoder* JSONDecoderForFoodDictionary = (JSONDecoder*)JSON;
-                                                         JSONDecoder* foodItemDecoder;
-                                                         //loop for all food item
-                                                         for (NSString *foodItemName in downloadFoodDictionary)
-                                                         {
-                                                             //JSON food item
-                                                             foodItemDecoder = [JSONDecoderForFoodDictionary valueForKey:foodItemName];
-                                                             //print
-                                                             NSLog(@"fid = %@",[foodItemDecoder valueForKey:@"Fid"]);
-                                                             NSLog(@"English name = %@",[foodItemDecoder valueForKey:@"EnglishName"]);
-                                                             NSLog(@"Chinese name = %@",[foodItemDecoder valueForKey:@"ChineseName"]);
-                                                             
-                                                         }
-                                                         //[self.activityIndicator stopAnimating];
-                                                     } failure:nil] start];
+    //sqlite food max number integer
+    NSInteger maxFoodNumInSQLite = 100;
     
+    //get last update time from file
+    NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
     
-    //**** download image and comment for every food item
-    //download food comments from Server
-    //NSString* fidStr = @"2";
-    //comment Array
-    //commentArray = [VARMenuDataSource downloadCommentFromGAEServer:fidStr];
+    //post to server string with date time
+    NSString* serverStr = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/?year=%@&month=%@&day=%@&hour=%@&minute=%@&second=%@&msecond=%@",dateTimeDictionary[@"year"],dateTimeDictionary[@"month"],dateTimeDictionary[@"day"],dateTimeDictionary[@"hour"],dateTimeDictionary[@"minute"],dateTimeDictionary[@"second"],dateTimeDictionary[@"msecond"]];
     
+    //server URL
+    NSURL* serverURL = [NSURL URLWithString:serverStr];
     
+    //download update date for food item in sqlite
+    NSInteger fid = 0;
+    NSString* fidStr;
+    for(fid = 0;fid<maxFoodNumInSQLite;fid++)
+    {
+        //fid str
+        fidStr = [NSString stringWithFormat:@"%d",fid];
+        
+        NSLog(@"Download for food fid:%@",fidStr);
+        //download comment for this food item
+        [VARMenuDataSource downloadCommentFromGAEServer:fidStr];
+        
+        //download image
+        [self downloadImageFromGAEServer:fidStr];
+        
+        //download food rating
+        [self downloadFoodRatingFromGAEServer:fidStr];
+    }
+    
+    //Request for new food item
+    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverURL]
+                                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                   
+                                                        //print
+                                                        NSLog(@"Response for add food:%@",JSON);
+                                                   
+                                                        //food dictionary
+                                                        NSDictionary *downloadFoodDictionary = (NSDictionary*)JSON;
+                                                                                                   
+                                                        //JSON decoder
+                                                        JSONDecoder* JSONDecoderForFoodDictionary = (JSONDecoder*)JSON;
+                                                        JSONDecoder* foodItemDecoder;
+                                                        //loop for all food item
+                                                        for (NSString *foodItemName in downloadFoodDictionary)
+                                                        {
+                                                                //JSON food item
+                                                                foodItemDecoder = [JSONDecoderForFoodDictionary valueForKey:foodItemName];
+                                                                                                       
+                                                                //print
+                                                                /*
+                                                                NSLog(@"fid = %@",[foodItemDecoder valueForKey:@"Fid"]);
+                                                                NSLog(@"English name = %@",[foodItemDecoder valueForKey:@"EnglishName"]);
+                                                                NSLog(@"Chinese name = %@",[foodItemDecoder valueForKey:@"ChineseName"]);
+                                                                */
+                                                            
+                                                                //food item data
+                                                                //NSString* fidStr = [foodItemDecoder valueForKey:@"Fid"];
+                                                                
+                                                                NSMutableDictionary* foodItem = [[NSMutableDictionary alloc] init];
+                                                                foodItem[VARsDataSourceDictKeyFoodID]= [foodItemDecoder valueForKey:@"Fid"];
+                                                                foodItem[VARsDataSourceDictKeyEnglishName] = [foodItemDecoder valueForKey:@"EnglishName"];
+                                                                foodItem[VARsDataSourceDictKeyChineseName] = [foodItemDecoder valueForKey:@"ChineseName"];
+                                                                foodItem[VARsDataSourceDictKeyEnglishCategories] = [foodItemDecoder valueForKey:@"EnglishCategory"];;
+                                                                foodItem[VARsDataSourceDictKeyChineseCategories] = [foodItemDecoder valueForKey:@"ChineseCategory"];
+                                                                foodItem[VARsDataSourceDictKeyFoodIntroduction] = [foodItemDecoder valueForKey:@"Introduction"];
+                                                                foodItem[VARsDataSourceDictKeyFoodIngredient] = [foodItemDecoder valueForKey:@"Ingredients"];
+                                                            
+                                                        
+                                                                //add food item in SQLite
+                                                                [[VARMenuDataSource sharedMenuDataSource] addFoodItemToDB:foodItem];
+                                                            
+                                                                //download comment for this food item
+                                                                [VARMenuDataSource downloadCommentFromGAEServer:foodItem[VARsDataSourceDictKeyFoodID]];
+                                                                                                       
+                                                                //download image
+                                                                [self downloadImageFromGAEServer:foodItem[VARsDataSourceDictKeyFoodID]];
+                                                                                                       
+                                                                //download food rating
+                                                                [self downloadFoodRatingFromGAEServer:foodItem[VARsDataSourceDictKeyFoodID]];
+                                                            }
+                                                                                                   
+                                                                                                   
+                                                   
+                                                            //get current date time
+                                                            [self getCurrentTimeFromGAEServer];
+                                                   
+                                                            //refresh
+                                                            [[VARMenuDataSource sharedMenuDataSource] cleanCache];
+                                                            [[VARMenuDataSource sharedMenuDataSource] refresh];
+                                                   
+                                                            //[self.activityIndicator stopAnimating];
+                                                    } failure:nil];
+    
+    //add in global queue
+    [globalOperationQueue addOperation:requestOperation];
+    
+    //print information
+    NSLog(@"[Client]Download food data finish.");
+}
+
++ (void) downloadImageFromGAEServer:(NSString*)fidStr
+{
     //download food image from server
-    // Get an image from the URL below
-	UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8081/images/image1_1.jpg"]]];
     
     //doc path
 	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
-	// If you go to the folder below, you will find those pictures
-	NSLog(@"Doc Path = %@",docDir);
     
-    //save to png
-	//NSLog(@"saving png");
-	//NSString *pngFilePath = [NSString stringWithFormat:@"%@/test.png",docDir];
-	//NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(image)];
-	//[data1 writeToFile:pngFilePath atomically:YES];
+    //download image table for this food fid
     
-    //save to jepg
-	NSLog(@"saving jpeg");
-	NSString *jpegFilePath = [NSString stringWithFormat:@"%@/test.jpeg",docDir];
-	NSData *imageJPEGData = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
-	[imageJPEGData writeToFile:jpegFilePath atomically:YES];
+    //image name array
+    NSMutableArray* imageNameArray = [[NSMutableArray alloc] init];
     
-    //done
-	NSLog(@"saving image done");
+    //server image table path
+    //NSString *serverDownloadImageTablePath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeImageTable?fid=%@",fidStr];
     
+    NSString *serverDownloadImageTablePath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeImageTable?fid=%@",fidStr];
+    //
+    //add last update time from file
+    NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
+    
+    serverDownloadImageTablePath = [serverDownloadImageTablePath  stringByAppendingString:[NSString stringWithFormat:@"&year=%@&month=%@&day=%@&hour=%@&minute=%@&second=%@&msecond=%@",dateTimeDictionary[@"year"],dateTimeDictionary[@"month"],dateTimeDictionary[@"day"],dateTimeDictionary[@"hour"],dateTimeDictionary[@"minute"],dateTimeDictionary[@"second"],dateTimeDictionary[@"msecond"]]];
+    //
+    
+    NSURL* serverDownloadImageTableURL = [NSURL URLWithString:serverDownloadImageTablePath];
+    
+    //Request for food image table
+    AFJSONRequestOperation *operations = [AFJSONRequestOperation
+                                          JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverDownloadImageTableURL]
+                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                              
+                                              //convert to NSDictionary
+                                              NSDictionary *downloadFoodImageTableDictionary = (NSDictionary*)JSON;
+                                              //JSON decoder
+                                              JSONDecoder* JSONDecoderForFoodImageNameDictionary = (JSONDecoder*)JSON;
+                                              JSONDecoder* foodImageTableDecoder;
+                                              
+                                              //loop for all food item
+                                              for (NSString *foodImageName in downloadFoodImageTableDictionary)
+                                              {
+                                                  //JSON food item
+                                                  foodImageTableDecoder = [JSONDecoderForFoodImageNameDictionary valueForKey:foodImageName];
+                                                  
+                                                  //print
+                                                  NSLog(@"Image Name = %@",[foodImageTableDecoder valueForKey:@"imageName"]);
+                                                  
+                                                  //image name
+                                                  NSString* imageName = [foodImageTableDecoder valueForKey:@"imageName"];
+                                                  
+                                                  //server URL
+                                                  //NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/images";
+                                                  NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/images";
+                                                  
+                                                  //download image from server
+                                                  if(imageName!=nil)
+                                                  {
+                                                      //server url
+                                                      NSString *imageURL = [NSString stringWithFormat:@"%@/%@",serverImageURL,imageName];
+                                                      // Get an image from the URL below
+                                                      UIImage* image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
+                                                      
+                                                      //save to jepg
+                                                      NSLog(@"[Client] saving image %@ From %@",imageName,imageURL);
+                                                      NSString *jpegFilePath = [NSString stringWithFormat:@"%@/%@",docDir,imageName];
+                                                      NSData *imageJPEGData = [NSData dataWithData:UIImageJPEGRepresentation(image, 1.0f)];//1.0f = 100% quality
+                                                      [imageJPEGData writeToFile:jpegFilePath atomically:YES];
+                                                      
+                                                      //add image in SQLite DB
+                                                      NSInteger fid = [fidStr intValue];
+                                                      [[VARMenuDataSource sharedMenuDataSource]addImageToFoodItem:fid withImageName:imageName];
+                                                  }
+                                                  
+                                                  //add image name in array
+                                                  if(imageName!=nil) [imageNameArray addObject:imageName];
+                                                  
+                                              }
+                                              
+                                              //[self.activityIndicator stopAnimating];
+                                          }
+                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError* error, id JSON) {
+                                              NSLog(@"Error : %@",error);
+                                          }];
+    
+    //add in global queue
+    [globalOperationQueue addOperation:operations];
 }
 
-
-
 //upload image to server
-+ (void)uploadFoodImageToGAEServer
++ (void)uploadFoodImageToGAEServer:(NSString*)fidStr withImageName:(NSString*)uploadImageName withImage:(UIImage*) image
 {
     //upload image
     //doc path
 	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     //server URL
+    //NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com/uploadImage"];
     NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com/uploadImage"];
     
     //prepare data
-    NSInteger uploadImageFid = 101;
-    NSString *imageName = @"uploadTest.jpeg";
+    NSString* uploadImageFidStr = fidStr;
+    NSString *imageName = uploadImageName;
     NSString *uploadJPEGFilePath = [NSString stringWithFormat:@"%@/%@",docDir,imageName];
-    UIImage *uploadImage = [UIImage imageWithContentsOfFile:uploadJPEGFilePath];
+    UIImage *uploadImage;
+    
+    //from file name
+    if(uploadImageName!=nil)
+    {
+        uploadImage = [UIImage imageWithContentsOfFile:uploadJPEGFilePath];
+    }
+    //from image
+    else
+    {
+        uploadImage = image;
+    }
     
     // create request
     NSMutableURLRequest *uploadImageRequest = [[NSMutableURLRequest alloc] init];
@@ -472,7 +657,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     //add fid into body
     [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary]dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[@"Content-Disposition: form-data; name=\"fid\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"%d",uploadImageFid] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"%@",uploadImageFidStr] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithFormat:@"\r\n"]dataUsingEncoding:NSUTF8StringEncoding]];
     
     //add image name into body
@@ -495,6 +680,10 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     [uploadImageOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
         NSLog(@"response for upload image POST: [%@]",response);
+        
+        //download food item from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
     }];
@@ -507,16 +696,16 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 //add comment to server
 + (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment
 {
-    //add comment
-    
     //check
     if(foodComment==nil) foodComment = @"comment.";
     
     //food id str
     NSString* foodIDStr = foodID;
+    //foodIDStr = @"101";
     
     //clent url
     NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
+    //NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
     NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
     
     //client
@@ -538,6 +727,10 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     [addCommentOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *response = [operation responseString];
         NSLog(@"response for add comment POST: [%@]",response);
+        
+        //download food item from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
     }];
@@ -548,63 +741,259 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 }
 
 //download comment
-+ (NSMutableArray*)downloadCommentFromGAEServer:(NSString*)foodID
++ (void)downloadCommentFromGAEServer:(NSString*)foodID
 {
-    //save comments
-    NSMutableArray* commentsArray = [[NSMutableArray alloc] init];
-    
     //see comments
-    NSLog(@"Download Comment....");
+    //NSLog(@"Download Comment....");
     
     //server path
+    //NSString *serverDownloadCommentPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeComment?fid=%@",foodID];
+    //for test
     NSString *serverDownloadCommentPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeComment?fid=%@",foodID];
     
+    //
+    //add last update time from file
+    NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
+    
+    serverDownloadCommentPath = [serverDownloadCommentPath  stringByAppendingString:[NSString stringWithFormat:@"&year=%@&month=%@&day=%@&hour=%@&minute=%@&second=%@&msecond=%@",dateTimeDictionary[@"year"],dateTimeDictionary[@"month"],dateTimeDictionary[@"day"],dateTimeDictionary[@"hour"],dateTimeDictionary[@"minute"],dateTimeDictionary[@"second"],dateTimeDictionary[@"msecond"]]];
+    //
+    
+    //server URL
     NSURL* serverDownloadCommentURL = [NSURL URLWithString:serverDownloadCommentPath];
-    //[serverDownloadCommentURL URLByAppendingPathComponent:@"?fid=2"]
-    //[serverDownloadCommentURL parameterString:[NSString stringWithFormat:@"fid=2"]];
-    //NSLog(@"test : %@",serverDownloadCommentURL);
-    
-    //************** Need Syn ,wait success then return
-    
     
     //Request for food comment
     AFJSONRequestOperation *operations = [AFJSONRequestOperation
-                JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverDownloadCommentURL]
-                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                    
-                                //convert to NSDictionary
-                                NSDictionary *downloadFoodCommentDictionary = (NSDictionary*)JSON;
-                                //JSON decoder
-                                JSONDecoder* JSONDecoderForFoodCommentDictionary = (JSONDecoder*)JSON;
-                                JSONDecoder* foodCommentDecoder;
-                    
-                                //loop for all food item
-                                for (NSString *foodCommentName in downloadFoodCommentDictionary)
-                                {
-                                    //JSON food item
-                                    foodCommentDecoder = [JSONDecoderForFoodCommentDictionary valueForKey:foodCommentName];
-                                    
-                                    //print
-                                    NSLog(@"Comment = %@",[foodCommentDecoder valueForKey:@"Comment"]);
-                                    
-                                    //add comment in array
-                                    [commentsArray addObject:[foodCommentDecoder valueForKey:@"Comment"]];
-                                }
-                            
-                                //[self.activityIndicator stopAnimating];
-                }
-                failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError* error, id JSON) {
-                    NSLog(@"Error : %@",error);
-                }];
+                                          JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverDownloadCommentURL]
+                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                              
+                                              //convert to NSDictionary
+                                              NSDictionary *downloadFoodCommentDictionary = (NSDictionary*)JSON;
+                                              //JSON decoder
+                                              JSONDecoder* JSONDecoderForFoodCommentDictionary = (JSONDecoder*)JSON;
+                                              JSONDecoder* foodCommentDecoder;
+                                              
+                                              //loop for all food item
+                                              for (NSString *foodCommentName in downloadFoodCommentDictionary)
+                                              {
+                                                  //JSON food item
+                                                  foodCommentDecoder = [JSONDecoderForFoodCommentDictionary valueForKey:foodCommentName];
+                                                  
+                                                  //print
+                                                  NSLog(@"Comment = %@",[foodCommentDecoder valueForKey:@"Comment"]);
+                                                  
+                                                //add comments in SQLite
+                                                NSInteger fid = [foodID intValue];
+                                                [[VARMenuDataSource sharedMenuDataSource]addCommentToFoodItem:fid withContents:[foodCommentDecoder valueForKey:@"Comment"] withDate:[foodCommentDecoder valueForKey:@"UploadTime"]];
+                                              }
+                                              
+                                              //[self.activityIndicator stopAnimating];
+                                          }
+                                          failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError* error, id JSON) {
+                                              NSLog(@"Error : %@",error);
+                                          }];
     
-    //start and wait
-    [operations start];
-    [operations waitUntilFinished];
-    
-    //return
-    return commentsArray;
+    //add in global queue
+    [globalOperationQueue addOperation:operations];
     
 }
 
+//add food rating to GAE server
++ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr
+{
+    //check
+    if(fidStr == nil) return;
+    
+    //food id str
+    NSString* foodIDStr = fidStr;
+    
+    //clent url
+    NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
+    //NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
+    
+    NSString *serverAddRatingPath = @"http://varfinalprojectserver.appspot.com/addRating";
+    
+    //client
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:clientURL];
+    
+    //comment parms
+    NSDictionary *ratingParams = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  foodIDStr, @"fid",
+                                  nil];
+    
+    //comment request
+    NSMutableURLRequest *addRatingRequest = [httpClient requestWithMethod:@"POST" path:serverAddRatingPath parameters:ratingParams];
+    
+    //connect to server
+    //Add your request object to an AFHTTPRequestOperation
+    AFHTTPRequestOperation *addRatingOperation = [[AFHTTPRequestOperation alloc] initWithRequest:addRatingRequest];
+    
+    //success and failure
+    [addRatingOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *response = [operation responseString];
+        NSLog(@"[Client]response for add rating : [%@]",response);
+        
+        //download food item from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", [operation error]);
+    }];
+    
+    //call start on your request operation
+    [addRatingOperation start];
+}
+
+//download food rating
++ (void) downloadFoodRatingFromGAEServer:(NSString*)fidStr
+{
+    //server URL
+    NSString* serverDownloadFoodPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeRating?fid=%@",fidStr];
+    
+    //
+    //add last update time from file
+    NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
+    
+    serverDownloadFoodPath = [serverDownloadFoodPath  stringByAppendingString:[NSString stringWithFormat:@"&year=%@&month=%@&day=%@&hour=%@&minute=%@&second=%@&msecond=%@",dateTimeDictionary[@"year"],dateTimeDictionary[@"month"],dateTimeDictionary[@"day"],dateTimeDictionary[@"hour"],dateTimeDictionary[@"minute"],dateTimeDictionary[@"second"],dateTimeDictionary[@"msecond"]]];
+    //
+    
+    NSURL* serverDownloadFoodURL = [NSURL URLWithString:serverDownloadFoodPath];
+    
+    //Request
+    AFJSONRequestOperation* operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverDownloadFoodURL]
+                                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            
+                                                            //JSON decoder
+                                                            JSONDecoder* JSONDecoderForFoodRating = (JSONDecoder*)JSON;
+                                                                                            
+                                                            //food rating
+                                                            NSString* foodRating = [JSONDecoderForFoodRating valueForKey:@"rating"];
+                                                        
+                                                            //check null
+                                                            if(foodRating == nil)
+                                                            {
+                                                                    //no rating update
+                                                            }
+                                                            else
+                                                            {
+                                                                    //**add rating in SQLite
+                                                                    [[VARMenuDataSource sharedMenuDataSource] updateRatingToFoodItem:fidStr withRating:foodRating];
+                                                            }
+                                                            //print
+                                                            //NSLog(@"Food %@ Rating : %@",fidStr,foodRating);
+                                                                                            
+                                                        } failure:nil];
+    
+    //add in global queue
+    [globalOperationQueue addOperation:operation];
+    
+}
+
+//get current from GAE server
++ (void) getCurrentTimeFromGAEServer
+{
+    //server URL
+    NSString* serverSeeDateTimePath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeDateTime"];
+    
+    NSURL* serverSeeDateTimeURL = [NSURL URLWithString:serverSeeDateTimePath];
+    
+    //*****can use
+    //wait all operation
+    //[globalOperationQueue waitUntilAllOperationsAreFinished];
+    
+    //get current time from GAE server
+    
+    //Request
+    AFJSONRequestOperation* operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:[NSURLRequest requestWithURL:serverSeeDateTimeURL]
+                                                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                            //JSON decoder
+                                                            JSONDecoder* JSONDecoderForDateTime = (JSONDecoder*)JSON;
+                                                                                            
+                                                            //food rating
+                                                            NSString* dateTime = [JSONDecoderForDateTime valueForKey:@"dateTime"];
+                                                                                            
+                                                            //check null
+                                                            if(dateTime == NULL) dateTime=@"0";
+                                                                                            
+                                                            //write to file
+                                                            NSData *lastUpdateDataTimeData = [dateTime dataUsingEncoding:NSUTF8StringEncoding];
+                                                            NSArray *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                                                            NSString *documentsDirectory = [docsPath objectAtIndex:0];
+                                                            NSString *saveFileForDateTime = [documentsDirectory stringByAppendingPathComponent:@"LastUpdateDateTime"];
+                                                            [lastUpdateDataTimeData writeToFile:saveFileForDateTime atomically:YES];
+                                                            //write to file finish
+                                                            NSLog(@"Save update time to file.");
+                                                    }
+                                                    failure:^(NSURLRequest *request, NSHTTPURLResponse *response,NSError* error, id JSON) {
+                                                                NSLog(@"Error : %@",error);
+                                                    }];
+    
+    //add in global queue
+    [globalOperationQueue addOperation:operation];
+    
+}
+
+//get date time
++ (NSDictionary*) getLastTimeUpdateTimeDateFromFile
+{
+    //NSMutableDictionary
+    NSMutableDictionary* dateTimeDictionary = [[NSMutableDictionary alloc] init];
+    
+    //read from file
+    NSArray *docsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [docsPath objectAtIndex:0];
+    NSString *fileForLastUpdateDateTime = [documentsDirectory stringByAppendingPathComponent:@"LastUpdateDateTime"];
+    
+    //file content
+    NSString* content = [NSString stringWithContentsOfFile:fileForLastUpdateDateTime
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    //print content
+    //NSLog(@"File content:%@",content);
+    
+    //if file not exist
+    if(content == nil)
+    {
+        //default value
+        [dateTimeDictionary setValue:@"2011" forKey:@"year"];
+        [dateTimeDictionary setValue:@"1" forKey:@"month"];
+        [dateTimeDictionary setValue:@"1" forKey:@"day"];
+        [dateTimeDictionary setValue:@"0" forKey:@"hour"];
+        [dateTimeDictionary setValue:@"0" forKey:@"minute"];
+        [dateTimeDictionary setValue:@"0" forKey:@"second"];
+        [dateTimeDictionary setValue:@"0" forKey:@"msecond"];
+        
+        //return
+        return dateTimeDictionary;
+    }
+    
+    NSArray *dateTimeStrComponentsTemp = [content componentsSeparatedByString:@"-"];
+    
+    //parse date time str
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp objectAtIndex:0] forKey:@"year"];
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp objectAtIndex:1] forKey:@"month"];
+    
+    NSString* tempStr = [dateTimeStrComponentsTemp objectAtIndex:2];
+    
+    NSArray *dateTimeStrComponentsTemp2 = [tempStr componentsSeparatedByString:@" "];
+    
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp2 objectAtIndex:0] forKey:@"day"];
+    
+    tempStr = [dateTimeStrComponentsTemp2 objectAtIndex:1];
+    
+    NSArray *dateTimeStrComponentsTemp3 = [tempStr componentsSeparatedByString:@":"];
+    
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp3 objectAtIndex:0] forKey:@"hour"];
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp3 objectAtIndex:1] forKey:@"minute"];
+    
+    tempStr = [dateTimeStrComponentsTemp3 objectAtIndex:2];
+    
+    NSArray *dateTimeStrComponentsTemp4 = [tempStr componentsSeparatedByString:@"."];
+    
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp4 objectAtIndex:0] forKey:@"second"];
+    [dateTimeDictionary setValue:[dateTimeStrComponentsTemp4 objectAtIndex:1] forKey:@"msecond"];
+    
+    //NSLog(@"Dict : %@",dateTimeDictionary);
+    return dateTimeDictionary;
+}
 
 @end

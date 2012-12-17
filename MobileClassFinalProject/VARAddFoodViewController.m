@@ -159,6 +159,7 @@
     
     //server path
     NSString* uploadServerPath = @"http://varfinalprojectserver.appspot.com/addFoodInDB";
+    //NSString* uploadServerPath = @"http://localhost:8081/addFoodInDB";
     
     //server url
     NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
@@ -169,11 +170,22 @@
     //upload data
     NSString *foodFid = @"101";
     NSString *foodEnglishName = self.EnglishName.text;
-    NSString *foodChineseName = @"測試";
+    NSString *foodChineseName = self.ChineseName.text;
+    NSString *foodIntroduction = self.introduction.text;
+    NSString *foodIngredient = self.ingredientLabel.text;
+    NSString *foodEnglishCategory = self.currentCategory;
+    NSString *foodChineseCategory = @"中文種類名";
+    NSString *foodComment = self.comment.text;
+    UIImage *foodImage = self.imageView.image;
+    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             foodFid, @"fid",
                             foodEnglishName, @"EnglishName",
                             foodChineseName,@"ChineseName",
+                            foodIntroduction,@"Introduction",
+                            foodIngredient,@"Ingredients",
+                            foodEnglishCategory,@"EnglishCategory",
+                            foodChineseCategory,@"ChineseCategory",
                             nil];
     
     //request to server
@@ -192,6 +204,16 @@
         NSString *response = [operation responseString];
         NSLog(@"response for POST: [%@]",response);
         
+        //add comment
+        NSString* fidStr = response;
+        [VARMenuDataSource uploadCommentToGAEServer:fidStr withComment:foodComment];
+        
+        //*****add image
+        [VARMenuDataSource uploadFoodImageToGAEServer:fidStr withImageName:@"test.jpg" withImage:foodImage];
+        
+        //download from server
+        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"error: %@", [operation error]);
@@ -199,6 +221,7 @@
     
     //call start on your request operation
     [operation start];
+    
     
     //progress view setting
     self.progressView.hidden = NO;

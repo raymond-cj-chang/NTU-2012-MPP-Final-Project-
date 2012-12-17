@@ -25,13 +25,23 @@
 
 - (void)viewDidLoad	
 {
+    //NSLog(@"View dis load");
     [super viewDidLoad];
+    self.arrayOfFoodDictionary = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsByRating];
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //refresh
+    [self refresh];
+}
+
+-(void) refresh
+{
+    self.arrayOfFoodDictionary = [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsByRating];
+    //reload
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,62 +54,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.arrayOfFoodDictionary count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"VARRankingCell";
+    static NSString *CellIdentifier = @"Cell";
+    NSLog(@"row:%u",indexPath.row);
     VARRankingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    NSLog(@"here");
+
     // Configure the cell...
     //[cell.crownImage initWithImage:[UIImage imageNamed:@"Crown-icon.png"]];
+    cell.rankingNumber.text = @"test";
+    NSDictionary *dictionary = [self.arrayOfFoodDictionary objectAtIndex:indexPath.row];
+    cell.EnglishName.text = dictionary[VARsDataSourceDictKeyEnglishName];
+    cell.ChineseName.text = dictionary[VARsDataSourceDictKeyChineseName];
+    NSString* imageName = [[NSString alloc] initWithFormat:@"image%@_1.jpg",dictionary[VARsDataSourceDictKeyFoodID]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    imageView.frame = CGRectMake(70, 10, 76, 57);
+    [cell addSubview:imageView];
+    cell.rankingNumber.text = dictionary[VARsDataSourceDictKeyRating];
+    //cell.rankingNumber.text = [NSString stringWithFormat:@"%u",indexPath.row];
     return cell;
+
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -112,6 +96,24 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    
+    if([segue.identifier isEqualToString:@"showFoodDetailView"]){
+        VARFoodDetailViewController *detailViewController = segue.destinationViewController;
+        //set data
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        detailViewController.food = [self.arrayOfFoodDictionary objectAtIndex:indexPath.row];
+        
+        //**test
+        //**
+        
+        //hide tab bar
+        detailViewController.hidesBottomBarWhenPushed = YES;
+    }
 }
 
 @end
