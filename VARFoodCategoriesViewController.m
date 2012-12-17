@@ -26,6 +26,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    englishToChineseCategory = [[NSMutableDictionary alloc]init];
+    [englishToChineseCategory setObject:@"甜點" forKey:@"dessert"];
+    [englishToChineseCategory setObject:@"飲料" forKey:@"drinks"];
+    [englishToChineseCategory setObject:@"冰" forKey:@"shaved ice"];
+    [englishToChineseCategory setObject:@"餃" forKey:@"dumpling"];
+    [englishToChineseCategory setObject:@"湯" forKey:@"soup"];
+    [englishToChineseCategory setObject:@"其他" forKey:@"other"];
+    [englishToChineseCategory setObject:@"小吃" forKey:@"snack"];
+    [englishToChineseCategory setObject:@"飯" forKey:@"rice"];
+    [englishToChineseCategory setObject:@"麵" forKey:@"noodle"];
     //UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
     //[tempImageView setFrame:self.collectionView.frame];
     //self.collectionView.backgroundView = tempImageView;
@@ -62,8 +72,9 @@
 
     NSInteger row = indexPath.row;
     //set cell data
-    cell.foodCategoryChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row];
-    NSLog(@"ChineseName:%@",[[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row]);
+    cell.foodCategoryChineseName.text = englishToChineseCategory[[[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories][row]];
+    NSLog(@"%@", englishToChineseCategory);
+    NSLog(@"EnglishName:%@",[[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row]);
     cell.foodCategoryEnglishName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories][row];
 
     

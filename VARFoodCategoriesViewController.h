@@ -17,3 +17,5 @@
 - (IBAction)addingFood:(id)sender;
 
 @end
+
+NSMutableDictionary * englishToChineseCategory;
