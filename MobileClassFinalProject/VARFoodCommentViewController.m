@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"comment:%@",self.dictionaryWithCommentAndTimestamp);
+    NSLog(@"comment:%@",self.arrayWithCommentAndTimestamp);
     
 }
 
@@ -46,15 +46,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [_arrayWithCommentAndTimestamp count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"CommentCell";
     VARCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
     // Configure the cell...
-    //cell.textLabel = [commentArray ];
+    NSInteger commentIndex = indexPath.row;
+    NSDictionary* foodCommentDict = [self.arrayWithCommentAndTimestamp objectAtIndex:commentIndex];
+    cell.comment.text = foodCommentDict[@"Comment_content"];
+    cell.time.text = foodCommentDict[@"Comment_timestamp"];
+    
     return cell;
 }
 

@@ -158,7 +158,8 @@
     //upload food item on server
     
     //server path
-    NSString* uploadServerPath = @"http://varfinalprojectserver.appspot.com/addFoodInDB";
+    //NSString* uploadServerPath = @"http://varfinalprojectserver.appspot.com/addFoodInDB";
+    NSString* uploadServerPath = @"http://localhost:8081/addFoodInDB";
     
     //server url
     NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
@@ -169,11 +170,20 @@
     //upload data
     NSString *foodFid = @"101";
     NSString *foodEnglishName = self.EnglishName.text;
-    NSString *foodChineseName = @"測試";
+    NSString *foodChineseName = self.ChineseName.text;
+    NSString *foodIntroduction = self.introduction.text;
+    NSString *foodIngredient = self.ingredientLabel.text;
+    NSString *foodEnglishCategory = self.currentCategory;
+    NSString *foodChineseCategory = @"中文種類名";
+    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             foodFid, @"fid",
                             foodEnglishName, @"EnglishName",
                             foodChineseName,@"ChineseName",
+                            foodIntroduction,@"Introduction",
+                            foodIngredient,@"Ingredients",
+                            foodEnglishCategory,@"EnglishCategory",
+                            foodChineseCategory,@"ChineseCategory",
                             nil];
     
     //request to server

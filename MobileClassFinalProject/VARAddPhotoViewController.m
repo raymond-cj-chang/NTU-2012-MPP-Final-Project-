@@ -38,7 +38,8 @@
 }
 
 - (IBAction)sendButton:(id)sender {
-    
+    //upload image to server
+    if(self.imageView.image!=nil) [VARMenuDataSource uploadFoodImageToGAEServer:_food[VARsDataSourceDictKeyFoodID] withImageName:nil withImage:self.imageView.image];
 }
 
 - (IBAction)cancelButton:(id)sender {

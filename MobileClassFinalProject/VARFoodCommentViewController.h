@@ -13,5 +13,5 @@
 @interface VARFoodCommentViewController : UITableViewController
 
 - (IBAction)done:(id)sender;
-@property(strong, nonatomic) NSDictionary *dictionaryWithCommentAndTimestamp;
+@property(strong, nonatomic) NSMutableArray *arrayWithCommentAndTimestamp;
 @end
