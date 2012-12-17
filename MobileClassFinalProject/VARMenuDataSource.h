@@ -46,10 +46,12 @@ extern NSOperationQueue* globalOperationQueue;
 - (NSArray *) arrayOfEnglishCategories;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
 - (NSArray *) arrayOfFoodsByRating;
+- (NSArray *) arrayOfFoodsByAlphabeticalOrder;
 - (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents withDate:(NSString*)DateTimeStr;
 - (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName;
 - (void) addFoodItemToDB:(NSDictionary *) foodItem;
 - (void) updateRatingToFoodItem:(NSString*)fidStr withRating:(NSString*)rating;
+
 
 //for server
 + (void) downloadFoodDataFromGAEServer;
