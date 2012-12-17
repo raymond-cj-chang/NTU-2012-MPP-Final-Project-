@@ -63,7 +63,8 @@
 
     NSInteger row = indexPath.row;
     //set cell data
-    //cell.foodCategoryChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row];
+    cell.foodCategoryChineseName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row];
+    NSLog(@"ChineseName:%@",[[VARMenuDataSource sharedMenuDataSource] arrayOfChineseCategories][row]);
     cell.foodCategoryEnglishName.text = [[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories][row];
 
     

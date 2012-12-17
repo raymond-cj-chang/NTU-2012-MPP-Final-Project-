@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Search Food View Controller - Search Food-->
@@ -519,7 +519,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yux-qo-lL4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="your_image_here.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yux-qo-lL4">
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="bwz-PB-vve"/>
@@ -891,7 +891,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="239"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgd-ZB-7sP">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="your_image_here.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bgd-ZB-7sP">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="239" id="Bac-FG-0Eo"/>
                                                         <constraint firstAttribute="width" constant="300" id="xEH-m6-XWg"/>
@@ -1006,136 +1006,8 @@
     <resources>
         <image name="Crown-icon.png" width="128" height="128"/>
         <image name="addIcon.png" width="128" height="128"/>
+        <image name="your_image_here.jpg" width="400" height="400"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="VARAddFoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARAddFoodViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addButton:"/>
-                <relationship kind="action" name="cancelButton:"/>
-                <relationship kind="action" name="sendButton:"/>
-                <relationship kind="action" name="takePhotoButton:"/>
-                <relationship kind="outlet" name="ChineseName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="EnglishName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="comment" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="ingredientInput" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="ingredientLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="introduction" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="progressView" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="VARAddPhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARAddPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButton:"/>
-                <relationship kind="action" name="sendButton:"/>
-                <relationship kind="action" name="takePhotoButton:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="VARCommentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARCommentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="comment" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="time" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="VARFoodCategoriesCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodCategoryChineseName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodCategoryEnglishName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodCategoryImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="VARFoodCategoriesViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addingFood:"/>
-            </relationships>
-        </class>
-        <class className="VARFoodCommentViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCommentViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-            </relationships>
-        </class>
-        <class className="VARFoodDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="imagePageChange:"/>
-                <relationship kind="action" name="segmentedControlIndexChanged:"/>
-                <relationship kind="action" name="showActionSheet:"/>
-                <relationship kind="outlet" name="content" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="VARFoodListCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="VARFoodListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListViewController.h"/>
-        </class>
-        <class className="VARFoodPhotoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodPhotoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="VARRankingCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARRankingCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="ChineseName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="EnglishName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="crownImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="rankingNumber" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="VARRankingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARRankingViewController.h"/>
-        </class>
-        <class className="VARSearchCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARSearchCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="ChineseName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="EnglishName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="VARSearchFoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARSearchFoodViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
