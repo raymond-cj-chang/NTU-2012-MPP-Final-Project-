@@ -57,6 +57,8 @@
 		18A5342516683B9200087B39 /* image_drinks.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A5342416683B9200087B39 /* image_drinks.png */; };
 		18A8DCBB167E9C5000CF5250 /* your_image_here.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A8DCBA167E9C5000CF5250 /* your_image_here.jpg */; };
 		18A8DCBE167EA35900CF5250 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18A8DCBD167EA35900CF5250 /* background.jpg */; };
+		18A8DCC2167F38D900CF5250 /* VARPopularFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8DCC1167F38D900CF5250 /* VARPopularFoodViewController.m */; };
+		18A8DCC5167F3AEE00CF5250 /* VARPopularFoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A8DCC4167F3AEE00CF5250 /* VARPopularFoodCell.m */; };
 		18DC66F4167812F1000EF618 /* image1_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DC664A167812EA000EF618 /* image1_1.jpg */; };
 		18DC66F5167812F1000EF618 /* image1_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DC664B167812EA000EF618 /* image1_2.jpg */; };
 		18DC66F6167812F1000EF618 /* image2_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18DC664C167812EA000EF618 /* image2_1.jpg */; };
@@ -318,6 +320,10 @@
 		18A5342416683B9200087B39 /* image_drinks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_drinks.png; path = resource/image/image_drinks.png; sourceTree = "<group>"; };
 		18A8DCBA167E9C5000CF5250 /* your_image_here.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = your_image_here.jpg; sourceTree = "<group>"; };
 		18A8DCBD167EA35900CF5250 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		18A8DCC0167F38D900CF5250 /* VARPopularFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARPopularFoodViewController.h; sourceTree = "<group>"; };
+		18A8DCC1167F38D900CF5250 /* VARPopularFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARPopularFoodViewController.m; sourceTree = "<group>"; };
+		18A8DCC3167F3AEE00CF5250 /* VARPopularFoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARPopularFoodCell.h; sourceTree = "<group>"; };
+		18A8DCC4167F3AEE00CF5250 /* VARPopularFoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARPopularFoodCell.m; sourceTree = "<group>"; };
 		18DC664A167812EA000EF618 /* image1_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image1_1.jpg; path = resource/image/image1_1.jpg; sourceTree = "<group>"; };
 		18DC664B167812EA000EF618 /* image1_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image1_2.jpg; path = resource/image/image1_2.jpg; sourceTree = "<group>"; };
 		18DC664C167812EA000EF618 /* image2_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image2_1.jpg; path = resource/image/image2_1.jpg; sourceTree = "<group>"; };
@@ -689,6 +695,17 @@
 			name = "Food Adding";
 			sourceTree = "<group>";
 		};
+		18A8DCBF167F387000CF5250 /* Popular Food */ = {
+			isa = PBXGroup;
+			children = (
+				18A8DCC0167F38D900CF5250 /* VARPopularFoodViewController.h */,
+				18A8DCC1167F38D900CF5250 /* VARPopularFoodViewController.m */,
+				18A8DCC3167F3AEE00CF5250 /* VARPopularFoodCell.h */,
+				18A8DCC4167F3AEE00CF5250 /* VARPopularFoodCell.m */,
+			);
+			name = "Popular Food";
+			sourceTree = "<group>";
+		};
 		84814D0916593DF00043D601 /* resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +940,7 @@
 		84EB566C163A9DFF00F5080E /* MobileClassFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				18A8DCBF167F387000CF5250 /* Popular Food */,
 				1855367D1673483500E7C6DE /* JSONKit */,
 				1855364D167343EC00E7C6DE /* AFNetworking */,
 				1855362D1673342800E7C6DE /* Database */,
@@ -1270,6 +1288,8 @@
 				185536061670E02E00E7C6DE /* VARSearchCell.m in Sources */,
 				1855363B1673347700E7C6DE /* VARMenuDataSource.m in Sources */,
 				189798FD167C901E002B20E9 /* VARCommentCell.m in Sources */,
+				18A8DCC2167F38D900CF5250 /* VARPopularFoodViewController.m in Sources */,
+				18A8DCC5167F3AEE00CF5250 /* VARPopularFoodCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
