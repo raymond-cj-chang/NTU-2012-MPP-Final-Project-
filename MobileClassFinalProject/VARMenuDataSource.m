@@ -135,13 +135,13 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 - (NSArray *) arrayOfChineseCategories
 {
     //get from cache
-    NSArray * chineseCategories = [cache objectForKey:VARDataSourceCacheKeyEnglishCategories];
+    NSArray * chineseCategories = [cache objectForKey:VARDataSourceCacheKeyChineseCategories];
     
     if(!chineseCategories)
     {
         NSMutableSet *categorySet = [NSMutableSet set];
         //execute SQL query to get unique categories
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT chinese_category FROM food_items"];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT english_category, chinese_category FROM food_items ORDER BY english_category"];
         
         //add to set
         while([queryResults next])
@@ -156,7 +156,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
                       }];
         
         //Add the resulting array to the cache
-        [cache setObject:chineseCategories forKey:VARDataSourceCacheKeyEnglishCategories];
+        [cache setObject:chineseCategories forKey:VARDataSourceCacheKeyChineseCategories];
     }
     
     return chineseCategories;
@@ -172,7 +172,7 @@ NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
     {
         NSMutableSet *categorySet = [NSMutableSet set];
         //execute SQL query to get unique categories
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT english_category FROM food_items"];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT english_category, chinese_category FROM food_items ORDER BY english_category"];
         
         //add to set
         while([queryResults next])
