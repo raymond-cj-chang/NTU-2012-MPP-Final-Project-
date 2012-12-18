@@ -175,7 +175,7 @@
     NSString *foodIngredient = self.ingredientLabel.text;
     NSString *foodEnglishCategory = self.currentCategory;
 #warning fix Chinese Category
-    NSString *foodChineseCategory = @"中文種類名";
+    NSString *foodChineseCategory = @"飯";
     NSString *foodComment = self.comment.text;
     UIImage *foodImage = self.imageView.image;
     
@@ -207,13 +207,15 @@
         
         //add comment
         NSString* fidStr = response;
-        [VARMenuDataSource uploadCommentToGAEServer:fidStr withComment:foodComment];
+        [VARMenuDataSource uploadCommentToGAEServer:fidStr withComment:foodComment updateFood:FALSE];
         
-        //*****add image
-        [VARMenuDataSource uploadFoodImageToGAEServer:fidStr withImageName:nil withImage:foodImage];
+        //add image
+        [VARMenuDataSource uploadFoodImageToGAEServer:fidStr withImageName:nil withImage:foodImage updateFood:TRUE];
         
+        //***** need all upload finish then download****
         //download from server
-        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        if(foodImage==nil) [VARMenuDataSource downloadFoodDataFromGAEServer];
+        //[VARMenuDataSource downloadFoodDataFromGAEServer];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         

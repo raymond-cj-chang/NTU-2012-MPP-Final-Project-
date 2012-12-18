@@ -282,7 +282,7 @@
                 
                 //add comment to server
                 NSString* fid = _food[VARsDataSourceDictKeyFoodID];
-                [VARMenuDataSource uploadCommentToGAEServer:fid withComment:self.comment ];
+                [VARMenuDataSource uploadCommentToGAEServer:fid withComment:self.comment updateFood:TRUE];
 
                 
                 break;
@@ -301,7 +301,7 @@
 
     //TODO
     //add food rating to server
-    [VARMenuDataSource uploadFoodRatingToGAEServer:_food[VARsDataSourceDictKeyFoodID]];
+    [VARMenuDataSource uploadFoodRatingToGAEServer:_food[VARsDataSourceDictKeyFoodID] updateFood:TRUE];
     
     NSLog(@"updated successfully");
 }

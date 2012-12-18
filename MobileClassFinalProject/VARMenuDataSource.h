@@ -56,11 +56,11 @@ extern NSOperationQueue* globalOperationQueue;
 
 //for server
 + (void) downloadFoodDataFromGAEServer;
-+ (void) uploadFoodImageToGAEServer:(NSString*)serverName withImageName:(NSString*)uploadImageName withImage:(UIImage*)image;
-+ (void) uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment;
++ (void) uploadFoodImageToGAEServer:(NSString*)serverName withImageName:(NSString*)uploadImageName withImage:(UIImage*)image updateFood:(BOOL)update;
++ (void) uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment updateFood:(BOOL)update;
 + (void) downloadCommentFromGAEServer:(NSString*)foodID;
 + (void) downloadImageFromGAEServer:(NSString*)fidStr;
-+ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr;
++ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr updateFood:(BOOL)update;
 + (void) downloadFoodRatingFromGAEServer:(NSString*)fidStr;
 + (void) getCurrentTimeFromGAEServer;
 + (NSDictionary*) getLastTimeUpdateTimeDateFromFile;

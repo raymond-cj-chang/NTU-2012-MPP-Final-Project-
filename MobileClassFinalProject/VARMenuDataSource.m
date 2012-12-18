@@ -40,6 +40,9 @@ NSString * const VARsDataSourceDictKeyComment = @"Comment";
 NSString * const VARsDataSourceDictKeyCommentContent = @"Comment_content";
 NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
 
+//global server url
+NSString* const serverURL = @"http://varfinalprojectserver.appspot.com";
+                       
 //global operation queue
 NSOperationQueue* globalOperationQueue;
 
@@ -473,16 +476,20 @@ NSOperationQueue* globalOperationQueue;
 //download new food data
 + (void)downloadFoodDataFromGAEServer
 {
+    //wait
+    //[globalOperationQueue waitUntilAllOperationsAreFinished];
+    
     //download new food item from server
     
     //sqlite food max number integer
     NSInteger maxFoodNumInSQLite = 100;
+    //NSInteger maxFoodNumInSQLite = 0;
     
     //get last update time from file
     NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
     
     //post to server string with date time
-    NSString* serverStr = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/?year=%@&month=%@&day=%@&hour=%@&minute=%@&second=%@&msecond=%@",dateTimeDictionary[@"year"],dateTimeDictionary[@"month"],dateTimeDictionary[@"day"],dateTimeDictionary[@"hour"],dateTimeDictionary[@"minute"],dateTimeDictionary[@"second"],dateTimeDictionary[@"msecond"]];
+    NSString* serverStr = [NSString stringWithFormat:@"%@/?year=%@&month=%@&day=%@&hour=%@&minute=%@&second=%@&msecond=%@",serverURL,dateTimeDictionary[@"year"],dateTimeDictionary[@"month"],dateTimeDictionary[@"day"],dateTimeDictionary[@"hour"],dateTimeDictionary[@"minute"],dateTimeDictionary[@"second"],dateTimeDictionary[@"msecond"]];
     
     //server URL
     NSURL* serverURL = [NSURL URLWithString:serverStr];
@@ -558,8 +565,7 @@ NSOperationQueue* globalOperationQueue;
                                                                 [self downloadFoodRatingFromGAEServer:foodItem[VARsDataSourceDictKeyFoodID]];
                                                             }
                                                                                                    
-                                                                                                   
-                                                   
+                                                            
                                                             //get current date time
                                                             [self getCurrentTimeFromGAEServer];
                                                    
@@ -591,9 +597,7 @@ NSOperationQueue* globalOperationQueue;
     NSMutableArray* imageNameArray = [[NSMutableArray alloc] init];
     
     //server image table path
-    //NSString *serverDownloadImageTablePath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeImageTable?fid=%@",fidStr];
-    
-    NSString *serverDownloadImageTablePath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeImageTable?fid=%@",fidStr];
+    NSString *serverDownloadImageTablePath = [NSString stringWithFormat:@"%@/seeImageTable?fid=%@",serverURL,fidStr];
     //
     //add last update time from file
     NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
@@ -627,14 +631,13 @@ NSOperationQueue* globalOperationQueue;
                                                   NSString* imageName = [foodImageTableDecoder valueForKey:@"imageName"];
                                                   
                                                   //server URL
-                                                  //NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/images";
-                                                  NSString *serverImageURL = @"http://varfinalprojectserver.appspot.com/downloadImage";
+                                                  NSString *serverImageURL = [NSString stringWithFormat:@"%@/downloadImage",serverURL];
                                                   
                                                   //download image from server
                                                   if(imageName!=nil)
                                                   {
                                                       //server url
-                                                      NSString *imageURL = [NSString stringWithFormat:@"%@?imageName=%@",serverImageURL,imageName];
+                                                      NSString *imageURL = [NSString stringWithFormat:@"%@?image_name=%@",serverImageURL,imageName];
                                                       // Get an image from the URL below
                                                       UIImage* image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
                                                       
@@ -666,14 +669,13 @@ NSOperationQueue* globalOperationQueue;
 }
 
 //upload image to server
-+ (void)uploadFoodImageToGAEServer:(NSString*)fidStr withImageName:(NSString*)uploadImageName withImage:(UIImage*) image
++ (void)uploadFoodImageToGAEServer:(NSString*)fidStr withImageName:(NSString*)uploadImageName withImage:(UIImage*) image updateFood:(BOOL)update
 {
     //upload image
     //doc path
 	NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     //server URL
-    //NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com/uploadImage"];
-    NSURL *serverUploadImageURL = [NSURL URLWithString:@"http://varfinalprojectserver.appspot.com/uploadImage"];
+    NSURL *serverUploadImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/uploadImage",serverURL]];
     
     //prepare data
     NSString* uploadImageFidStr = fidStr;
@@ -744,7 +746,7 @@ NSOperationQueue* globalOperationQueue;
         NSLog(@"response for upload image POST: [%@]",response);
         
         //download food item from server
-        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        if(update)[VARMenuDataSource downloadFoodDataFromGAEServer];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
@@ -756,7 +758,7 @@ NSOperationQueue* globalOperationQueue;
 }
 
 //add comment to server
-+ (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment
++ (void)uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment updateFood:(BOOL)update
 {
     //check
     if(foodComment==nil) foodComment = @"comment.";
@@ -767,8 +769,7 @@ NSOperationQueue* globalOperationQueue;
     
     //clent url
     NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
-    //NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
-    NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
+    NSString *serverAddCommentPath = [NSString stringWithFormat:@"%@/addComment",serverURL];
     
     //client
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:clientURL];
@@ -791,7 +792,7 @@ NSOperationQueue* globalOperationQueue;
         NSLog(@"response for add comment POST: [%@]",response);
         
         //download food item from server
-        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        if(update) [VARMenuDataSource downloadFoodDataFromGAEServer];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
@@ -809,9 +810,7 @@ NSOperationQueue* globalOperationQueue;
     //NSLog(@"Download Comment....");
     
     //server path
-    //NSString *serverDownloadCommentPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeComment?fid=%@",foodID];
-    //for test
-    NSString *serverDownloadCommentPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeComment?fid=%@",foodID];
+    NSString *serverDownloadCommentPath = [NSString stringWithFormat:@"%@/seeComment?fid=%@",serverURL,foodID];
     
     //
     //add last update time from file
@@ -860,7 +859,7 @@ NSOperationQueue* globalOperationQueue;
 }
 
 //add food rating to GAE server
-+ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr
++ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr updateFood:(BOOL)update
 {
     //check
     if(fidStr == nil) return;
@@ -870,9 +869,8 @@ NSOperationQueue* globalOperationQueue;
     
     //clent url
     NSURL *clientURL = [NSURL URLWithString:@"http://localhost"];
-    //NSString *serverAddCommentPath = @"http://varfinalprojectserver.appspot.com/addComment";
-    
-    NSString *serverAddRatingPath = @"http://varfinalprojectserver.appspot.com/addRating";
+    //server
+    NSString *serverAddRatingPath = [NSString stringWithFormat:@"%@/addRating",serverURL];
     
     //client
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:clientURL];
@@ -895,7 +893,7 @@ NSOperationQueue* globalOperationQueue;
         NSLog(@"[Client]response for add rating : [%@]",response);
         
         //download food item from server
-        [VARMenuDataSource downloadFoodDataFromGAEServer];
+        if(update)[VARMenuDataSource downloadFoodDataFromGAEServer];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", [operation error]);
@@ -909,7 +907,7 @@ NSOperationQueue* globalOperationQueue;
 + (void) downloadFoodRatingFromGAEServer:(NSString*)fidStr
 {
     //server URL
-    NSString* serverDownloadFoodPath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeRating?fid=%@",fidStr];
+    NSString* serverDownloadFoodPath = [NSString stringWithFormat:@"%@/seeRating?fid=%@",serverURL,fidStr];
     
     //
     //add last update time from file
@@ -954,7 +952,7 @@ NSOperationQueue* globalOperationQueue;
 + (void) getCurrentTimeFromGAEServer
 {
     //server URL
-    NSString* serverSeeDateTimePath = [NSString stringWithFormat:@"http://varfinalprojectserver.appspot.com/seeDateTime"];
+    NSString* serverSeeDateTimePath = [NSString stringWithFormat:@"%@/seeDateTime",serverURL];
     
     NSURL* serverSeeDateTimeURL = [NSURL URLWithString:serverSeeDateTimePath];
     
