@@ -482,8 +482,8 @@ NSOperationQueue* globalOperationQueue;
     //download new food item from server
     
     //sqlite food max number integer
-    NSInteger maxFoodNumInSQLite = 100;
-    //NSInteger maxFoodNumInSQLite = 0;
+    //NSInteger maxFoodNumInSQLite = 100;
+    NSInteger maxFoodNumInSQLite = 0;
     
     //get last update time from file
     NSDictionary* dateTimeDictionary = [self getLastTimeUpdateTimeDateFromFile];
