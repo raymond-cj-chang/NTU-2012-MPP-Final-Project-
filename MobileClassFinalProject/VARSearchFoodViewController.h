@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "VARSearchCell.h"
 #import "VARMenuDataSource.h"
+#import "VARFoodDetailViewController.h"
 
 @interface VARSearchFoodViewController : UITableViewController<UISearchDisplayDelegate,UISearchBarDelegate>
 
 @property (strong, nonatomic) NSArray *allFood;
 @property (nonatomic, retain) NSArray *searchResults;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 
 
 @end

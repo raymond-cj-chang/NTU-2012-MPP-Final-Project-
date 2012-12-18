@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VARMenuDataSource.h"
 #import "VARPopularFoodCell.h"
+#import "VARFoodDetailViewController.h"
 
 @interface VARPopularFoodViewController : UICollectionViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 

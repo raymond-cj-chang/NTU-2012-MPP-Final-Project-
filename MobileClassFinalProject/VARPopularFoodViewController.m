@@ -39,11 +39,11 @@
 {
     VARPopularFoodCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     NSInteger row = indexPath.row;
-    NSLog(@"dict:%@",self.arrayOfFoodDictionary[row]);
+    //NSLog(@"dict:%@",self.arrayOfFoodDictionary[row]);
     NSString *foodID = self.arrayOfFoodDictionary[row][VARsDataSourceDictKeyFoodID];
-    NSLog(@"id:%@",self.arrayOfFoodDictionary[row][VARsDataSourceDictKeyFoodID]);
+    //NSLog(@"id:%@",self.arrayOfFoodDictionary[row][VARsDataSourceDictKeyFoodID]);
     NSString *imageNmae = [[NSString alloc] initWithFormat:@"image%@_1.jpg",foodID];
-    NSLog(@"imageName:%@",imageNmae);
+    //NSLog(@"imageName:%@",imageNmae);
     cell.imageView.image = [UIImage imageNamed:imageNmae];
     return cell;
     
@@ -53,6 +53,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UICollectionViewCell *cell = (UICollectionViewCell *)sender;
+    
+    if([segue.identifier isEqualToString:@"showFoodDetailView"]){
+        
+        VARFoodDetailViewController *detailViewController = segue.destinationViewController;
+        //set data
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+        detailViewController.food = [self.arrayOfFoodDictionary objectAtIndex:indexPath.row];
+        
+        //hide tab bar
+        detailViewController.hidesBottomBarWhenPushed = YES;
+    }
 }
 
 @end

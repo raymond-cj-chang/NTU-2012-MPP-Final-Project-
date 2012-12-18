@@ -47,18 +47,20 @@ extern NSOperationQueue* globalOperationQueue;
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category;
 - (NSArray *) arrayOfFoodsByAlphabeticalOrder;
 - (NSArray *) arrayOfFoodsByRating;
+- (NSArray *) arrayOfFoodsByAlphabeticalOrder;
 - (void) addCommentToFoodItem:(NSInteger) foodID withContents:(NSString *)contents withDate:(NSString*)DateTimeStr;
 - (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName;
 - (void) addFoodItemToDB:(NSDictionary *) foodItem;
 - (void) updateRatingToFoodItem:(NSString*)fidStr withRating:(NSString*)rating;
 
+
 //for server
 + (void) downloadFoodDataFromGAEServer;
-+ (void) uploadFoodImageToGAEServer:(NSString*)serverName withImageName:(NSString*)uploadImageName withImage:(UIImage*)image;
-+ (void) uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment;
++ (void) uploadFoodImageToGAEServer:(NSString*)serverName withImageName:(NSString*)uploadImageName withImage:(UIImage*)image updateFood:(BOOL)update;
++ (void) uploadCommentToGAEServer:(NSString*)foodID withComment:(NSString*)foodComment updateFood:(BOOL)update;
 + (void) downloadCommentFromGAEServer:(NSString*)foodID;
 + (void) downloadImageFromGAEServer:(NSString*)fidStr;
-+ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr;
++ (void) uploadFoodRatingToGAEServer:(NSString*)fidStr updateFood:(BOOL)update;
 + (void) downloadFoodRatingFromGAEServer:(NSString*)fidStr;
 + (void) getCurrentTimeFromGAEServer;
 + (NSDictionary*) getLastTimeUpdateTimeDateFromFile;

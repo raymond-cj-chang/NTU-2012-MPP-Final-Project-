@@ -26,7 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.allFood = [[NSArray alloc] initWithArray:[[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories]];
+    NSMutableArray *arrayOfEnglishName =[[NSMutableArray alloc] init];
+    for (NSDictionary *dictionary in [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsByAlphabeticalOrder]) {
+        [arrayOfEnglishName addObject:dictionary[VARsDataSourceDictKeyEnglishName]];
+    }
+    NSLog(@"tempArray:%@",arrayOfEnglishName);
+    self.allFood = [[NSArray alloc] initWithArray:arrayOfEnglishName];
+    //self.allFood = [[NSArray alloc] initWithArray:[[VARMenuDataSource sharedMenuDataSource] arrayOfEnglishCategories]];
     self.searchResults = [[NSArray alloc] initWithArray:self.allFood];
    
 }
@@ -44,6 +50,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.searchResults count];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,7 +72,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+//    self.indexPath = indexPath;
+//    NSString *foodName = [[NSString alloc] init];
+//    NSInteger row = indexPath.row;
+//    [self performSegueWithIdentifier:@"showFoodDetailView" sender:self];
+//    NSLog(@"row:%u",row);
+//    if([self.searchResults count] != [self.allFood count])
+//        foodName = self.searchResults[row];
+//    else
+//        foodName = self.allFood[row];
+   //NSLog(@"foodName:%@",foodName);
 }
 
 #pragma mark -
@@ -75,6 +91,7 @@
 {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[cd] %@",searchText];
 	self.searchResults = [self.allFood filteredArrayUsingPredicate:resultPredicate];
+    
 }
 
 #pragma mark -
@@ -103,5 +120,32 @@
     //[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    if([segue.identifier isEqualToString:@"showFoodDetailView"]){
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:cell];
+        NSString *foodName = [[NSString alloc] init];
+        NSInteger row = indexPath.row;
+        NSLog(@"row:%u",row);
+        if([self.searchResults count] != [self.allFood count])
+            foodName = self.searchResults[row];
+        else
+            foodName = self.allFood[row];
+        //NSLog(@"foodName:%@",foodName);
+        for(NSDictionary *dictionary in [[VARMenuDataSource sharedMenuDataSource] arrayOfFoodsByAlphabeticalOrder]){
+            if ([dictionary[VARsDataSourceDictKeyEnglishName] isEqualToString:foodName]) {
+                //set next level category
+                VARFoodDetailViewController *foodListController = segue.destinationViewController;
+                //set data
+                foodListController.food = dictionary;
+                
+                //hide tab bar
+                foodListController.hidesBottomBarWhenPushed = YES;
+            }
+        }
+        
+    }
+}
 
 @end

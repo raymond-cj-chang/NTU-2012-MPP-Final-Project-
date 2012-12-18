@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.85098046064376831" green="1" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" placeholder="Food's English/Chinese Name" id="DtZ-kG-ZHa">
+                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="blackOpaque" placeholder="Food's English Name" id="DtZ-kG-ZHa">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -36,27 +36,16 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chinese Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yZ-pn-hJl">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="xD0-K0-sz6"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="0yZ-pn-hJl" firstAttribute="leading" secondItem="xTL-TT-wcj" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="56Z-g7-a4g"/>
-                                    <constraint firstItem="xTL-TT-wcj" firstAttribute="bottom" secondItem="0yZ-pn-hJl" secondAttribute="bottom" type="default" id="QPO-Bt-lut"/>
                                     <constraint firstItem="xTL-TT-wcj" firstAttribute="top" secondItem="ZVo-EB-82J" secondAttribute="top" constant="8" id="WSw-V1-9eX"/>
                                     <constraint firstItem="xTL-TT-wcj" firstAttribute="leading" secondItem="ZVo-EB-82J" secondAttribute="leading" constant="14" id="f6A-Pf-sLh"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="ChineseName" destination="0yZ-pn-hJl" id="xLC-tX-Az9"/>
                                     <outlet property="EnglishName" destination="xTL-TT-wcj" id="RmJ-ku-JHX"/>
-                                    <segue destination="HDU-WU-YY2" kind="push" id="31F-M1-wCI"/>
+                                    <segue destination="HDU-WU-YY2" kind="push" identifier="showFoodDetailView" id="31F-M1-wCI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -122,7 +111,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="859" y="-818"/>
+            <point key="canvasLocation" x="911" y="-822"/>
         </scene>
         <!--Food Categories View Controller - Categories-->
         <scene sceneID="1rO-qQ-09f">
@@ -382,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6l-9s-YJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954" y="185"/>
+            <point key="canvasLocation" x="1482" y="195"/>
         </scene>
         <!--Food Comment View Controller - Comment-->
         <scene sceneID="3xN-R6-B2n">
@@ -434,7 +423,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICT-A6-2e7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3043" y="411"/>
+            <point key="canvasLocation" x="2615" y="415"/>
         </scene>
         <!--Add Photo View Controller - Add Photo-->
         <scene sceneID="Vou-Vk-0eo">
@@ -485,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0oM-zz-of9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3043" y="1022"/>
+            <point key="canvasLocation" x="2603" y="1078"/>
         </scene>
         <!--Food Photo View Controller - Photos-->
         <scene sceneID="ofz-Qb-PNS">
@@ -565,7 +554,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2e-JD-wT4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="-286"/>
+            <point key="canvasLocation" x="2025" y="-298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KZk-g7-ZvY">
@@ -584,7 +573,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WXM-Rr-q1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2518" y="403"/>
+            <point key="canvasLocation" x="2090" y="379"/>
         </scene>
         <!--Popular Food View Controller - Most Popular-->
         <scene sceneID="jhN-NT-HVB">
@@ -607,18 +596,23 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="112"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" highlightedImage="Crown-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Av8-hD-0sW"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-3T-koR">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="108" id="Fwf-ak-ELk"/>
+                                                <constraint firstAttribute="width" constant="146" id="RIv-tH-SIZ"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="bottom" secondItem="MkO-dn-O1d" secondAttribute="bottom" type="default" id="6Bf-dM-d8p"/>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="leading" secondItem="MkO-dn-O1d" secondAttribute="leading" type="default" id="O5W-29-AAm"/>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="trailing" secondItem="MkO-dn-O1d" secondAttribute="trailing" type="default" id="Rqu-Cx-5wX"/>
-                                    <constraint firstItem="Av8-hD-0sW" firstAttribute="top" secondItem="MkO-dn-O1d" secondAttribute="top" type="default" id="h8Z-Ru-d75"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="centerX" secondItem="MkO-dn-O1d" secondAttribute="centerX" type="default" id="J82-nr-ire"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="centerY" secondItem="MkO-dn-O1d" secondAttribute="centerY" type="default" id="g7V-uc-8WZ"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="Av8-hD-0sW" id="9Zb-pi-ZFz"/>
+                                    <outlet property="imageView" destination="xyG-3T-koR" id="qIW-7a-cqZ"/>
+                                    <segue destination="HDU-WU-YY2" kind="push" identifier="showFoodDetailView" id="yLU-Mg-f62"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -903,7 +897,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zU-CT-dfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3075" y="-899"/>
+            <point key="canvasLocation" x="2555" y="-971"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AU5-Sw-CmS">
@@ -927,7 +921,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agg-2J-x9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="1013"/>
+            <point key="canvasLocation" x="2063" y="1065"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oLA-Kn-Vzj">
@@ -951,7 +945,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pde-sD-cAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2545" y="-904"/>
+            <point key="canvasLocation" x="2025" y="-1012"/>
         </scene>
         <!--Navigation Controller - Most Popular-->
         <scene sceneID="F3D-uP-HDJ">
@@ -975,10 +969,68 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Crown-icon.png" width="128" height="128"/>
         <image name="addIcon.png" width="128" height="128"/>
         <image name="your_image_here.jpg" width="400" height="400"/>
     </resources>
+<<<<<<< HEAD
+=======
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="VARAddFoodViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARAddFoodViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addButton:"/>
+                <relationship kind="action" name="cancelButton:"/>
+                <relationship kind="action" name="sendButton:"/>
+                <relationship kind="action" name="takePhotoButton:"/>
+                <relationship kind="outlet" name="ChineseName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="EnglishName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="comment" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ingredientInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="ingredientLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="introduction" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="progressView" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="VARAddPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARAddPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButton:"/>
+                <relationship kind="action" name="sendButton:"/>
+                <relationship kind="action" name="takePhotoButton:"/>
+            </relationships>
+        </class>
+        <class className="VARFoodDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="imagePageChange:"/>
+                <relationship kind="action" name="segmentedControlIndexChanged:"/>
+                <relationship kind="action" name="showActionSheet:"/>
+                <relationship kind="outlet" name="content" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="VARFoodListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addingFood:"/>
+            </relationships>
+        </class>
+    </classes>
+>>>>>>> 18c26f4b9759bc205b56ada493e0b2574bfdb8d3
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -986,6 +1038,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UOt-yE-DOB"/>
-        <segue reference="oSW-Jw-QwP"/>
+        <segue reference="yLU-Mg-f62"/>
     </inferredMetricsTieBreakers>
 </document>
