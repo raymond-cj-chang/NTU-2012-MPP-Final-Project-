@@ -7,6 +7,7 @@
 //
 
 #import "VARAppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation VARAppDelegate
 
@@ -19,6 +20,7 @@
     
     //dowload new food data
     [VARMenuDataSource downloadFoodDataFromGAEServer];
+    [GMSServices provideAPIKey:@"BLAHBLAHBLAH"];
     
     return YES;
 }

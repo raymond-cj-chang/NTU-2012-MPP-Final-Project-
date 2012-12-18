@@ -146,8 +146,8 @@
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
 {
-    CGPoint touchPoint=[gesture locationInView:self.scrollView];
-    NSInteger index = touchPoint.x/320;
+//    CGPoint touchPoint=[gesture locationInView:self.scrollView];
+//    NSInteger index = touchPoint.x/320;
     //shopDetailView = [[ShopDetailViewController alloc] init];
     //[self.navigationController pushViewController:shopDetailView animated:YES];
     NSArray* imageArray = _food[VARsDataSourceDictKeyFoodImage];
