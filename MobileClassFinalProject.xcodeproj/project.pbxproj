@@ -232,6 +232,7 @@
 		4DB7F469167F50C10043C8A6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB7F468167F50C10043C8A6 /* libz.dylib */; };
 		4DB7F46B167F50CA0043C8A6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB7F46A167F50C90043C8A6 /* OpenGLES.framework */; };
 		4DB7F46D167F50D20043C8A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB7F46C167F50D20043C8A6 /* QuartzCore.framework */; };
+		4DBC9B711680912200CAD383 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBC9B6F1680912200CAD383 /* MainStoryboard_iPhone.storyboard */; };
 		8407F4231645616D007B61FE /* VARFoodCategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */; };
 		8407F42716456566007B61FE /* VARFoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F42616456566007B61FE /* VARFoodListViewController.m */; };
 		8407F42A164565D0007B61FE /* VARFoodListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F429164565D0007B61FE /* VARFoodListCell.m */; };
@@ -252,7 +253,6 @@
 		84EB5679163A9DFF00F5080E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB5678163A9DFF00F5080E /* Default.png */; };
 		84EB567B163A9DFF00F5080E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB567A163A9DFF00F5080E /* Default@2x.png */; };
 		84EB567D163A9DFF00F5080E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB567C163A9DFF00F5080E /* Default-568h@2x.png */; };
-		84EB5680163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB567E163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard */; };
 		84EB5683163A9DFF00F5080E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB5681163A9DFF00F5080E /* MainStoryboard_iPad.storyboard */; };
 		84FF4B771649086B007A4EEE /* VARFoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FF4B761649086B007A4EEE /* VARFoodDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -511,6 +511,7 @@
 		4DB7F468167F50C10043C8A6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4DB7F46A167F50C90043C8A6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		4DB7F46C167F50D20043C8A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4DBC9B701680912200CAD383 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MobileClassFinalProject/en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		8407F4211645616D007B61FE /* VARFoodCategoriesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodCategoriesCell.h; sourceTree = "<group>"; };
 		8407F4221645616D007B61FE /* VARFoodCategoriesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARFoodCategoriesCell.m; sourceTree = "<group>"; };
 		8407F42516456565007B61FE /* VARFoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARFoodListViewController.h; sourceTree = "<group>"; };
@@ -539,7 +540,6 @@
 		84EB5678163A9DFF00F5080E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		84EB567A163A9DFF00F5080E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		84EB567C163A9DFF00F5080E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		84EB567F163A9DFF00F5080E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		84EB5682163A9DFF00F5080E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		84EB5690163A9EA500F5080E /* VARMenuDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARMenuDataSource.h; sourceTree = "<group>"; };
 		84FF4B751649086B007A4EEE /* VARFoodDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VARFoodDetailViewController.h; path = ../VARFoodDetailViewController.h; sourceTree = "<group>"; };
@@ -991,8 +991,8 @@
 				18A04DB6166C8B8F00E89B24 /* Ranking  */,
 				84EB5675163A9DFF00F5080E /* VARAppDelegate.h */,
 				84EB5676163A9DFF00F5080E /* VARAppDelegate.m */,
-				84EB567E163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard */,
 				84EB5681163A9DFF00F5080E /* MainStoryboard_iPad.storyboard */,
+				4DBC9B6F1680912200CAD383 /* MainStoryboard_iPhone.storyboard */,
 				187B821F166C2A1000BCE6B2 /* Food Category */,
 				187B8220166C2A4400BCE6B2 /* Food Comment */,
 				187B8221166C2A7D00BCE6B2 /* Food List */,
@@ -1085,7 +1085,6 @@
 				84EB5679163A9DFF00F5080E /* Default.png in Resources */,
 				84EB567B163A9DFF00F5080E /* Default@2x.png in Resources */,
 				84EB567D163A9DFF00F5080E /* Default-568h@2x.png in Resources */,
-				84EB5680163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard in Resources */,
 				84EB5683163A9DFF00F5080E /* MainStoryboard_iPad.storyboard in Resources */,
 				84780B20166725D70006B554 /* image_noodle.png in Resources */,
 				18A5342216672E7A00087B39 /* image_rice.png in Resources */,
@@ -1275,6 +1274,7 @@
 				18A8DCBB167E9C5000CF5250 /* your_image_here.jpg in Resources */,
 				18A8DCBE167EA35900CF5250 /* background.jpg in Resources */,
 				4DB7F457167F50680043C8A6 /* GoogleMaps.bundle in Resources */,
+				4DBC9B711680912200CAD383 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,20 +1326,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4DBC9B6F1680912200CAD383 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DBC9B701680912200CAD383 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		84EB566F163A9DFF00F5080E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84EB5670163A9DFF00F5080E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		84EB567E163A9DFF00F5080E /* MainStoryboard_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84EB567F163A9DFF00F5080E /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		84EB5681163A9DFF00F5080E /* MainStoryboard_iPad.storyboard */ = {
@@ -1415,6 +1416,7 @@
 		84EB568A163A9DFF00F5080E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1430,6 +1432,7 @@
 		84EB568B163A9DFF00F5080E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
