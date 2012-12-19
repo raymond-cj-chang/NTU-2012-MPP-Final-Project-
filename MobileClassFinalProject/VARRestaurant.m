@@ -14,8 +14,8 @@
     self = [super init];
     if(self){
         self.title = theTitle;
-        self.sbuTitle=theAddress;
-        self.coordinate = &(theCoordinate);
+        self.subTitle=theAddress;
+        self.coordinate = theCoordinate;
      }
     return self;
 }
