@@ -24,9 +24,10 @@
 }
 
 - (void)loadView
-{
+{   NSLog(@"here");
     [super loadView];
-    CLLocationCoordinate2D location0 = {25.022083,121.541289};
+    CLLocationCoordinate2D location0 = {(25.015077,121.529442)};
+    //CLLocationCoordinate2D location0 = {25.022083,121.541289};
     VARRestaurant *restaurant0 = [[VARRestaurant alloc] initWithTitle:@"大李水餃"
                                                              subTitle:@"和平東路二段118巷54弄"
                                                         andCoordinate:location0];
@@ -45,11 +46,12 @@
 - (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
     MKCoordinateRegion region;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.005;
-    span.longitudeDelta = 0.005;
+    span.latitudeDelta = 0.0005;
+    span.longitudeDelta = 0.0005;
     CLLocationCoordinate2D location;
     location.latitude = aUserLocation.coordinate.latitude;
     location.longitude = aUserLocation.coordinate.longitude;
+    NSLog(@"(%f,%f)",location.latitude,location.longitude);
     region.span = span;
     region.center = location;
     [aMapView setRegion:region animated:YES];

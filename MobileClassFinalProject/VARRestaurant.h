@@ -11,8 +11,8 @@
 
 @interface VARRestaurant : NSObject<MKAnnotation>
 
-@property(strong, nonatomic) NSString *title;
-@property(strong, nonatomic) NSString *sbuTitle;
+@property(retain, nonatomic) NSString *title;
+@property(retain, nonatomic) NSString *sbuTitle;
 @property(nonatomic, assign) CLLocationCoordinate2D *coordinate;
 -(id) initWithTitle:(NSString *) theTitle
             subTitle:(NSString *) theAddress
