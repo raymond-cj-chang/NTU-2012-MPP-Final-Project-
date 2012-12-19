@@ -61,7 +61,23 @@
     //NSLog(@"id:%@",self.arrayOfFoodDictionary[row][VARsDataSourceDictKeyFoodID]);
     NSString *imageNmae = [[NSString alloc] initWithFormat:@"image%@_1.jpg",foodID];
     //NSLog(@"imageName:%@",imageNmae);
-    cell.imageView.image = [UIImage imageNamed:imageNmae];
+    
+    //image by name
+    UIImage* addedImage = [UIImage imageNamed:imageNmae];
+    //check image in docs or not
+    if(addedImage==nil)
+    {
+        //doc path
+        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",docDir,imageNmae];
+        //image
+        addedImage = [UIImage imageWithContentsOfFile:imagePath];
+        
+    }
+    
+    //set image
+    cell.imageView.image = addedImage;
+    
     return cell;
     
 }
