@@ -49,7 +49,14 @@
     {
         //set food data
         _foodEnglishName.text = _food[VARsDataSourceDictKeyEnglishName];
-        _foodChineseName.text = _food[VARsDataSourceDictKeyChineseName];
+        NSMutableString *chineseAndPinyin = [[NSMutableString alloc] init];
+        [chineseAndPinyin appendString:_food[VARsDataSourceDictKeyChineseName]];
+        [chineseAndPinyin appendString:@"/"];
+        [chineseAndPinyin appendString:_food[VARsDataSourceDictKeyPinyin]];
+        _foodChineseName.text = chineseAndPinyin;
+        NSLog(@"string:%@",chineseAndPinyin);
+        //_foodChineseName.text = _food[VARsDataSourceDictKeyChineseName];
+        //_pinyin.text = _food[VARsDataSourceDictKeyPinyin];
         //_foodIntroduction.text = _food[VARsDataSourceDictKeyFoodIntroduction];
         //_foodIngredient.text = _food[VARsDataSourceDictKeyFoodIngredient];
 //        

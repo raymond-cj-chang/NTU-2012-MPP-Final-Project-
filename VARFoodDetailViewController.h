@@ -34,6 +34,7 @@
 - (IBAction)showActionSheet:(id)sender;
 @property (strong, nonatomic) NSString *comment;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) IBOutlet UILabel *pinyin;
 
 
 

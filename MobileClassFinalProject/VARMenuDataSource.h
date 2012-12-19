@@ -22,6 +22,7 @@ extern NSString * const VARsDataSourceDictKeyRating;
 extern NSString * const VARsDataSourceDictKeyComment;
 extern NSString * const VARsDataSourceDictKeyCommentContent;
 extern NSString * const VARsDataSourceDictKeyCommentTimestamp;
+extern NSString * const VARsDataSourceDictKeyPinyin;
 extern NSOperationQueue* globalOperationQueue;
 extern NSCondition* requestLock;
 
