@@ -9,12 +9,12 @@
 #import "VARRestaurant.h"
 
 @implementation VARRestaurant
--(id) initWithTitle:(NSString *)theTitle subTitle:(NSString *)theAddress andCoordinate:(CLLocationCoordinate2D)theCoordinate
+-(id) initWithTitle:(NSString *)theTitle subTitle:(NSString *)theSubTitle andCoordinate:(CLLocationCoordinate2D)theCoordinate
 {
     self = [super init];
     if(self){
         self.title = theTitle;
-        self.subTitle=theAddress;
+        self.subtitle=theSubTitle;
         self.coordinate = theCoordinate;
      }
     return self;

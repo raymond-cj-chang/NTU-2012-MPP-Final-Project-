@@ -26,10 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"detailViewBackground1.jpg"]];
-//    [self.view addSubview:tempImageView];
-//    [self.view sendSubviewToBack:tempImageView];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,11 +84,7 @@
        //cell.foodImage.image = [UIImage imageWithContentsOfFile:filename];
         //NSLog(@"image:%@",cell.foodImage.image);
     }
-    //NSLog(@"file%d",imageList[0]);
-    //cell.foodImage.image = [UIImage imageWithContentsOfFile:imageList[0]];
-   
-    
-    cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cellBackground.png"]];
+
     return cell;
 }
 

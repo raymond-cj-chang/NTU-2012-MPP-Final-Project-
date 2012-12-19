@@ -27,18 +27,18 @@
 {
     [super viewDidLoad];
     englishToChineseCategory = [[NSMutableDictionary alloc]init];
-    [englishToChineseCategory setObject:@"甜點" forKey:@"dessert"];
-    [englishToChineseCategory setObject:@"飲料" forKey:@"drinks"];
-    [englishToChineseCategory setObject:@"冰" forKey:@"shaved ice"];
-    [englishToChineseCategory setObject:@"餃" forKey:@"dumpling"];
-    [englishToChineseCategory setObject:@"湯" forKey:@"soup"];
-    [englishToChineseCategory setObject:@"其他" forKey:@"other"];
-    [englishToChineseCategory setObject:@"小吃" forKey:@"snack"];
-    [englishToChineseCategory setObject:@"飯" forKey:@"rice"];
-    [englishToChineseCategory setObject:@"麵" forKey:@"noodle"];
-    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"napkin_light1.jpg"]];
-    [tempImageView setFrame:self.collectionView.frame];
-    self.collectionView.backgroundView = tempImageView;
+    [englishToChineseCategory setObject:@"甜點" forKey:@"Dessert"];
+    [englishToChineseCategory setObject:@"飲料" forKey:@"Drinks"];
+    [englishToChineseCategory setObject:@"冰" forKey:@"Shaved Ice"];
+    [englishToChineseCategory setObject:@"餃" forKey:@"Dumpling"];
+    [englishToChineseCategory setObject:@"湯" forKey:@"Soup"];
+    [englishToChineseCategory setObject:@"其他" forKey:@"Other"];
+    [englishToChineseCategory setObject:@"小吃" forKey:@"Snack"];
+    [englishToChineseCategory setObject:@"飯" forKey:@"Rice"];
+    [englishToChineseCategory setObject:@"麵" forKey:@"Noodle"];
+//    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"napkin_light1.jpg"]];
+//    [tempImageView setFrame:self.collectionView.frame];
+//    self.collectionView.backgroundView = tempImageView;
 }
 
 - (void)didReceiveMemoryWarning
