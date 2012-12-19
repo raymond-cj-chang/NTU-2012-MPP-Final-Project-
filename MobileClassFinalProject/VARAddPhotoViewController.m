@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"detailViewBackground.jpg"]];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"detailViewBackground1.jpg"]];
     [self.view addSubview:tempImageView];
     [self.view sendSubviewToBack:tempImageView];
 }

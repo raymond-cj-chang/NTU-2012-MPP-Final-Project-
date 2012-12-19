@@ -299,7 +299,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food English Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-X3-lKp">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2Oa-TM-t9q"/>
-                                    <constraint firstAttribute="width" constant="150" id="3sq-WV-Y91"/>
+                                    <constraint firstAttribute="width" constant="202" id="qah-SL-Ko5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -308,10 +308,9 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food Chinese Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-M8-UPm">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="hTO-oK-epe"/>
-                                    <constraint firstAttribute="width" constant="202" id="v57-OG-RBU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="13"/>
-                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="dHr-ve-X9e">
@@ -347,6 +346,7 @@
                         <constraints>
                             <constraint firstItem="dHr-ve-X9e" firstAttribute="bottom" secondItem="RdM-qx-WUP" secondAttribute="bottom" type="default" id="9u8-I4-VSN"/>
                             <constraint firstAttribute="bottom" secondItem="bbY-84-LhW" secondAttribute="bottom" constant="59" id="NlI-Jy-Yj5"/>
+                            <constraint firstItem="Hze-M8-UPm" firstAttribute="trailing" secondItem="4JH-X3-lKp" secondAttribute="trailing" type="default" id="RPt-st-KbM"/>
                             <constraint firstItem="Hze-M8-UPm" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Z6V-xu-cBS"/>
                             <constraint firstItem="Hze-M8-UPm" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="26" id="gUM-KG-rvP"/>
                             <constraint firstItem="4JH-X3-lKp" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hLL-g9-F92"/>
@@ -635,7 +635,7 @@
             </objects>
             <point key="canvasLocation" x="489" y="714"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map View Controller - Nearby Restaurants-->
         <scene sceneID="i2q-lp-6bL">
             <objects>
                 <viewController id="vmr-rw-QbK" customClass="VARMapViewController" sceneMemberID="viewController">
@@ -653,7 +653,7 @@
                             <constraint firstItem="7ID-lt-aDw" firstAttribute="top" secondItem="hfq-j9-5nQ" secondAttribute="top" type="default" id="nkJ-Gs-w9X"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="O2H-AK-Ouo">
+                    <navigationItem key="navigationItem" title="Nearby Restaurants" id="O2H-AK-Ouo">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="9dI-OF-3wQ">
                             <connections>
                                 <action selector="doneButton:" destination="vmr-rw-QbK" id="OkC-Sb-FiP"/>
