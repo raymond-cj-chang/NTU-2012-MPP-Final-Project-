@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		182F9C7B1668B6FC0084D795 /* VARMenuFoodList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182F9C7A1668B6FC0084D795 /* VARMenuFoodList.plist */; };
+		184D473016813AD40084EE4B /* VARRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D472F16813AD40084EE4B /* VARRestaurant.m */; };
 		185535ED166EC78F00E7C6DE /* VARSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185535EC166EC78F00E7C6DE /* VARSearchBarView.m */; };
 		185535FD1670689C00E7C6DE /* VARSearchFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185535FC1670689C00E7C6DE /* VARSearchFoodViewController.m */; };
 		185536061670E02E00E7C6DE /* VARSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185536051670E02E00E7C6DE /* VARSearchCell.m */; };
@@ -260,6 +261,8 @@
 
 /* Begin PBXFileReference section */
 		182F9C7A1668B6FC0084D795 /* VARMenuFoodList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VARMenuFoodList.plist; sourceTree = "<group>"; };
+		184D472E16813AD40084EE4B /* VARRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARRestaurant.h; sourceTree = "<group>"; };
+		184D472F16813AD40084EE4B /* VARRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARRestaurant.m; sourceTree = "<group>"; };
 		185535EB166EC78F00E7C6DE /* VARSearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARSearchBarView.h; sourceTree = "<group>"; };
 		185535EC166EC78F00E7C6DE /* VARSearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARSearchBarView.m; sourceTree = "<group>"; };
 		185535FB1670689C00E7C6DE /* VARSearchFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARSearchFoodViewController.h; sourceTree = "<group>"; };
@@ -625,6 +628,8 @@
 			children = (
 				84A4424C1680C4A8002748D5 /* VARMapViewController.h */,
 				84A4424D1680C4A8002748D5 /* VARMapViewController.m */,
+				184D472E16813AD40084EE4B /* VARRestaurant.h */,
+				184D472F16813AD40084EE4B /* VARRestaurant.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -1310,6 +1315,7 @@
 				189798FD167C901E002B20E9 /* VARCommentCell.m in Sources */,
 				18A8DCC2167F38D900CF5250 /* VARPopularFoodViewController.m in Sources */,
 				18A8DCC5167F3AEE00CF5250 /* VARPopularFoodCell.m in Sources */,
+				184D473016813AD40084EE4B /* VARRestaurant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

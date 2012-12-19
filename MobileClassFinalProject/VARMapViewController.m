@@ -23,18 +23,23 @@
     return self;
 }
 
+- (void)loadView
+{
+    [super loadView];
+    CLLocationCoordinate2D location0 = {25.022083,121.541289};
+    VARRestaurant *restaurant0 = [[VARRestaurant alloc] initWithTitle:@"大李水餃"
+                                                             subTitle:@"和平東路二段118巷54弄"
+                                                        andCoordinate:location0];
+//    [self.mapView addAnnotation:[NSArray arrayWithObjects:restaurant0, nil]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.mapView.showsUserLocation = YES;
     self.mapView.mapType = MKMapTypeHybrid;
     self.mapView.delegate = self;
-    NSLog(@"user:%f", self.mapView.userLocation.location.coordinate.latitude);
     
-//	[self.mapView.userLocation addObserver:self
-//                                forKeyPath:@"location"
-//                                   options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld)
-//                                   context:NULL];
 }
 
 - (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
@@ -50,33 +55,7 @@
     [aMapView setRegion:region animated:YES];
 }
 
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//    if ( !self.initialLocation )
-//    {
-//        self.initialLocation = userLocation.location;
-//        
-//        MKCoordinateRegion region;
-//        region.center = mapView.userLocation.coordinate;
-//        region.span = MKCoordinateSpanMake(0.1, 0.1);
-//        
-//        region = [mapView regionThatFits:region];
-//        [mapView setRegion:region animated:YES];
-//    }
-//}
-//
-//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-//{
-//    MKCoordinateRegion region;
-//    region.center = self.mapView.userLocation.coordinate;
-//    
-//    MKCoordinateSpan span;
-//    span.latitudeDelta  = 1; // Change these values to change the zoom
-//    span.longitudeDelta = 1;
-//    region.span = span;
-//    
-//    [self.mapView setRegion:region animated:YES];
-//}
+
 
 
 - (void)didReceiveMemoryWarning
