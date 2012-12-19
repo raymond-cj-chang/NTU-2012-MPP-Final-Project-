@@ -26,7 +26,7 @@ static NSString * VARDataSourceCacheKeyChineseCategories = @"VARDataSourceCacheK
 static NSString * VARDataSourceCacheKeyEnglishCategories = @"VARDataSourceCacheKey.Cache.Categories.English";
 static NSString * VARDataSourceCacheKeyFoodInCategory = @"VARDataSourceCacheKey.%@.Categories.Food";
 static NSString * VARDataSourceCacheKeyFoodByRating = @"VARDataSrouceCacheKey.%@.Food.Rating";
-
+static NSString * VARDataSourceCacheKeyFoodByAlphabetica10order = @"VARDataSrouceCacheKey.%@.Alphabetica";
 NSString * const VARsDataSourceDictKeyChineseCategories = @"Category_CHN";
 NSString * const VARsDataSourceDictKeyEnglishCategories = @"Category_ENG";
 NSString * const VARsDataSourceDictKeyEnglishName = @"EnglishName";
@@ -273,7 +273,7 @@ NSCondition* requestLock;
 - (NSArray *) arrayOfFoodsByAlphabeticalOrder
 {
     //get from cache
-    NSMutableArray* foods = [cache objectForKey:VARDataSourceCacheKeyFoodByRating];
+    NSMutableArray* foods = [cache objectForKey:VARDataSourceCacheKeyFoodByAlphabetica10order];
     
     if(!foods)
     {
@@ -322,7 +322,7 @@ NSCondition* requestLock;
             [foods addObject:tempDict];
         }
         //add in cache
-        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByRating];
+        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByAlphabetica10order];
     }
     //return
     return [[NSArray alloc] initWithArray:foods];
@@ -383,7 +383,7 @@ NSCondition* requestLock;
             [foods addObject:tempDict];
         }
         //add in cache
-        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByRating];
+        [cache setObject:foods forKey:cacheKey];
     }
     //return
     return [[NSArray alloc] initWithArray:foods];
