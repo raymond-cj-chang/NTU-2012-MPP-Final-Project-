@@ -11,6 +11,7 @@
 #import "VARFoodListCell.h"
 #import "VARFoodDetailViewController.h"
 #import "VARAddFoodViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface VARFoodListViewController : UITableViewController
 

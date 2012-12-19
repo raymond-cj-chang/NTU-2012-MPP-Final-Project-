@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Search Food View Controller - Search Food-->
@@ -121,7 +121,7 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="GHL-iA-HF5">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.91238597593122739" blue="0.77272727272727271" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rqu-JE-U66">
                             <size key="itemSize" width="92" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -144,7 +144,7 @@
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSS-Ra-dmd">
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chinese" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMZ-W4-DZg">
@@ -152,13 +152,12 @@
                                                 <constraint firstAttribute="width" constant="84" id="tPb-v2-iJs"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="7bK-H7-juO" firstAttribute="centerX" secondItem="MMZ-W4-DZg" secondAttribute="centerX" type="default" id="734-h4-v3J"/>
                                     <constraint firstItem="lSS-Ra-dmd" firstAttribute="bottom" secondItem="M2c-SQ-Axj" secondAttribute="bottom" type="default" id="9gq-fn-0V7"/>
@@ -255,12 +254,12 @@
                                 </view>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="2" id="MWg-me-UHD"/>
-                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="6" id="QLc-2q-JgU"/>
-                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="31" id="but-ic-FGu"/>
-                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="top" secondItem="Lok-ec-BdL" secondAttribute="top" type="default" id="cn0-f0-6W5"/>
-                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="leading" secondItem="Lok-ec-BdL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="fXJ-la-Hxg"/>
-                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="leading" secondItem="Lok-ec-BdL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="wbc-g8-f6u"/>
+                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="2" id="1PW-Xn-CFw"/>
+                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="leading" secondItem="Saz-ou-3rN" secondAttribute="leading" type="default" id="AZ3-69-O3P"/>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="114" id="HaE-u6-UbI"/>
+                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="5" id="Kfm-qQ-ij2"/>
+                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="top" secondItem="Saz-ou-3rN" secondAttribute="top" type="default" id="jgf-oh-UGh"/>
+                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="21" id="miS-As-m2a"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="foodChineseName" destination="knU-uG-NIZ" id="sOh-aB-qtQ"/>
@@ -296,9 +295,9 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food English Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-X3-lKp">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food English Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-X3-lKp">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="v6N-Xv-esa"/>
+                                    <constraint firstAttribute="height" constant="35" id="sDE-Ck-fDY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                 <color key="textColor" red="0.4328962053571429" green="0.21738956975688262" blue="0.00089533954246933973" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,8 +305,8 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Food Chinese Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-M8-UPm">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="0X0-k3-A0z"/>
                                     <constraint firstAttribute="height" constant="21" id="DDZ-aU-J2B"/>
+                                    <constraint firstAttribute="width" constant="288" id="L9Z-eq-xGZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="13"/>
                                 <color key="textColor" red="0.34384964923469385" green="0.17267263233808275" blue="0.00071116859841736176" alpha="1" colorSpace="calibratedRGB"/>
@@ -351,10 +350,10 @@
                             <constraint firstAttribute="trailing" secondItem="4JH-X3-lKp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dNn-Sr-gCe"/>
                             <constraint firstItem="4JH-X3-lKp" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hLL-g9-F92"/>
                             <constraint firstItem="dHr-ve-X9e" firstAttribute="trailing" secondItem="RdM-qx-WUP" secondAttribute="trailing" type="default" id="hhC-S3-0Ju"/>
-                            <constraint firstItem="Hze-M8-UPm" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="31" id="lo8-h5-mJx"/>
                             <constraint firstItem="dHr-ve-X9e" firstAttribute="leading" secondItem="RdM-qx-WUP" secondAttribute="leading" type="default" id="n2P-3d-Jt9"/>
                             <constraint firstItem="4JH-X3-lKp" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="7" id="nWb-yZ-ChW"/>
                             <constraint firstItem="bbY-84-LhW" firstAttribute="trailing" secondItem="RdM-qx-WUP" secondAttribute="trailing" type="default" id="ptY-Q2-7aw"/>
+                            <constraint firstItem="Hze-M8-UPm" firstAttribute="top" secondItem="RdM-qx-WUP" secondAttribute="top" constant="37" id="vqF-sk-5BU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Food Profile" id="InI-TG-Bjr">
@@ -1035,6 +1034,142 @@
         <image name="receipt.png" width="17" height="23"/>
         <image name="star.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="VARAddFoodViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARAddFoodViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addButton:"/>
+                <relationship kind="action" name="cancelButton:"/>
+                <relationship kind="action" name="sendButton:"/>
+                <relationship kind="action" name="takePhotoButton:"/>
+                <relationship kind="outlet" name="ChineseName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="EnglishName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="comment" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ingredientInput" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="ingredientLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="introduction" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="progressView" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="VARAddPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARAddPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButton:"/>
+                <relationship kind="action" name="sendButton:"/>
+                <relationship kind="action" name="takePhotoButton:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="VARCommentCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARCommentCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="comment" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="time" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VARFoodCategoriesCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="foodCategoryChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodCategoryEnglishName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodCategoryImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="VARFoodCategoriesViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCategoriesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addingFood:"/>
+            </relationships>
+        </class>
+        <class className="VARFoodCommentViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodCommentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+        <class className="VARFoodDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="imagePageChange:"/>
+                <relationship kind="action" name="segmentedControlIndexChanged:"/>
+                <relationship kind="action" name="showActionSheet:"/>
+                <relationship kind="outlet" name="content" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="pinyin" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="VARFoodListCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="foodChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodEnglishName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="VARFoodListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodListViewController.h"/>
+        </class>
+        <class className="VARFoodPhotoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARFoodPhotoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="VARMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARMapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButton:"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="VARPopularFoodCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARPopularFoodCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="VARPopularFoodViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARPopularFoodViewController.h"/>
+        </class>
+        <class className="VARSearchCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARSearchCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="ChineseName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="EnglishName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VARSearchFoodViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARSearchFoodViewController.h"/>
+        </class>
+        <class className="VARTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VARTabBarController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1042,6 +1177,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="oSW-Jw-QwP"/>
-        <segue reference="UOt-yE-DOB"/>
+        <segue reference="4a9-sC-whV"/>
     </inferredMetricsTieBreakers>
 </document>
