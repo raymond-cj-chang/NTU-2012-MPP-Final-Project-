@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		182F9C7B1668B6FC0084D795 /* VARMenuFoodList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182F9C7A1668B6FC0084D795 /* VARMenuFoodList.plist */; };
 		184D473016813AD40084EE4B /* VARRestaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D472F16813AD40084EE4B /* VARRestaurant.m */; };
+		184D4733168167A60084EE4B /* napkin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D4732168167A60084EE4B /* napkin.jpg */; };
+		184D473516816BEE0084EE4B /* napkin_light.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D473416816BEE0084EE4B /* napkin_light.jpg */; };
+		184D473716816CDB0084EE4B /* napkin_light1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D473616816CDB0084EE4B /* napkin_light1.jpg */; };
 		185535ED166EC78F00E7C6DE /* VARSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185535EC166EC78F00E7C6DE /* VARSearchBarView.m */; };
 		185535FD1670689C00E7C6DE /* VARSearchFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185535FC1670689C00E7C6DE /* VARSearchFoodViewController.m */; };
 		185536061670E02E00E7C6DE /* VARSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185536051670E02E00E7C6DE /* VARSearchCell.m */; };
@@ -263,6 +266,9 @@
 		182F9C7A1668B6FC0084D795 /* VARMenuFoodList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VARMenuFoodList.plist; sourceTree = "<group>"; };
 		184D472E16813AD40084EE4B /* VARRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARRestaurant.h; sourceTree = "<group>"; };
 		184D472F16813AD40084EE4B /* VARRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARRestaurant.m; sourceTree = "<group>"; };
+		184D4732168167A60084EE4B /* napkin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = napkin.jpg; sourceTree = "<group>"; };
+		184D473416816BEE0084EE4B /* napkin_light.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = napkin_light.jpg; sourceTree = "<group>"; };
+		184D473616816CDB0084EE4B /* napkin_light1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = napkin_light1.jpg; sourceTree = "<group>"; };
 		185535EB166EC78F00E7C6DE /* VARSearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARSearchBarView.h; sourceTree = "<group>"; };
 		185535EC166EC78F00E7C6DE /* VARSearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARSearchBarView.m; sourceTree = "<group>"; };
 		185535FB1670689C00E7C6DE /* VARSearchFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARSearchFoodViewController.h; sourceTree = "<group>"; };
@@ -738,6 +744,8 @@
 		84814D0B16593DFD0043D601 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				184D473416816BEE0084EE4B /* napkin_light.jpg */,
+				184D4732168167A60084EE4B /* napkin.jpg */,
 				18A8DCBD167EA35900CF5250 /* background.jpg */,
 				18DC664A167812EA000EF618 /* image1_1.jpg */,
 				18DC664B167812EA000EF618 /* image1_2.jpg */,
@@ -924,6 +932,7 @@
 				845A5A1F167E126F0017B358 /* image_dessert.png */,
 				187B81F11669098300BCE6B2 /* image_soup.png */,
 				845A5A18167E10680017B358 /* image_other.png */,
+				184D473616816CDB0084EE4B /* napkin_light1.jpg */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -1257,6 +1266,9 @@
 				845A5A26167E158F0017B358 /* image_background.jpg in Resources */,
 				18A8DCBB167E9C5000CF5250 /* your_image_here.jpg in Resources */,
 				18A8DCBE167EA35900CF5250 /* background.jpg in Resources */,
+				184D4733168167A60084EE4B /* napkin.jpg in Resources */,
+				184D473516816BEE0084EE4B /* napkin_light.jpg in Resources */,
+				184D473716816CDB0084EE4B /* napkin_light1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

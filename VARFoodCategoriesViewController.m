@@ -36,9 +36,9 @@
     [englishToChineseCategory setObject:@"小吃" forKey:@"snack"];
     [englishToChineseCategory setObject:@"飯" forKey:@"rice"];
     [englishToChineseCategory setObject:@"麵" forKey:@"noodle"];
-    //UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
-    //[tempImageView setFrame:self.collectionView.frame];
-    //self.collectionView.backgroundView = tempImageView;
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"napkin_light1.jpg"]];
+    [tempImageView setFrame:self.collectionView.frame];
+    self.collectionView.backgroundView = tempImageView;
 }
 
 - (void)didReceiveMemoryWarning
