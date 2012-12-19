@@ -54,7 +54,6 @@
         [chineseAndPinyin appendString:@"/"];
         [chineseAndPinyin appendString:_food[VARsDataSourceDictKeyPinyin]];
         _foodChineseName.text = chineseAndPinyin;
-        NSLog(@"string:%@",chineseAndPinyin);
         //_foodChineseName.text = _food[VARsDataSourceDictKeyChineseName];
         //_pinyin.text = _food[VARsDataSourceDictKeyPinyin];
         //_foodIntroduction.text = _food[VARsDataSourceDictKeyFoodIntroduction];
