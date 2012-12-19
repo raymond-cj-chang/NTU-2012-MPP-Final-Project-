@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Search Food View Controller - Search Food-->
@@ -442,7 +442,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="your_image_here.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yux-qo-lL4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="noImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yux-qo-lL4">
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="bwz-PB-vve"/>
@@ -878,7 +878,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="239"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="your_image_here.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bgd-ZB-7sP">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="noImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bgd-ZB-7sP">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="239" id="Bac-FG-0Eo"/>
                                                         <constraint firstAttribute="width" constant="300" id="xEH-m6-XWg"/>
@@ -1031,9 +1031,9 @@
     </scenes>
     <resources>
         <image name="addIcon.png" width="128" height="128"/>
+        <image name="noImage.jpg" width="479" height="322"/>
         <image name="receipt.png" width="17" height="23"/>
         <image name="star.png" width="26" height="26"/>
-        <image name="your_image_here.jpg" width="400" height="400"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

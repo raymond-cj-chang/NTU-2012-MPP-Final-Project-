@@ -232,7 +232,7 @@
                                 delegate:self
                        cancelButtonTitle:@"Cancel"
                   destructiveButtonTitle:nil
-                       otherButtonTitles:@"Vote", @"Add Photo",@"Add Comment", nil];
+                       otherButtonTitles:@"Like", @"Add Photo",@"Add Comment", nil];
     UIWindow *mainWindow = [[UIApplication sharedApplication] windows][0];
     [action showInView:mainWindow];
     //[action dismissWithClickedButtonIndex:2 animated:YES];
@@ -244,8 +244,8 @@
     switch (buttonIndex) {
         case 0:{
             //NSLog(@"Vote");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Voting"
-                                                            message:@"Are you voting for this food?"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Like"
+                                                            message:@"Like for this food?"
                                                            delegate:self
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@"OK", nil];
