@@ -12,6 +12,7 @@
 		184D4733168167A60084EE4B /* napkin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D4732168167A60084EE4B /* napkin.jpg */; };
 		184D473516816BEE0084EE4B /* napkin_light.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D473416816BEE0084EE4B /* napkin_light.jpg */; };
 		184D473716816CDB0084EE4B /* napkin_light1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D473616816CDB0084EE4B /* napkin_light1.jpg */; };
+		184D4739168172880084EE4B /* detailViewBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 184D4738168172870084EE4B /* detailViewBackground.jpg */; };
 		185535ED166EC78F00E7C6DE /* VARSearchBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185535EC166EC78F00E7C6DE /* VARSearchBarView.m */; };
 		185535FD1670689C00E7C6DE /* VARSearchFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185535FC1670689C00E7C6DE /* VARSearchFoodViewController.m */; };
 		185536061670E02E00E7C6DE /* VARSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185536051670E02E00E7C6DE /* VARSearchCell.m */; };
@@ -269,6 +270,7 @@
 		184D4732168167A60084EE4B /* napkin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = napkin.jpg; sourceTree = "<group>"; };
 		184D473416816BEE0084EE4B /* napkin_light.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = napkin_light.jpg; sourceTree = "<group>"; };
 		184D473616816CDB0084EE4B /* napkin_light1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = napkin_light1.jpg; sourceTree = "<group>"; };
+		184D4738168172870084EE4B /* detailViewBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = detailViewBackground.jpg; sourceTree = "<group>"; };
 		185535EB166EC78F00E7C6DE /* VARSearchBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARSearchBarView.h; sourceTree = "<group>"; };
 		185535EC166EC78F00E7C6DE /* VARSearchBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARSearchBarView.m; sourceTree = "<group>"; };
 		185535FB1670689C00E7C6DE /* VARSearchFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARSearchFoodViewController.h; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 				187B81F11669098300BCE6B2 /* image_soup.png */,
 				845A5A18167E10680017B358 /* image_other.png */,
 				184D473616816CDB0084EE4B /* napkin_light1.jpg */,
+				184D4738168172870084EE4B /* detailViewBackground.jpg */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -1269,6 +1272,7 @@
 				184D4733168167A60084EE4B /* napkin.jpg in Resources */,
 				184D473516816BEE0084EE4B /* napkin_light.jpg in Resources */,
 				184D473716816CDB0084EE4B /* napkin_light1.jpg in Resources */,
+				184D4739168172880084EE4B /* detailViewBackground.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

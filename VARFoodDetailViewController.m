@@ -105,6 +105,9 @@
         
     }
     self.textView.text = self.food[VARsDataSourceDictKeyFoodIntroduction];
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"detailViewBackground.jpg"]];
+    [self.view addSubview:tempImageView];
+    [self.view sendSubviewToBack:tempImageView];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender{

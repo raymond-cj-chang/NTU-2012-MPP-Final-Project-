@@ -55,7 +55,6 @@
     
     [self.categoryArray addObject:@"other"];
 
-
 }
 
 - (void)didReceiveMemoryWarning

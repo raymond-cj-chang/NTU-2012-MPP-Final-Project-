@@ -28,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"detailViewBackground.jpg"]];
+    [self.view addSubview:tempImageView];
+    [self.view sendSubviewToBack:tempImageView];
 }
 
 - (void)didReceiveMemoryWarning
