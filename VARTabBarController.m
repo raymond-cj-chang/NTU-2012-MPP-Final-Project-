@@ -41,6 +41,7 @@
 
 - (NSUInteger)supportedInterfaceOrientations {
     return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
+    //NSLog(@"supportedInterfaceOrientations is = %d",[self supportedInterfaceOrientations]);
     //return UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
