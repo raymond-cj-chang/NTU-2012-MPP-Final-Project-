@@ -261,6 +261,7 @@
 		845A5A26167E158F0017B358 /* image_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845A5A25167E158F0017B358 /* image_background.jpg */; };
 		845D273B1681E98B00C14EDE /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845D273A1681E98B00C14EDE /* noImage.jpg */; };
 		845D273E1681EB5D00C14EDE /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 845D273D1681EB5D00C14EDE /* like.png */; };
+		845D27481681FDE400C14EDE /* VARTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D27471681FDE400C14EDE /* VARTabBarController.m */; };
 		84780B20166725D70006B554 /* image_noodle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84780B1F166725D70006B554 /* image_noodle.png */; };
 		8478425916427080001C7EE5 /* VARFoodCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478425816427080001C7EE5 /* VARFoodCategoriesViewController.m */; };
 		84A4424E1680C535002748D5 /* VARMapViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 84A4424C1680C4A8002748D5 /* VARMapViewController.h */; };
@@ -555,6 +556,8 @@
 		845A5A25167E158F0017B358 /* image_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image_background.jpg; path = resource/image/image_background.jpg; sourceTree = "<group>"; };
 		845D273A1681E98B00C14EDE /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noImage.jpg; sourceTree = "<group>"; };
 		845D273D1681EB5D00C14EDE /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		845D27461681FDE300C14EDE /* VARTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VARTabBarController.h; sourceTree = "<group>"; };
+		845D27471681FDE400C14EDE /* VARTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VARTabBarController.m; sourceTree = "<group>"; };
 		84780B1F166725D70006B554 /* image_noodle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_noodle.png; path = resource/image/image_noodle.png; sourceTree = "<group>"; };
 		8478425716427080001C7EE5 /* VARFoodCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VARFoodCategoriesViewController.h; path = ../VARFoodCategoriesViewController.h; sourceTree = "<group>"; };
 		8478425816427080001C7EE5 /* VARFoodCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VARFoodCategoriesViewController.m; path = ../VARFoodCategoriesViewController.m; sourceTree = "<group>"; };
@@ -991,6 +994,8 @@
 		84EB5657163A9DFE00F5080E = {
 			isa = PBXGroup;
 			children = (
+				845D27461681FDE300C14EDE /* VARTabBarController.h */,
+				845D27471681FDE400C14EDE /* VARTabBarController.m */,
 				84EB566C163A9DFF00F5080E /* MobileClassFinalProject */,
 				84EB5665163A9DFE00F5080E /* Frameworks */,
 				84EB5663163A9DFE00F5080E /* Products */,
@@ -1396,6 +1401,7 @@
 				18A8DCC2167F38D900CF5250 /* VARPopularFoodViewController.m in Sources */,
 				18A8DCC5167F3AEE00CF5250 /* VARPopularFoodCell.m in Sources */,
 				184D473016813AD40084EE4B /* VARRestaurant.m in Sources */,
+				845D27481681FDE400C14EDE /* VARTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
