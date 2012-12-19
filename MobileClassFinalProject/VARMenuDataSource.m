@@ -25,8 +25,10 @@
 static NSString * VARDataSourceCacheKeyChineseCategories = @"VARDataSourceCacheKey.Cache.Categories.Chinese";
 static NSString * VARDataSourceCacheKeyEnglishCategories = @"VARDataSourceCacheKey.Cache.Categories.English";
 static NSString * VARDataSourceCacheKeyFoodInCategory = @"VARDataSourceCacheKey.%@.Categories.Food";
-static NSString * VARDataSourceCacheKeyFoodByRating = @"VARDataSrouceCacheKey.%@.Food.Rating";
-static NSString * VARDataSourceCacheKeyFoodByAlphabetica10order = @"VARDataSrouceCacheKey.%@.Alphabetica";
+static NSString * VARDataSourceCacheKeyFoodByRating = @"VARDataSourceCacheKey.%@.Food.Rating";
+static NSString * VARDataSourceCacheKeyFoodByAlphabeticalOrder = @"VARDataSourceCacheKey.%@.Food.Alphabetical.Order";
+//static NSString * VARDataSourceCacheKeyFoodByRating = @"VARDataSourceCacheKey.%@.Food.Rating";
+
 NSString * const VARsDataSourceDictKeyChineseCategories = @"Category_CHN";
 NSString * const VARsDataSourceDictKeyEnglishCategories = @"Category_ENG";
 NSString * const VARsDataSourceDictKeyEnglishName = @"EnglishName";
@@ -39,6 +41,7 @@ NSString * const VARsDataSourceDictKeyFoodID = @"FID";
 NSString * const VARsDataSourceDictKeyComment = @"Comment";
 NSString * const VARsDataSourceDictKeyCommentContent = @"Comment_content";
 NSString * const VARsDataSourceDictKeyCommentTimestamp = @"Comment_timestamp";
+NSString * const VARsDataSourceDictKeyPinyin = @"Pinyin";
 
 //global server url
 NSString* const serverURL = @"http://varfinalprojectserver.appspot.com";
@@ -220,7 +223,7 @@ NSCondition* requestLock;
     {
         //initalize
         foods =  [[NSMutableArray alloc] init];
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients , rating FROM food_items ORDER BY rating DESC"];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients, rating, pinyin FROM food_items ORDER BY rating DESC"];
         while([queryResults next])
         {
             NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
@@ -232,6 +235,7 @@ NSCondition* requestLock;
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
             [tempDict setObject:[queryResults stringForColumn:@"id"] forKey:VARsDataSourceDictKeyFoodID];
             [tempDict setObject:[queryResults stringForColumn:@"rating"] forKey:VARsDataSourceDictKeyRating];
+            [tempDict setObject:[queryResults stringForColumn:@"pinyin"] forKey:VARsDataSourceDictKeyPinyin];
             
             //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
             
@@ -273,13 +277,13 @@ NSCondition* requestLock;
 - (NSArray *) arrayOfFoodsByAlphabeticalOrder
 {
     //get from cache
-    NSMutableArray* foods = [cache objectForKey:VARDataSourceCacheKeyFoodByAlphabetica10order];
+    NSMutableArray* foods = [cache objectForKey:VARDataSourceCacheKeyFoodByAlphabeticalOrder];
     
     if(!foods)
     {
         //initalize
         foods =  [[NSMutableArray alloc] init];
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients , rating FROM food_items ORDER BY name"];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients, rating, pinyin FROM food_items ORDER BY name"];
         while([queryResults next])
         {
             NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
@@ -291,6 +295,7 @@ NSCondition* requestLock;
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
             [tempDict setObject:[queryResults stringForColumn:@"id"] forKey:VARsDataSourceDictKeyFoodID];
             [tempDict setObject:[queryResults stringForColumn:@"rating"] forKey:VARsDataSourceDictKeyRating];
+            [tempDict setObject:[queryResults stringForColumn:@"pinyin"] forKey:VARsDataSourceDictKeyPinyin];
             
             //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
             
@@ -322,7 +327,7 @@ NSCondition* requestLock;
             [foods addObject:tempDict];
         }
         //add in cache
-        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByAlphabetica10order];
+        [cache setObject:foods forKey:VARDataSourceCacheKeyFoodByAlphabeticalOrder];
     }
     //return
     return [[NSArray alloc] initWithArray:foods];
@@ -339,7 +344,7 @@ NSCondition* requestLock;
     {
         //init
         foods =  [[NSMutableArray alloc] init];
-        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients, rating FROM food_items WHERE english_category = ?", category];
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients, rating, pinyin FROM food_items WHERE english_category = ?", category];
         while([queryResults next])
         {
             NSMutableDictionary * tempDict = [[NSMutableDictionary alloc] init];
@@ -351,6 +356,7 @@ NSCondition* requestLock;
             [tempDict setObject:[queryResults stringForColumn:@"ingredients"] forKey:VARsDataSourceDictKeyFoodIngredient];
             [tempDict setObject:[queryResults stringForColumn:@"id"] forKey:VARsDataSourceDictKeyFoodID];
             [tempDict setObject:[queryResults stringForColumn:@"rating"] forKey:VARsDataSourceDictKeyRating];
+            [tempDict setObject:[queryResults stringForColumn:@"pinyin"] forKey:VARsDataSourceDictKeyPinyin];
             
             //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
             
