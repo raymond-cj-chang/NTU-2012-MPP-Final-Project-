@@ -31,8 +31,9 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="English Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTL-TT-wcj">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="27" id="2yc-lF-PE7"/>
+                                                <constraint firstAttribute="width" constant="106" id="wRF-sy-dVA"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1175,7 +1176,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UOt-yE-DOB"/>
+        <segue reference="4a9-sC-whV"/>
         <segue reference="31F-M1-wCI"/>
     </inferredMetricsTieBreakers>
 </document>
