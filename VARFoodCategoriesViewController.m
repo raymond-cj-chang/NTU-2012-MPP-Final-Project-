@@ -79,7 +79,8 @@
 
     
     //set category image
-    NSString* categoryImageName = [[NSString alloc] initWithFormat:@"image_%@",cell.foodCategoryEnglishName.text];
+    NSString* categoryImageName = [[NSString alloc] initWithFormat:@"image%@.png",cell.foodCategoryEnglishName.text];
+    NSLog(@"imageName:%@",categoryImageName);
     cell.foodCategoryImage.image = [UIImage imageNamed:categoryImageName];
     
     return cell;
