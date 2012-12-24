@@ -54,7 +54,7 @@ extern NSCondition* requestLock;
 - (void) addImageToFoodItem:(NSInteger)foodID withImageName:(NSString *)imageName;
 - (void) addFoodItemToDB:(NSDictionary *) foodItem;
 - (void) updateRatingToFoodItem:(NSString*)fidStr withRating:(NSString*)rating;
-
+- (NSDictionary *) getFoodItemByFID:(NSString*)fidStr;
 
 //for server
 - (void) downloadFoodDataFromGAEServer;

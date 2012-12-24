@@ -24,6 +24,27 @@
     return self;
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //refresh
+    [self refresh];
+}
+
+-(void) refresh
+{
+    //NSLog(@"Refresh!");
+    
+    //reload food data
+    if(_food!=nil) _food = [[VARMenuDataSource sharedMenuDataSource] getFoodItemByFID:_food[VARsDataSourceDictKeyFoodID]];
+    
+    //NSDictionary* food = [[VARMenuDataSource sharedMenuDataSource] getFoodItemByFID:_food[VARsDataSourceDictKeyFoodID]];
+    //NSLog(@"Test!! : %@",food);
+    //[self reloadInputViews];
+    //[self viewDidLoad];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -201,6 +222,9 @@
 //        VARAddPhotoViewController *dest = (VARAddCommentViewController *)[[segue destinationViewController] topViewController];
 //    }
     if ([segue.identifier isEqualToString:@"showComment"]){
+        //refresh
+        [self refresh];
+        
         VARFoodCommentViewController *dest = (VARFoodCommentViewController *)[[segue destinationViewController] topViewController];
         dest.arrayWithCommentAndTimestamp = self.food[VARsDataSourceDictKeyComment];
     }
@@ -318,11 +342,5 @@
     NSLog(@"updated successfully");
 }
 
-//disable auto rotate
-- (NSUInteger)supportedInterfaceOrientations
-{
-    //NSLog(@"Test!!");
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
-}
 
 @end

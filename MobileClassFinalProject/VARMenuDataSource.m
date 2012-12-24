@@ -334,6 +334,67 @@ NSCondition* requestLock;
 }
 
 
+//returns an array of all the foods, arranged in alphabetical order
+- (NSDictionary *) getFoodItemByFID:(NSString*)fidStr
+{
+    //get from cache
+    //NSDictionary* food = [cache objectForKey];
+    
+    NSMutableDictionary* foodItem = [[NSMutableDictionary alloc] init];
+    
+    //if(!foodItem)
+    {
+        //sadsa
+        //initalize
+        FMResultSet * queryResults = [self.database executeQuery:@"SELECT id, name, chinese_name, english_category, chinese_category, introduction, ingredients, rating, pinyin FROM food_items WHERE id = ?",fidStr];
+        
+        if(queryResults!=nil)
+        {
+            [queryResults next];
+            foodItem[VARsDataSourceDictKeyEnglishName] = [queryResults stringForColumn:@"name"];
+            foodItem[VARsDataSourceDictKeyChineseName] = [queryResults stringForColumn:@"chinese_name"];
+            foodItem[VARsDataSourceDictKeyEnglishCategories] = [queryResults stringForColumn:@"english_category"];
+            foodItem[VARsDataSourceDictKeyChineseCategories] = [queryResults stringForColumn:@"chinese_category"];
+            foodItem[VARsDataSourceDictKeyFoodIntroduction] = [queryResults stringForColumn:@"introduction"];
+            foodItem[VARsDataSourceDictKeyFoodIngredient] = [queryResults stringForColumn:@"ingredients"];
+            foodItem[VARsDataSourceDictKeyFoodID] = [queryResults stringForColumn:@"id"];
+            foodItem[VARsDataSourceDictKeyRating] = [queryResults stringForColumn:@"rating"];
+            foodItem[VARsDataSourceDictKeyPinyin] = [queryResults stringForColumn:@"pinyin"];
+
+            //NSLog(@"%@", [queryResults stringForColumn:@"name"]);
+            
+            //add array of images
+            NSInteger food_id = [queryResults intForColumn:@"id"];
+            FMResultSet * imageResults = [self.database executeQuery:@"SELECT * FROM images WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
+            NSMutableArray * tempImageArray = [[NSMutableArray alloc] init];
+            while([imageResults next])
+            {
+                [tempImageArray addObject:[imageResults stringForColumn:@"image_name"]];
+            }
+            
+            //add the image array to the temp dict
+            foodItem[VARsDataSourceDictKeyFoodImage] = tempImageArray;
+            
+			//add dictionary of comments
+            FMResultSet * commentResults = [self.database executeQuery:@"SELECT * FROM comments WHERE food_id = ?", [NSString stringWithFormat:@"%i", food_id]];
+            NSMutableArray * tempCommentArray = [[NSMutableArray alloc]init];
+            while([commentResults next])
+            {
+				NSMutableDictionary * tempCommentDict = [[NSMutableDictionary alloc] init];
+                [tempCommentDict setObject:[commentResults stringForColumn:@"comment"] forKey:VARsDataSourceDictKeyCommentContent];
+                [tempCommentDict setObject:[commentResults stringForColumn:@"timestamp"] forKey:VARsDataSourceDictKeyCommentTimestamp];
+				[tempCommentArray addObject: tempCommentDict];
+            }
+            
+            //add the comment dictionary to the temp dict
+            foodItem[VARsDataSourceDictKeyComment] = tempCommentArray;
+        }
+    }
+    //return
+    return foodItem;
+}
+
+
 //get food from category
 - (NSArray *) arrayOfFoodsInCategories:(NSString*) category{
     //get from cache
