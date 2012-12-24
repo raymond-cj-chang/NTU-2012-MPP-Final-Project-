@@ -81,8 +81,8 @@
         }
         
         [cell.foodImage setImage:addedImage];
-        [cell.foodImage.layer setBorderColor:[[UIColor blackColor] CGColor]];
-        [cell.foodImage.layer setBorderWidth: 2.0];
+        //[cell.foodImage.layer setBorderColor:[[UIColor blackColor] CGColor]];
+        //[cell.foodImage.layer setBorderWidth: 2.0];
        //cell.foodImage.image = [UIImage imageWithContentsOfFile:filename];
         //NSLog(@"image:%@",cell.foodImage.image);
     }

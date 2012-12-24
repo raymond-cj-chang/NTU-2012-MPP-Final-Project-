@@ -78,6 +78,9 @@
     //set image
     cell.imageView.image = addedImage;
     
+    //set food name
+    cell.foodEnglishName.text = self.arrayOfFoodDictionary[row][VARsDataSourceDictKeyEnglishName];
+    
     return cell;
     
 }

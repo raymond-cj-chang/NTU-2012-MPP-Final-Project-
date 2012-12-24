@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cH9-Yb-LDf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Search Food View Controller - Search Food-->
@@ -245,8 +245,7 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lok-ec-BdL">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="75" id="dEL-VW-2jP"/>
-                                                <constraint firstAttribute="width" constant="100" id="xw9-z6-wHx"/>
+                                                <constraint firstAttribute="width" constant="98" id="o9D-vJ-6L6"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -254,12 +253,13 @@
                                 </view>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="2" id="1PW-Xn-CFw"/>
-                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="leading" secondItem="Saz-ou-3rN" secondAttribute="leading" type="default" id="AZ3-69-O3P"/>
-                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="114" id="HaE-u6-UbI"/>
-                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="5" id="Kfm-qQ-ij2"/>
-                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="top" secondItem="Saz-ou-3rN" secondAttribute="top" type="default" id="jgf-oh-UGh"/>
-                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="21" id="miS-As-m2a"/>
+                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="-1" id="5ls-5f-vuY"/>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="leading" secondItem="jsq-al-RAL" secondAttribute="leading" constant="114" id="7Nq-xg-VEB"/>
+                                    <constraint firstItem="Saz-ou-3rN" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="2" id="PtR-0a-6RB"/>
+                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" type="default" id="Wh8-od-DNW"/>
+                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="top" secondItem="jsq-al-RAL" secondAttribute="top" constant="21" id="Wx8-li-AA6"/>
+                                    <constraint firstItem="knU-uG-NIZ" firstAttribute="leading" secondItem="Saz-ou-3rN" secondAttribute="leading" type="default" id="aAd-rO-QZL"/>
+                                    <constraint firstItem="Lok-ec-BdL" firstAttribute="bottom" secondItem="jsq-al-RAL" secondAttribute="bottom" type="default" id="kNF-WV-ovW"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="foodChineseName" destination="knU-uG-NIZ" id="sOh-aB-qtQ"/>
@@ -591,34 +591,45 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1jX-WO-64B">
-                            <size key="itemSize" width="150" height="112"/>
+                            <size key="itemSize" width="154" height="115"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="MkO-dn-O1d" customClass="VARPopularFoodCell">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="112"/>
+                                <rect key="frame" x="0.0" y="0.0" width="155" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="112"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="155" height="115"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-3T-koR">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyG-3T-koR"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000013" contentMode="left" text="Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuf-on-c97">
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="108" id="Fwf-ak-ELk"/>
-                                                <constraint firstAttribute="width" constant="146" id="RIv-tH-SIZ"/>
+                                                <constraint firstAttribute="height" constant="20" id="7rH-GW-wYA"/>
                                             </constraints>
-                                        </imageView>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="xyG-3T-koR" firstAttribute="centerX" secondItem="MkO-dn-O1d" secondAttribute="centerX" type="default" id="J82-nr-ire"/>
-                                    <constraint firstItem="xyG-3T-koR" firstAttribute="centerY" secondItem="MkO-dn-O1d" secondAttribute="centerY" type="default" id="g7V-uc-8WZ"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="leading" secondItem="MkO-dn-O1d" secondAttribute="leading" type="default" id="2Ia-jU-NBW"/>
+                                    <constraint firstItem="Cuf-on-c97" firstAttribute="trailing" secondItem="MkO-dn-O1d" secondAttribute="trailing" type="default" id="AWG-KX-Ble"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="bottom" secondItem="MkO-dn-O1d" secondAttribute="bottom" type="default" id="LCC-Q4-Dpv"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="trailing" secondItem="MkO-dn-O1d" secondAttribute="trailing" type="default" id="MZ7-6t-EK9"/>
+                                    <constraint firstItem="Cuf-on-c97" firstAttribute="leading" secondItem="MkO-dn-O1d" secondAttribute="leading" type="default" id="dfm-Cq-5m4"/>
+                                    <constraint firstItem="xyG-3T-koR" firstAttribute="top" secondItem="MkO-dn-O1d" secondAttribute="top" type="default" id="f4T-XE-CW5"/>
+                                    <constraint firstItem="Cuf-on-c97" firstAttribute="bottom" secondItem="MkO-dn-O1d" secondAttribute="bottom" type="default" id="tZY-UJ-YM6"/>
                                 </constraints>
+                                <size key="customSize" width="155" height="115"/>
                                 <connections>
+                                    <outlet property="foodEnglishName" destination="Cuf-on-c97" id="vRX-DZ-0bl"/>
                                     <outlet property="imageView" destination="xyG-3T-koR" id="qIW-7a-cqZ"/>
                                     <segue destination="HDU-WU-YY2" kind="push" identifier="showFoodDetailView" id="yLU-Mg-f62"/>
                                 </connections>
@@ -633,7 +644,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQP-yB-SIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="714"/>
+            <point key="canvasLocation" x="374" y="714"/>
         </scene>
         <!--Map View Controller - Nearby Restaurants-->
         <scene sceneID="i2q-lp-6bL">
@@ -1040,7 +1051,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oSW-Jw-QwP"/>
+        <segue reference="yLU-Mg-f62"/>
         <segue reference="4a9-sC-whV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -59,6 +59,9 @@
     self.mapView.mapType = MKMapTypeHybrid;
     self.mapView.delegate = self;
     
+    //change map type
+    [self.mapView setMapType:MKMapTypeStandard];
+    
 }
 
 - (void)mapView:(MKMapView *)aMapView didUpdateUserLocation:(MKUserLocation *)aUserLocation {
